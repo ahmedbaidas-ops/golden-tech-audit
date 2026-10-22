@@ -14,7 +14,15 @@ out = (tpl.replace('/*__DATA__*/', chunk('/* ---------------- data: brand audit'
           .replace('/*__JS_B__*/', chunk('/* ---------------- brand: gaps', '/* ---------------- brand: personality'))
           .replace('/*__JS_C__*/', chunk('/* ---------------- brand: values & emotions', '/* ---------------- website ----'))
           .replace('<!--__BRAND_SECTIONS__-->', '\n'.join(l[2:] if l.startswith('  ') else l for l in src[i:j + 1]))
-          .replace('/*__LOGOS__*/', json.dumps(json.load(open('../logos/logos.json')))))
+          .replace('/*__LOGOS__*/', json.dumps(json.load(open('../logos/logos.json'))))
+          .replace('/*__CX__*/', json.dumps(json.load(open('../concept/assets.json')))))
+# SLOP: drop label scaffolding repeated on every section (icon circle, "N من M" counter, numbered nav pills) and the doors' repeated numbers
+import re
+out = re.sub(r'<span class="ico"><svg[^>]*><use href="#i-[a-z]+"/></svg></span>', '', out)
+out = re.sub(r'<small>\d من \d</small>', '', out)
+out = re.sub(r'(data-chip>)<span class="n">\d</span>', r'\1', out)
+out = re.sub(r'<span class="d-ico"><svg aria-hidden="true"><use href="#i-[a-z]+"/></svg></span>', '', out)
+out = re.sub(r'\n      <div class="facts">\n(?:        <div class="fact">.*?</div>\n){3}      </div>', '', out)
 assert '/*__' not in out and '<!--__' not in out
 open('../index.html', 'w', encoding='utf-8').write(out)
 w = '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style>body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style></head><body>'

@@ -25,7 +25,7 @@
   --gold-hi: #e7c46e;
   --gold-soft: #fbf5e6;
   --good: #047857; --good-soft: #e7f8f0;
-  --warn: #b45309; --warn-soft: #fff4dc;
+  --warn: #a3470a; --warn-soft: #fff4dc;
   --bad: #be123c;  --bad-soft: #ffeef0;
   --bar: #d6dbe5; --bar-2: #9ea9c2; --track: #f3f4f7;
   --gauge-a: #0b1533; --gauge-b: #a3aed0; --gauge-off: #eaecf1;
@@ -105,7 +105,7 @@ svg { flex: 0 0 auto; }
 .brand-txt b { display: block; font-family: var(--font-display); font-weight: 600; font-size: 1.02rem; line-height: 1.25; }
 .brand-txt small { display: block; color: var(--muted); font-size: .8rem; line-height: 1.3; }
 .switch { margin-inline: auto; display: flex; gap: 2px; background: var(--sunken); padding: 4px; border-radius: 999px; }
-.switch a { color: var(--ink); text-decoration: none; padding: 8px 18px; border-radius: 999px; font-weight: 600; font-size: .92rem; white-space: nowrap; min-height: 42px; display: inline-flex; align-items: center; justify-content: center; transition: background .2s, color .2s; }
+.switch a { color: var(--ink); text-decoration: none; padding: 8px 18px; border-radius: 999px; font-weight: 600; font-size: .92rem; white-space: nowrap; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; transition: background .2s, color .2s; }
 .switch a:hover:not([aria-current="page"]) { background: var(--surface); }
 .switch a[aria-current="page"] { background: var(--sel); color: var(--on-sel); box-shadow: 0 6px 14px -8px rgb(11 21 51 / .6); }
 .tb-actions { display: flex; align-items: center; gap: 8px; }
@@ -160,12 +160,6 @@ svg { flex: 0 0 auto; }
 .k-foot { margin-top: 6px; color: var(--muted); font-size: .88rem; }
 .k-foot b { color: var(--ink); font-weight: 700; }
 .kpi.accent, .promise-band, .insight { background: linear-gradient(150deg, var(--navy-2), var(--navy) 70%); color: var(--on-navy); border: 1px solid rgb(231 196 110 / .18); }
-.kpi.accent::before, .promise-band::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: repeating-linear-gradient(-55deg, rgb(231 196 110 / .10) 0 1px, transparent 1px 13px);
-  -webkit-mask-image: radial-gradient(120% 90% at 0% 100%, #000, transparent 70%);
-  mask-image: radial-gradient(120% 90% at 0% 100%, #000, transparent 70%);
-}
 .kpi.accent .k-label, .kpi.accent .k-of, .kpi.accent .k-foot { color: var(--on-navy-muted); }
 .kpi.accent .k-foot b { color: var(--on-navy); }
 .kpi.accent .k-ico { background: #fff; color: #0b1533; }
@@ -206,13 +200,12 @@ svg { flex: 0 0 auto; }
 .fact b { display: block; font-family: var(--font-display); font-size: 1.4rem; line-height: 1.2; }
 .fact b small { font-size: .8rem; color: var(--muted); font-weight: 500; }
 .fact span { font-size: .84rem; color: var(--muted); }
-@media (max-width: 520px) { .fact span { font-size: .78rem; } .fact b { font-size: 1.2rem; } }
+@media (max-width: 520px) { .fact span { font-size: .82rem; } .fact b { font-size: 1.2rem; } }
 .spark { display: flex; align-items: flex-end; gap: 5px; height: 48px; }
 .spark i { width: 12px; border-radius: 4px; background: var(--bar); height: calc(var(--v) * 1%); transition: height .8s cubic-bezier(.2,.8,.2,1) calc(var(--i) * 50ms + .2s); }
 .spark i.lo { background: var(--gold); }
 
-.bridge { margin-top: 14px; display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; background: var(--surface); border: 1px solid var(--card-border); border-radius: var(--r-lg); padding: 18px 22px; box-shadow: var(--shadow); }
-.bridge .q { width: 52px; height: 52px; border-radius: 50%; background: var(--gold-soft); color: var(--gold); display: grid; place-items: center; font-family: var(--font-display); font-size: 2.2rem; line-height: 1; padding-top: 14px; }
+.bridge { margin-top: 14px; border-inline-start: 4px solid var(--gold) !important; background: var(--surface); border: 1px solid var(--card-border); border-radius: var(--r-lg); padding: 18px 22px; box-shadow: var(--shadow); }
 .bridge p b { color: var(--ink); }
 .landing-foot, .foot { padding-block: 26px 22px; color: var(--muted); font-size: .9rem; }
 
@@ -233,9 +226,9 @@ svg { flex: 0 0 auto; }
 .chips .inner { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; background: color-mix(in srgb, var(--surface) 90%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid var(--line); border-radius: 999px; padding: 5px; transition: box-shadow .25s; }
 .chips.stuck .inner { box-shadow: var(--shadow-pop); }
 .chips .inner::-webkit-scrollbar { display: none; }
-.chips a { flex: 0 0 auto; text-decoration: none; color: var(--muted); font-weight: 600; font-size: .9rem; padding: 6px 14px 6px 16px; border-radius: 999px; min-height: 42px; display: inline-flex; align-items: center; gap: 8px; transition: background .2s, color .2s; }
+.chips a { flex: 0 0 auto; text-decoration: none; color: var(--muted); font-weight: 600; font-size: .9rem; padding: 6px 14px 6px 16px; border-radius: 999px; min-height: 44px; display: inline-flex; align-items: center; gap: 8px; transition: background .2s, color .2s; }
 .chips a:hover { color: var(--ink); background: var(--sunken); }
-.chips a .n { width: 24px; height: 24px; border-radius: 50%; display: inline-grid; place-items: center; font-size: .78rem; background: var(--sunken); color: var(--gold-ink); font-variant-numeric: tabular-nums; }
+.chips a .n { width: 24px; height: 24px; border-radius: 50%; display: inline-grid; place-items: center; font-size: .82rem; background: var(--sunken); color: var(--gold-ink); font-variant-numeric: tabular-nums; }
 .chips a.on { background: var(--sel); color: var(--on-sel); }
 .chips a.on .n { background: rgb(255 255 255 / .16); color: var(--sel-accent); }
 
@@ -264,7 +257,7 @@ svg { flex: 0 0 auto; }
 /* segmented tabs */
 .tabs { display: inline-flex; max-width: 100%; overflow-x: auto; scrollbar-width: none; gap: 2px; background: var(--sunken); padding: 4px; border-radius: 999px; vertical-align: middle; }
 .tabs::-webkit-scrollbar { display: none; }
-.tab { flex: 0 0 auto; border: 0; background: transparent; border-radius: 999px; padding: 6px 16px; min-height: 42px; cursor: pointer; font-weight: 600; color: var(--muted); display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; transition: background .2s, color .2s, box-shadow .2s; }
+.tab { flex: 0 0 auto; border: 0; background: transparent; border-radius: 999px; padding: 6px 16px; min-height: 44px; cursor: pointer; font-weight: 600; color: var(--muted); display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; transition: background .2s, color .2s, box-shadow .2s; }
 .tab:hover { color: var(--ink); }
 .tab[aria-selected="true"] { background: var(--sel); color: var(--on-sel); box-shadow: 0 6px 14px -8px rgb(11 21 51 / .55); }
 .tab .n { font-variant-numeric: tabular-nums; opacity: .75; }
@@ -328,6 +321,11 @@ svg { flex: 0 0 auto; }
 .map .seg rect { fill: var(--surface); stroke: var(--line); }
 .map .seg text { font-size: 11.5px; fill: var(--muted); font-family: var(--font-body); }
 .map .ring { fill: none; stroke: var(--gold); stroke-width: 2; stroke-dasharray: 3 3; }
+.map .brand .hit { fill: transparent; }
+.picks { display: flex; flex-wrap: wrap; gap: 6px; margin-block: 10px 4px; }
+.pick { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding-block: 4px; padding-inline: 5px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font-weight: 600; font-size: .9rem; transition: background .2s, border-color .2s; }
+.pick:hover { border-color: var(--gold); }
+.pick[aria-pressed="true"] { background: var(--sel); color: var(--on-sel); border-color: var(--sel); }
 .note-head { display: flex; align-items: center; gap: 10px; }
 .note-head b { font-family: var(--font-display); color: var(--gold-ink); }
 .toggle { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 600; min-height: 44px; }
@@ -401,7 +399,7 @@ details.acc > .body .label { margin-top: 4px; }
 
 /* ---------- website: area chart ---------- */
 .vchart { display: grid; grid-template-columns: 30px minmax(0, 1fr); column-gap: 10px; margin-top: 8px; }
-.yaxis { position: relative; height: 250px; font-size: .75rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.yaxis { position: relative; height: 250px; font-size: .82rem; color: var(--muted); font-variant-numeric: tabular-nums; }
 .yaxis span { position: absolute; inset-inline-start: 0; transform: translateY(50%); line-height: 1; }
 .plot { position: relative; height: 250px; }
 .gl { position: absolute; inset-inline: 0; border-top: 1px dashed var(--line); }
@@ -415,10 +413,11 @@ details.acc > .body .label { margin-top: 4px; }
 .col.sel .fl::before { content: ""; position: absolute; top: -7px; left: 50%; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: var(--gold-ink); box-shadow: 0 0 0 3px var(--surface); }
 .col .val { position: absolute; inset-inline: 0; bottom: calc(var(--v) * 1% + 12px); font-size: .8rem; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; color: var(--muted); transition: opacity .4s ease calc(var(--i) * 60ms + .6s); }
 .col.sel .val { visibility: hidden; }
+.col .val.t-good { color: var(--good); } .col .val.t-warn { color: var(--warn); } .col .val.t-bad { color: var(--bad); }
 .cols.pre .fl { height: 0; }
 .cols.pre .val { opacity: 0; }
 .xlabels { grid-column: 2; display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 10px; margin-top: 10px; }
-.xlabels span { font-size: .78rem; color: var(--muted); text-align: center; line-height: 1.45; }
+.xlabels span { font-size: .82rem; color: var(--muted); text-align: center; line-height: 1.45; }
 .xlabels span.sel { color: var(--ink); font-weight: 700; }
 .tip { position: absolute; z-index: 3; min-width: 176px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; box-shadow: var(--shadow-pop); pointer-events: none; opacity: 0; transform: translateY(6px); transition: opacity .25s, transform .25s, left .35s cubic-bezier(.2,.8,.2,1), top .35s cubic-bezier(.2,.8,.2,1); }
 .tip.show { opacity: 1; transform: none; }
@@ -435,7 +434,8 @@ details.acc > .body .label { margin-top: 4px; }
   .yaxis, .gl, .xlabels, .tip { display: none; }
   .plot { height: auto; }
   .cols { position: static; grid-template-columns: 1fr; gap: 12px; }
-  .col { height: auto; display: grid; grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr) 2.2rem; gap: 10px; align-items: center; text-align: start; border-radius: 10px; padding: 2px 0; }
+  .col { height: auto; min-height: 44px; display: grid; grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr) 2.2rem; gap: 10px; align-items: center; text-align: start; border-radius: 10px; padding: 2px 0; }
+  .cols { gap: 4px; }
   .col .lbl { display: block; font-size: .88rem; line-height: 1.45; color: var(--ink); }
   .col.sel .lbl { font-weight: 700; }
   .col .trk { position: relative; inset: auto; height: 12px; border-radius: 999px; }
@@ -460,7 +460,7 @@ details.acc > .body .label { margin-top: 4px; }
 /* ---------- website: fixes table ---------- */
 .tbl-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
 .search { display: flex; align-items: center; gap: 8px; flex: 1 1 240px; max-width: 380px; min-height: 48px; padding-inline: 16px; border-radius: 999px; background: var(--sunken); border: 1px solid transparent; transition: border-color .2s, background .2s; }
-.search:focus-within { border-color: var(--gold); background: var(--surface); }
+.search:focus-within { border-color: var(--gold); background: var(--surface); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 35%, transparent); }
 .search svg { width: 18px; height: 18px; color: var(--muted); }
 .search input { border: 0; background: transparent; font: inherit; color: var(--ink); width: 100%; min-width: 0; outline: none; padding: 8px 0; }
 .search input::placeholder { color: var(--muted); opacity: 1; }
@@ -502,6 +502,210 @@ details.fx[open] .chev { transform: rotate(180deg); }
 .btn.dark:hover { box-shadow: var(--shadow-pop); }
 .btn.line { border: 1px solid var(--line); color: var(--ink); background: var(--surface); }
 
+/* ---------- concept: a Walmart-structured homepage in Golden's colours ---------- */
+.switch .lg { display: inline; }
+@media (max-width: 560px) { .switch .lg { display: none; } .switch a { padding-inline: 6px; } }
+.teaser { margin-top: 14px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 20px; align-items: center; background: var(--surface); border: 1px solid var(--card-border); border-radius: var(--r-lg); padding: 20px 22px; box-shadow: var(--shadow); text-decoration: none; color: var(--ink); transition: translate .2s ease, box-shadow .2s ease; }
+.teaser:hover { translate: 0 -3px; box-shadow: var(--shadow-pop); }
+.teaser h2 { font-size: 1.45rem; margin-top: 8px; }
+.teaser p { color: var(--muted); margin-top: 6px; }
+.teaser .go-line { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; font-weight: 700; color: var(--gold-ink); }
+.teaser .go-line svg { width: 18px; height: 18px; transition: translate .25s; }
+.teaser:hover .go-line svg { translate: -4px 0; }
+.ba { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ba figure { margin: 0; position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: #fff; aspect-ratio: 16 / 10; }
+.ba img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.ba figcaption { position: absolute; bottom: 6px; inset-inline-start: 6px; background: rgb(11 21 51 / .85); color: #fff; font-size: .78rem; font-weight: 700; border-radius: 999px; padding: 0 10px; }
+.mini-after { display: grid; grid-template-rows: 20% 9% 1fr; }
+.mini-after .m1 { background: #0b1533; display: flex; align-items: center; gap: 6%; padding: 0 6%; }
+.mini-after .m1 b { width: 9%; aspect-ratio: 1; border-radius: 50%; background: #fff; }
+.mini-after .m1 i { flex: 1; height: 46%; border-radius: 99px; background: #fff; }
+.mini-after .m1 em { width: 9%; aspect-ratio: 1; border-radius: 50%; background: #e7c46e; }
+.mini-after .m2 { background: #eef1f8; }
+.mini-after .m3 { display: grid; grid-template-columns: 1fr 2fr 1fr; grid-template-rows: 1fr 1fr; gap: 5%; padding: 5%; }
+.mini-after .m3 span { border-radius: 6px; }
+.mini-after .m3 span:nth-child(1) { background: #e7c46e; }
+.mini-after .m3 span:nth-child(2) { background: #0b1533; grid-row: span 2; }
+.mini-after .m3 span:nth-child(3) { background: #fbf5e6; }
+.mini-after .m3 span:nth-child(4) { background: #eef1f8; }
+.mini-after .m3 span:nth-child(5) { background: #f3ece1; }
+@media (max-width: 760px) { .teaser { grid-template-columns: 1fr; } }
+
+.cmp-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; margin-top: 22px; }
+.frame-card { padding: 10px; margin-top: 12px; }
+.browser { display: flex; align-items: center; gap: 12px; padding: 4px 8px 12px; }
+.browser .dots { display: flex; gap: 6px; }
+.browser .dots i { width: 11px; height: 11px; border-radius: 50%; background: var(--line); }
+.browser .url { flex: 1; max-width: 420px; margin-inline: auto; background: var(--sunken); border-radius: 999px; padding: 3px 14px; font-size: .82rem; color: var(--muted); text-align: center; }
+.shot { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: #fff; }
+.shot > [hidden] { display: none !important; }
+.before-img { margin: 0; }
+.before-img img { display: block; width: 100%; height: auto; }
+.before-img figcaption { padding: 10px 14px; font-size: .88rem; color: var(--muted); background: var(--surface); border-top: 1px solid var(--line); }
+.js-anim .shot > * { animation: fade-up .35s ease both; }
+
+.cx { --n: #0b1533; --n2: #1b2858; --g: #e7c46e; --gi: #86621a; --ink: #121a2e; --mut: #5b5f6b; --ln: #e3e6ee; --pale: #eef1f8; --cream: #fbf5e6; --sand: #f3ece1; --ok: #047857; --red: #be123c;
+  color-scheme: light; background: #fff; color: var(--ink); font-size: 15px; line-height: 1.6; }
+.cx svg { width: 20px; height: 20px; }
+.cx-top { background: var(--n); color: #fff; display: flex; align-items: center; gap: 14px; padding: 12px 18px; }
+.cx-logo { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+.cx-logo b { font-family: var(--font-display); font-weight: 600; font-size: 1rem; }
+.cx-deliv { display: flex; align-items: center; gap: 10px; background: var(--n2); border-radius: 999px; padding-block: 5px; padding-inline: 6px 16px; min-height: 48px; flex: 0 0 auto; }
+.cx-deliv .ic { width: 36px; height: 36px; border-radius: 50%; background: var(--g); color: var(--n); display: grid; place-items: center; }
+.cx-deliv b { display: block; font-size: .92rem; line-height: 1.3; }
+.cx-deliv small { display: block; font-size: .78rem; color: #c9cfdd; line-height: 1.3; }
+.cx-search { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; background: #fff; border-radius: 999px; padding: 4px; padding-inline-start: 18px; min-height: 48px; transition: box-shadow .2s; }
+.cx-search input { flex: 1; min-width: 0; border: 0; outline: none; font: inherit; color: var(--ink); background: transparent; }
+.cx-search input::placeholder { color: #6b7080; opacity: 1; }
+.cx-search .go { width: 40px; height: 40px; border-radius: 50%; background: var(--g); color: var(--n); display: grid; place-items: center; flex: 0 0 auto; }
+.cx-search:focus-within { box-shadow: 0 0 0 3px rgb(231 196 110 / .7); }
+.cx-acts { display: flex; align-items: center; gap: 2px; flex: 0 0 auto; }
+.cx-acts > span { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px; min-height: 44px; }
+.cx-acts small { display: block; font-size: .74rem; color: #c9cfdd; line-height: 1.2; }
+.cx-acts b { display: block; font-size: .88rem; line-height: 1.25; }
+.cx-acts svg { width: 23px; height: 23px; }
+.cx-wa svg { color: #4ade80; }
+.cx-cart { position: relative; }
+.cx-badge { position: absolute; top: 0; inset-inline-start: 16px; min-width: 19px; height: 19px; border-radius: 999px; background: var(--g); color: var(--n); font-style: normal; font-size: .72rem; font-weight: 700; display: grid; place-items: center; padding: 0 5px; }
+.cx-badge.bump { animation: bump .45s ease; }
+@keyframes bump { 40% { transform: scale(1.4); } }
+.cx-sub { display: flex; align-items: center; gap: 2px; background: var(--pale); padding: 6px 14px; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
+.cx-sub::-webkit-scrollbar { display: none; }
+.cx-sub .dd { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--n); padding: 8px 10px; border-radius: 999px; }
+.cx-sub .dd svg { width: 18px; height: 18px; }
+.cx-sub .sep { width: 1px; height: 20px; background: #c9cfdd; margin-inline: 6px; flex: 0 0 auto; }
+.cx-sub > span:not(.dd):not(.sep) { font-size: .88rem; padding: 8px 10px; border-radius: 999px; }
+.cx-body { padding: 18px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; }
+.cx-bento { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-areas: "a hero hero c" "b hero hero c" "b e f d"; gap: 12px; }
+.cx .t { position: relative; overflow: hidden; border-radius: 16px; padding: 16px; color: var(--n); display: flex; flex-direction: column; gap: 4px; min-height: 140px; transition: translate .2s ease, box-shadow .2s ease; }
+.cx .t:hover { translate: 0 -2px; box-shadow: 0 12px 24px -16px rgb(11 21 51 / .5); }
+.cx .t h5 { font-family: var(--font-display); font-size: 1.1rem; line-height: 1.35; margin: 0; max-width: 16ch; }
+.cx .t p { font-size: .86rem; color: var(--mut); max-width: 22ch; }
+.cx .t .lnk { margin-top: auto; font-size: .86rem; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.t-a { grid-area: a; background: var(--g); }
+.t-b { grid-area: b; background: var(--pale); }
+.t-c { grid-area: c; background: var(--cream); }
+.t-d { grid-area: d; background: var(--sand); }
+.t-e { grid-area: e; background: var(--pale); }
+.t-f { grid-area: f; background: var(--cream); }
+.cx .t .big { margin-top: auto; font-family: var(--font-display); font-size: 1.55rem; font-weight: 700; line-height: 1.15; }
+.cx .t .big + .lnk { margin-top: 6px; }
+.cx .t-mac { background: #000; color: #fff; }
+.cx .t-mac p { color: #c9cfdd; }
+.cx .t-mac > :not(img) { position: relative; }
+.cx .t-mac img { position: absolute; inset-inline: 0; bottom: 0; width: 100%; height: 62%; object-fit: cover; object-position: center top; }
+.t-a img { position: absolute; inset-inline-end: 12px; top: 12px; width: 70px; border-radius: 12px; box-shadow: 0 10px 20px -12px rgb(0 0 0 / .6); }
+.cx .hero { grid-area: hero; color: #fff; padding: 24px; min-height: 300px; background: radial-gradient(120% 90% at 0% 100%, rgb(231 196 110 / .22), transparent 60%), linear-gradient(150deg, #1d2c63, #0b1533 70%); }
+.cx .hero small { color: var(--g); font-weight: 700; }
+.cx .hero h5 { font-size: clamp(1.4rem, 2.5vw, 2.05rem); color: #fff; max-width: 12ch; }
+.cx .hero p { color: #d7dcea; font-size: .95rem; }
+.cx .hero p b { color: var(--g); font-size: 1.15rem; }
+.cx .hero .cta { margin-top: auto; align-self: flex-start; background: #fff; color: var(--n); border-radius: 999px; padding: 8px 20px; font-weight: 700; font-size: .9rem; }
+.cx .hero img { position: absolute; inset-inline-end: 5%; bottom: 9%; width: 42%; max-width: 230px; border-radius: 16px; box-shadow: 0 24px 40px -18px rgb(0 0 0 / .85); transform: rotate(-3deg); transition: transform .4s ease; }
+.cx .hero:hover img { transform: rotate(0) scale(1.03); }
+@media (max-width: 760px) {
+  .cx-bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "hero hero" "a c" "b d" "e f"; }
+  .cx .hero { min-height: 250px; padding-inline-end: 36%; }
+  .cx .hero img { width: 30%; bottom: auto; top: 50%; translate: 0 -50%; inset-inline-end: 4%; }
+  .cx .hero h5 { font-size: 1.35rem; }
+  .cx .t .big { font-size: 1.2rem; }
+  .t-a img { display: none; }
+}
+.cx-sec-h { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+.cx-sec-h h4 { font-family: var(--font-display); font-size: 1.25rem; margin: 0; }
+.cx-sec-h p { font-size: .82rem; color: var(--mut); }
+.cx-sec-h .all { font-size: .88rem; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.cx-cats { display: flex; gap: 16px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
+.cx-cats::-webkit-scrollbar { display: none; }
+.cx-cat { flex: 0 0 auto; width: 92px; display: grid; justify-items: center; gap: 6px; font-size: .86rem; font-weight: 600; text-align: center; }
+.cx-cat .c { width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; background: var(--pale); color: var(--n); transition: transform .25s cubic-bezier(.2,.9,.3,1.3); }
+.cx-cat .c svg { width: 30px; height: 30px; }
+.cx-cat:hover .c { transform: scale(1.08); }
+.cx-cat.solid .c { background: var(--n); color: var(--g); }
+.cx-shelf { position: relative; }
+.cx-track { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(180px, 1fr); gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 12px 4px 8px; scroll-behavior: smooth; }
+.cx-track::-webkit-scrollbar { display: none; }
+@media (min-width: 1100px) { .cx-track { grid-auto-columns: calc((100% - 4 * 14px) / 5); } }
+.cx-card { scroll-snap-align: start; display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.cx-card .img { position: relative; border-radius: 14px; overflow: hidden; background: #0d0f1a; aspect-ratio: 1; }
+.cx-card .img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
+.cx-card:hover .img img { transform: scale(1.04); }
+.cx-tag { position: absolute; top: 8px; inset-inline-start: 8px; background: var(--red); color: #fff; font-size: .75rem; font-weight: 700; border-radius: 6px; padding: 1px 8px; }
+.cx-tag.best { top: 34px; background: var(--g); color: var(--n); }
+.cx-heart { position: absolute; top: 6px; inset-inline-end: 6px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgb(255 255 255 / .92); color: var(--n); display: grid; place-items: center; cursor: pointer; transition: scale .15s; }
+.cx-heart:active { scale: .9; }
+.cx-heart[aria-pressed="true"] { color: var(--red); }
+.cx-heart[aria-pressed="true"] svg { fill: currentColor; animation: bump .4s ease; }
+.cx-card .price { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 8px; }
+.cx-card .now { color: var(--ok); font-weight: 700; font-size: .92rem; }
+.cx-card .now b { font-size: 1.35rem; font-family: var(--font-display); }
+.cx-card s { color: var(--mut); font-size: .86rem; }
+.cx-card .inst { font-size: .78rem; color: var(--mut); }
+.cx-card h5 { font-size: .95rem; margin: 4px 0 0; font-family: var(--font-body); font-weight: 700; line-height: 1.45; }
+.cx-card .spec { font-size: .8rem; color: var(--mut); }
+.cx-card .rate { font-size: .82rem; font-weight: 600; }
+.cx-card .rate .st { color: #b7791f; }
+.cx-card .rate.none { color: var(--mut); font-weight: 400; }
+.cx-card .ship { display: flex; align-items: center; gap: 6px; font-size: .84rem; }
+.cx-card .ship svg { width: 17px; height: 17px; color: var(--mut); }
+.cx-buywrap { margin-top: 8px; position: relative; }
+.cx .add { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 0; background: var(--n); color: #fff; font: inherit; font-weight: 700; font-size: .9rem; cursor: pointer; transition: scale .15s, background .2s; }
+.cx .add:hover { background: #1b2858; }
+.cx .add:active { scale: .96; }
+.cx .add svg { width: 17px; height: 17px; }
+.cx .step { display: inline-flex; align-items: center; gap: 4px; background: var(--n); color: #fff; border-radius: 999px; padding: 3px; min-height: 44px; }
+.js-anim .cx .step { animation: pop-in .25s ease; }
+.cx .step button { width: 38px; height: 38px; border-radius: 50%; border: 0; background: rgb(255 255 255 / .14); color: #fff; font-size: 1.15rem; line-height: 1; cursor: pointer; }
+.cx .step b { min-width: 26px; text-align: center; font-variant-numeric: tabular-nums; }
+@keyframes pop-in { from { transform: scale(.85); opacity: 0; } }
+.cx-arrow { position: absolute; top: 30%; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--ln); background: #fff; color: var(--n); display: grid; place-items: center; cursor: pointer; box-shadow: 0 6px 16px -8px rgb(0 0 0 / .45); z-index: 3; }
+.cx-arrow.next { inset-inline-end: -8px; }
+.cx-arrow.prev { inset-inline-start: -8px; }
+.cx-arrow.prev svg { transform: scaleX(-1); }
+@media (max-width: 760px) { .cx-arrow { display: none; } }
+.cx-trust { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; background: var(--pale); border-radius: 16px; padding: 16px; }
+.cx-trust > div { display: flex; align-items: center; gap: 10px; font-size: .85rem; font-weight: 700; color: var(--n); min-width: 0; }
+.cx-trust svg { width: 28px; height: 28px; color: var(--gi); flex: 0 0 auto; }
+.cx-trust small { display: block; font-weight: 400; color: var(--mut); font-size: .76rem; }
+@media (max-width: 900px) { .cx-trust { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.cx [data-pin] { position: relative; }
+.cx .pin { position: absolute; top: -12px; inset-inline-start: -10px; z-index: 4; width: 26px; height: 26px; border-radius: 50%; background: var(--g); color: var(--n); font-family: var(--font-display); font-weight: 700; font-size: .82rem; display: grid; place-items: center; box-shadow: 0 0 0 3px #fff, 0 4px 10px -4px rgb(0 0 0 / .5); pointer-events: none; }
+.js-anim .cx .pin { animation: pop .5s cubic-bezier(.2,.9,.3,1.35) both; animation-delay: calc(var(--pi, 0) * 80ms + .2s); }
+.cx-track .pin { inset-inline-start: -2px; top: -10px; }
+.cx-sub .pin { top: -2px; }
+.cx.no-pins .pin { display: none; }
+.cx .flash { animation: flash 1.2s ease 2; border-radius: 14px; }
+@keyframes flash { 35% { box-shadow: 0 0 0 5px var(--g); } }
+@media (max-width: 860px) {
+  .cx-top { flex-wrap: wrap; gap: 10px; padding: 10px 12px; }
+  .cx-acts { margin-inline-start: auto; }
+  .cx-acts .lbl { display: none; }
+  .cx-search { order: 3; flex: 1 0 100%; }
+  .cx-deliv { order: 4; flex: 1 0 100%; border-radius: 16px; }
+  .cx-body { padding: 12px; }
+}
+@media (max-width: 420px) { .cx-logo b { display: none; } }
+
+.chg-row { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr) minmax(0, 1.15fr) 10rem; gap: 14px; align-items: center; padding: 12px 10px; }
+.chg-row + .chg-row { border-top: 1px solid var(--line); }
+.chg-row.head { background: var(--sunken); border-radius: 12px; font-size: .85rem; color: var(--muted); font-weight: 600; padding-block: 10px; }
+.chg-row .no { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--gold-hi); color: #0b1533; font-family: var(--font-display); font-weight: 700; font-size: .85rem; }
+.chg-row .was { color: var(--muted); }
+.chg-row .topic { display: block; font-weight: 700; color: var(--ink); }
+.chg-row .m-lab { display: none; font-size: .78rem; font-weight: 700; color: var(--gold-ink); }
+.chg-row .solves { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.show-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-weight: 600; font-size: .86rem; cursor: pointer; transition: border-color .2s, background .2s; }
+.show-btn:hover { border-color: var(--gold); background: var(--gold-soft); }
+.show-btn svg { width: 16px; height: 16px; }
+@media (max-width: 760px) {
+  .chg-row.head { display: none; }
+  .chg-row { grid-template-columns: 2.4rem minmax(0, 1fr); align-items: start; }
+  .chg-row > :nth-child(n+3) { grid-column: 2; }
+  .chg-row .m-lab { display: block; }
+  .chg-row .solves { flex-direction: row; flex-wrap: wrap; align-items: center; }
+}
+.refs { margin-top: 12px; font-size: .88rem; color: var(--muted); }
+
 /* ---------- motion: reveal on scroll, chart growth, panel swaps ---------- */
 .js-anim .reveal { opacity: 0; transform: translateY(18px); }
 .js-anim .reveal.in { opacity: 1; transform: none; transition: opacity .6s ease, transform .7s cubic-bezier(.2,.8,.2,1); transition-delay: calc(var(--d, 0) * 70ms); }
@@ -519,6 +723,10 @@ details.fx[open] .chev { transform: rotate(180deg); }
 @keyframes pop { from { opacity: 0; transform: scale(.3); } }
 @keyframes fade-up { from { opacity: 0; transform: translateY(8px); } }
 
+@media (prefers-contrast: more) {
+  .card, .kpi, .door, .bridge, .topbar, .pill-btn, .fact, .mini { border-color: var(--ink) !important; }
+  .muted, .note, .k-label, .k-foot, .sub, .xlabels span, .yaxis { color: var(--ink) !important; }
+}
 @media print {
   body { background: #fff; }
   .frame { margin: 0; padding: 0; background: #fff; }
@@ -553,6 +761,25 @@ details.fx[open] .chev { transform: rotate(180deg); }
     <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 10"/></symbol>
     <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+
+    <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5h11v9h-11zM13.5 9.5h4l3 3v3h-7"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.7z"/><path d="M9.2 9.2c.4 2.2 2.3 4.2 4.6 4.8l1.1-1.3 1.9.8"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11h10.8L20 8H6.2"/><circle cx="9" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5l8-2v18M12 8h8v13M2 21h20M8 8h.01M8 12h.01M8 16h.01M16 12h.01M16 16h.01"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 10h18M7 15h4"/></symbol>
+    <symbol id="i-laptop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="10" rx="1.5"/><path d="M2.5 19h19l-1.5-4h-16z"/></symbol>
+    <symbol id="i-game" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10a4 4 0 0 1 3.9 4.8l-.6 3a2.6 2.6 0 0 1-4.6 1.1L14 15h-4l-1.7 1.9a2.6 2.6 0 0 1-4.6-1.1l-.6-3A4 4 0 0 1 7 8z"/><path d="M8 10.5v3M6.5 12h3M15.5 11.5h.01M17.5 13h.01"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h11"/></symbol>
+    <symbol id="i-brief" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+    <symbol id="i-brush" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4.5l5 5-8.5 8.5-5-5z"/><path d="M6 13c-2 0-3 1.5-3 3.5 0 1.7-.5 2.5-1 3 3 0 7-.5 7-3.5"/></symbol>
+    <symbol id="i-printer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9V3h10v6M7 17H4v-6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6h-3"/><rect x="7" y="14" width="10" height="7"/></symbol>
+    <symbol id="i-head" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/></symbol>
+    <symbol id="i-return" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></symbol>
   </defs>
 </svg>
 
@@ -564,8 +791,9 @@ details.fx[open] .chev { transform: rotate(180deg); }
   </a>
   <nav class="switch" aria-label="أجزاء التقرير">
     <a href="#top" data-go="home">نظرة عامة</a>
-    <a href="#brand" data-go="brand">العلامة التجارية</a>
+    <a href="#brand" data-go="brand">العلامة<span class="lg">&nbsp;التجارية</span></a>
     <a href="#website" data-go="website">الموقع</a>
+    <a href="#concept" data-go="concept">الكونسبت</a>
   </nav>
   <div class="tb-actions">
     <a class="icon-btn" href="https://claude.ai/artifact/QKChBZqPJg53PdwVUbLFmg" target="_blank" rel="noopener" aria-label="التقرير الكامل بالصور والمصادر" title="التقرير الكامل بالصور والمصادر"><svg aria-hidden="true"><use href="#i-doc"/></svg></a>
@@ -578,9 +806,8 @@ details.fx[open] .chev { transform: rotate(180deg); }
 <main id="view-home" data-view="home">
   <div class="page-head">
     <div>
-      <span class="eyebrow-chip">مراجعتان لمتجر واحد · الرياض</span>
       <h1>تدقيق التكنولوجيا الذهبية</h1>
-      <p class="sub">من هي الذهبية، ولمن تبيع، وأين تقف أمام جرير وإكسترا وأمازون ونون. ثم كيف يعيش الزبون هذا كله على الموقع، من إعلان جوجل حتى الدفع.</p>
+      <p class="sub">من هي الذهبية، ولمن تبيع، وأين تقف أمام جرير وإكسترا وأمازون ونون. ثم ما يمر به الزبون على الموقع من إعلان جوجل حتى الدفع.</p>
     </div>
     <div class="head-actions">
       <a class="pill-btn" href="#brand" data-go="brand"><span class="ic"><svg aria-hidden="true"><use href="#i-brand"/></svg></span>مراجعة العلامة</a>
@@ -603,7 +830,7 @@ details.fx[open] .chev { transform: rotate(180deg); }
     <div class="kpi">
       <span class="k-ico good"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
       <p class="k-label">نقاط قوة</p>
-      <p class="k-val"><b class="num" data-count="12">12</b><span class="chip good">نبني عليها</span></p>
+      <p class="k-val"><b class="num" data-count="12">12</b></p>
       <p class="k-foot">يتقنها الموقع اليوم</p>
     </div>
     <div class="kpi">
@@ -637,9 +864,19 @@ details.fx[open] .chev { transform: rotate(180deg); }
       </div>
     </a>
   </div>
+  <a class="teaser" href="#concept" data-go="concept">
+    <div>
+      <h2>كيف قد تبدو الصفحة الرئيسية؟</h2>
+      <p>الصفحة الرئيسية بترتيب Walmart وألوان الذهبية، بجانب لقطة من الموقع الحالي، مع سبعة تغييرات مرقّمة.</p>
+      <span class="go-line">شاهدوا قبل وبعد<svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+    </div>
+    <div class="ba" aria-hidden="true">
+      <figure><img data-cx="before" alt=""><figcaption>قبل</figcaption></figure>
+      <figure class="mini-after"><div class="m1"><b></b><i></i><em></em></div><div class="m2"></div><div class="m3"><span></span><span></span><span></span><span></span><span></span></div><figcaption>بعد</figcaption></figure>
+    </div>
+  </a>
   <div class="bridge">
-    <span class="q" aria-hidden="true">”</span>
-    <p>العلامة تعد الزبون بـ<b>«خلّي كل قرار تقني قرارًا واثقًا»</b>. والموقع اليوم يعطي وعدين مختلفين عن التوصيل، وأرقاماً في السلة تربك الزبون. المراجعتان تقرآن معاً: الأولى تقول ماذا نَعِد، والثانية تُظهر أين يُكسر الوعد.</p>
+    <p>العلامة تعد الزبون بـ<b>«خلّي كل قرار تقني قرارًا واثقًا»</b>. والموقع اليوم يعطي وعدين مختلفين عن التوصيل، وأرقاماً في السلة تربك الزبون. لهذا نقترح قراءة المراجعتين معاً.</p>
   </div>
   <p class="landing-foot">إعداد <bdi>Pixilated Studio</bdi>. مراجعة الموقع بتاريخ 22 أكتوبر 2026. خرائط التموضع وتحليل المنافسين فرضيات عمل تحتاج تأكيداً من بيانات العملاء.</p>
 </main>
@@ -648,9 +885,8 @@ details.fx[open] .chev { transform: rotate(180deg); }
 <main id="view-brand" data-view="brand" hidden>
   <div class="page-head">
     <div>
-      <span class="eyebrow-chip">المراجعة الأولى</span>
       <h1>مراجعة العلامة التجارية</h1>
-      <p class="sub">ليست الذهبية علامة تصنع الأجهزة، بل متجر يربط الناس بالتقنية. لذلك قيمتها في سبب اختيار الزبون الشراء منها هي، لا في مواصفات الجهاز وحده.</p>
+      <p class="sub">الذهبية متجر يبيع أجهزة علامات عالمية، فما يميزها هو سبب شراء الزبون منها بدل متجر آخر يبيع الجهاز نفسه.</p>
     </div>
     <div class="head-actions">
       <a class="pill-btn primary" href="#website" data-go="website"><span class="ic"><svg aria-hidden="true"><use href="#i-web"/></svg></span>مراجعة الموقع</a>
@@ -682,7 +918,7 @@ details.fx[open] .chev { transform: rotate(180deg); }
     <div class="kpi">
       <span class="k-ico gold"><svg aria-hidden="true"><use href="#i-pillar"/></svg></span>
       <p class="k-label">ركائز المحتوى</p>
-      <p class="k-val"><b class="num" data-count="5">5</b><span class="chip gold">أولها الإرشاد</span></p>
+      <p class="k-val"><b class="num" data-count="5">5</b></p>
       <p class="k-foot">الأساسية: الإرشاد المبني على الخبرة</p>
     </div>
   </section>
@@ -705,9 +941,8 @@ details.fx[open] .chev { transform: rotate(180deg); }
 <main id="view-website" data-view="website" hidden>
   <div class="page-head">
     <div>
-      <span class="eyebrow-chip">المراجعة الثانية · 22 أكتوبر 2026</span>
       <h1>مراجعة الموقع الإلكتروني</h1>
-      <p class="sub">موقعكم قوي في عرض المنتجات وفي البحث. أكثر ما يُقلق الزبون أمران: وعود التوصيل والإرجاع تختلف من صفحة لأخرى، وخطوة الدفع غير واضحة.</p>
+      <p class="sub">موقعكم قوي في عرض المنتجات وفي البحث. أكثر ما يُقلق الزبون أمران: وعود التوصيل والإرجاع تختلف من صفحة لأخرى، وخطوة الدفع غير واضحة. راجعناه يوم 22 أكتوبر 2026.</p>
     </div>
     <div class="head-actions">
       <a class="pill-btn" href="https://claude.ai/artifact/Qou2KRNnrgkXdYrGbMPXqg" target="_blank" rel="noopener"><span class="ic"><svg aria-hidden="true"><use href="#i-grid"/></svg></span>لوحة الفريق</a>
@@ -724,19 +959,19 @@ details.fx[open] .chev { transform: rotate(180deg); }
     <div class="kpi">
       <span class="k-ico bad"><svg aria-hidden="true"><use href="#i-flag"/></svg></span>
       <p class="k-label">ملاحظات عاجلة</p>
-      <p class="k-val"><b class="num" data-count="2">2</b><span class="chip bad">عاجل</span></p>
+      <p class="k-val"><b class="num" data-count="2">2</b></p>
       <p class="k-foot">كلاهما في المرحلة الأولى</p>
     </div>
     <div class="kpi">
       <span class="k-ico gold"><svg aria-hidden="true"><use href="#i-list"/></svg></span>
       <p class="k-label">ملاحظات مهمة</p>
-      <p class="k-val"><b class="num" data-count="6">6</b><span class="chip warn">مهم</span></p>
+      <p class="k-val"><b class="num" data-count="6">6</b></p>
       <p class="k-foot"><b class="num">3</b> في المرحلة الأولى و<b class="num">3</b> في الثانية</p>
     </div>
     <div class="kpi">
       <span class="k-ico good"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
       <p class="k-label">نقاط قوة</p>
-      <p class="k-val"><b class="num" data-count="12">12</b><span class="chip good">نبني عليها</span></p>
+      <p class="k-val"><b class="num" data-count="12">12</b></p>
       <p class="k-foot">أساس جيد نبني عليه</p>
     </div>
   </section>
@@ -771,7 +1006,7 @@ details.fx[open] .chev { transform: rotate(180deg); }
           <div class="mini"><span>نقاط القياس</span><p><b class="num">110</b></p></div>
           <div class="mini"><span>أمور للإصلاح</span><p><b class="num">8</b><span class="chip bad">2 عاجل</span></p></div>
         </div>
-        <p class="note" style="margin-top:12px">أساس جيد نبني عليه. القوة في صفحات الأقسام والبحث، والضعف في التوصيل والإرجاع والتصميم.</p>
+        <p class="note" style="margin-top:12px">الأقوى صفحات الأقسام (72) والبحث (69)، والأضعف التوصيل والإرجاع (29) والتصميم (31).</p>
       </div>
     </div>
   </section>
@@ -801,6 +1036,90 @@ details.fx[open] .chev { transform: rotate(180deg); }
     </div>
   </section>
   <p class="foot">إعداد <bdi>Pixilated Studio</bdi>. الأرقام عن سلوك الزبائن من معهد بايمارد (Baymard). لم نختبر الموقع على الجوال بعد، ولا الدفع عبر Apple Pay في متصفح Safari.</p>
+</main>
+
+<!-- ===================== CONCEPT ===================== -->
+<main id="view-concept" data-view="concept" hidden>
+  <div class="page-head">
+    <div>
+      <span class="eyebrow-chip">تصور تصميمي · ترتيب مستوحى من Walmart</span>
+      <h1>الكونسبت: الصفحة الرئيسية من جديد</h1>
+      <p class="sub">أخذنا من Walmart ترتيب الصفحة: بحث كبير في الأعلى وموعد التوصيل بجانبه، والأقسام حسب الاستخدام، وبطاقات منتج فيها السعر والتوفير وموعد الوصول. وأبقينا الكحلي والذهبي، فالأزرق والأصفر لونا إكسترا.</p>
+    </div>
+    <div class="head-actions">
+      <a class="pill-btn" href="#website" data-go="website"><span class="ic"><svg aria-hidden="true"><use href="#i-web"/></svg></span>مراجعة الموقع</a>
+    </div>
+  </div>
+
+  <div class="cmp-bar">
+    <div class="tabs" role="tablist" data-tabs="cmp" aria-label="قبل وبعد"></div>
+    <label class="toggle" id="pins-wrap"><input type="checkbox" id="pins-toggle" checked> أظهر أرقام التحسينات</label>
+  </div>
+  <div class="card frame-card">
+    <div class="browser" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="url" dir="ltr">goldentech.com.sa/ar</span></div>
+    <div class="shot">
+      <figure class="before-img" id="cmp-before" hidden>
+        <img data-cx="before" alt="الصفحة الرئيسية الحالية لموقع التكنولوجيا الذهبية يوم 22 أكتوبر 2026" width="1400" height="807">
+        <figcaption>الموقع اليوم: لقطة من الصفحة الرئيسية يوم 22 أكتوبر 2026، وقائمة «جميع الأقسام» مفتوحة.</figcaption>
+      </figure>
+      <div class="cx" id="cmp-after" role="img" aria-label="تصور الصفحة الرئيسية الجديدة. تفاصيله في جدول «ما الذي تغيّر» أسفل التصميم.">
+        <div class="cx-top">
+          <span class="cx-logo"><span data-logo="golden" data-size="40"></span><b>التكنولوجيا الذهبية</b></span>
+          <span class="cx-deliv" data-pin="1"><span class="ic"><svg><use href="#i-truck"/></svg></span><span><b>يصلك الخميس</b><small>الرياض · اطلب قبل 4 عصراً</small></span></span>
+          <label class="cx-search"><input type="search" placeholder="ابحث عن لابتوب، كرت شاشة، طابعة…" aria-label="بحث تجريبي داخل التصور"><span class="go"><svg><use href="#i-search"/></svg></span></label>
+          <span class="cx-acts">
+            <span class="cx-wa" data-pin="2"><svg><use href="#i-chat"/></svg><span class="lbl"><small>تواصلوا معنا</small><b>واتساب</b></span></span>
+            <span><svg><use href="#i-user"/></svg><span class="lbl"><small>مرحباً</small><b>حسابي</b></span></span>
+            <span class="cx-cart"><svg><use href="#i-cart"/></svg><i class="cx-badge" id="cx-count">0</i><span class="lbl"><small>السلة</small><b id="cx-total">0 ر.س</b></span></span>
+          </span>
+        </div>
+        <div class="cx-sub">
+          <span class="dd"><svg><use href="#i-grid"/></svg>الأقسام<svg><use href="#i-chev"/></svg></span>
+          <span class="dd" data-pin="3"><svg><use href="#i-target"/></svg>حسب الاستخدام<svg><use href="#i-chev"/></svg></span>
+          <i class="sep"></i>
+          <span>عروض اليوم</span><span>أجهزة الألعاب</span><span>لابتوبات الأعمال</span><span>الطابعات</span><span>طلبات الشركات</span><span>الضمان والإرجاع</span>
+        </div>
+        <div class="cx-body">
+          <div class="cx-bento">
+            <div class="t t-a"><img data-cx="p13" alt=""><h5>صفقة اليوم</h5><p>جهاز ألعاب <bdi dir="ltr">RTX 5060</bdi> بسعر 5,599 ر.س</p><span class="big">وفّر 2,350 ر.س</span></div>
+            <div class="t t-b"><h5>ساعدني أختار جهازي</h5><p>نسألكم عن الاستخدام والميزانية، ونرشح جهازاً.</p><span class="big">3 أسئلة</span><span class="lnk">ابدأ</span></div>
+            <div class="t hero"><small>أجهزة الألعاب</small><h5>كروت <bdi dir="ltr">RTX 50</bdi> الجديدة جاهزة للتوصيل</h5><p>من <b>5,249</b> ر.س</p><span class="cta">تسوقوا الآن</span><img data-cx="p11" alt=""></div>
+            <div class="t t-c t-mac"><img data-cx="mac" alt=""><h5><bdi dir="ltr">MacBook Pro</bdi> بشريحة <bdi dir="ltr">M5</bdi></h5><p>متوفر الآن مع <bdi dir="ltr">M5 Pro</bdi> و<bdi dir="ltr">M5 Max</bdi></p><span class="lnk">تسوقوا</span></div>
+            <div class="t t-d"><h5>قسّطها مع تابي أو تمارا</h5><span class="big">4 دفعات</span><span class="lnk">كيف يعمل</span></div>
+            <div class="t t-e"><h5>لشركتك: اطلب عرض سعر</h5><p>أجهزة وملحقات بكميات</p><span class="lnk">اطلب الآن</span></div>
+            <div class="t t-f"><h5>ضمان من الذهبية</h5><span class="big">24 شهراً</span><span class="lnk">التفاصيل</span></div>
+          </div>
+          <section>
+            <div class="cx-sec-h"><h4>تسوقوا حسب الاستخدام</h4></div>
+            <div class="cx-cats" id="cx-cats"></div>
+          </section>
+          <section class="cx-shelf">
+            <div class="cx-sec-h"><div><h4>أجهزة ألعاب بأفضل سعر</h4><p>المنتجات والأسعار من صفحة أجهزة الألعاب في الموقع يوم 22 أكتوبر 2026</p></div><span class="all">عرض الكل</span></div>
+            <button type="button" class="cx-arrow prev" id="cx-prev" aria-label="المنتجات السابقة"><svg><use href="#i-arrow"/></svg></button>
+            <div class="cx-track" id="cx-track"></div>
+            <button type="button" class="cx-arrow next" id="cx-next" aria-label="المنتجات التالية"><svg><use href="#i-arrow"/></svg></button>
+          </section>
+          <div class="cx-trust" data-pin="7">
+            <div><svg><use href="#i-truck"/></svg><span>وعد توصيل واحد<small>نفس التاريخ في كل صفحة</small></span></div>
+            <div><svg><use href="#i-return"/></svg><span>إرجاع خلال 14 يوماً<small>بعد تعديل السياسة</small></span></div>
+            <div><svg><use href="#i-shield"/></svg><span>ضمان 24 شهراً<small>من التكنولوجيا الذهبية</small></span></div>
+            <div><svg><use href="#i-chat"/></svg><span>واتساب<small>في كل صفحة</small></span></div>
+            <div><svg><use href="#i-card"/></svg><span>دفع آمن<small>مدى، بطاقات، تابي، تمارا</small></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="sec" id="c-changes">
+    <div class="sec-head"><span class="ico"><svg aria-hidden="true"><use href="#i-list"/></svg></span><div><h2>ما الذي تغيّر، ولماذا</h2><p>أرقام الأسطر هي نفس الأرقام على التصميم، وزر «أرني» ينقلكم إلى مكان التغيير.</p></div></div>
+    <div class="card">
+      <div class="chg-row head" aria-hidden="true"><span>#</span><span>الموقع اليوم</span><span>في التصور</span><span>يحل</span></div>
+      <div id="changes"></div>
+    </div>
+    <p class="refs">مرجع الترتيب: واجهة Walmart على الويب كما وثّقتها Mobbin: <a href="https://mobbin.com/screens/fd8293eb-3493-46ba-8268-d7e1ee29ee23" target="_blank" rel="noopener">الصفحة الرئيسية</a>، <a href="https://mobbin.com/screens/df0323cd-0957-4804-bf73-003f9d2c46ee" target="_blank" rel="noopener">رفوف المنتجات</a>، <a href="https://mobbin.com/screens/ed315b58-1b1b-4e43-9987-650363135713" target="_blank" rel="noopener">اختيار طريقة الاستلام</a>، <a href="https://mobbin.com/screens/e989d382-e375-4d85-b230-a7ec733421a0" target="_blank" rel="noopener">صفحة المنتج</a>. النصوص الجديدة في التصور أمثلة على الصياغة المقترحة، والأزرار تعمل للعرض فقط.</p>
+  </section>
+  <p class="foot">إعداد <bdi>Pixilated Studio</bdi>. تصور تصميمي للنقاش وليس متجراً يعمل.</p>
 </main>
 </div>
 
@@ -881,6 +1200,7 @@ details.fx[open] .chev { transform: rotate(180deg); }
         ? '<clipPath id="cp-' + m.k + '"><circle cx="' + cx + '" cy="' + cy + '" r="' + r + '"/></clipPath><image href="' + L.noon + '" x="' + (cx - r) + '" y="' + (cy - r) + '" width="' + 2 * r + '" height="' + 2 * r + '" clip-path="url(#cp-' + m.k + ')" preserveAspectRatio="xMidYMid slice"/>'
         : '<image href="' + L[k] + '" x="' + (cx - r * 0.8) + '" y="' + (cy - r * 0.8) + '" width="' + r * 1.6 + '" height="' + r * 1.6 + '"/>';
       s += '<g class="brand" style="--i:' + n + '" data-brand="' + k + '" tabindex="0" role="button" aria-label="' + esc(BRANDS[k].name) + '">' +
+        '<circle class="hit" cx="' + cx + '" cy="' + cy + '" r="30"/>' +
         (big ? '<circle class="ring" cx="' + cx + '" cy="' + cy + '" r="' + (r + 6) + '"/>' : "") +
         '<circle class="bg" cx="' + cx + '" cy="' + cy + '" r="' + r + '"/>' + img +
         '<circle class="edge" cx="' + cx + '" cy="' + cy + '" r="' + r + '"/>' +
@@ -892,12 +1212,14 @@ details.fx[open] .chev { transform: rotate(180deg); }
     var m = MAPS[i];
     p.innerHTML = '<div class="today-target"><div><small>اليوم</small>' + esc(m.today.replace(/^اليوم: /, "")) + '</div><span class="arrow" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span><div><small>الهدف</small>' + esc(m.target.replace(/^الهدف: /, "")) + "</div></div>" +
       '<div class="map-wrap"><div>' + mapSvg(m) +
+      '<div class="picks" role="group" aria-label="اختاروا متجراً">' + order.map(function (k) { return '<button type="button" class="pick" data-brand="' + k + '" aria-pressed="false">' + logo(k, 30) + esc(BRANDS[k].name) + "</button>"; }).join("") + "</div>" +
       (m.zone ? '<label class="toggle"><input type="checkbox" id="target-toggle-' + m.k + '"> أظهر الهدف على الخريطة</label>' : '<p class="note">لا تحدد هذه الخريطة منطقة هدف، بل اتجاهاً في الاستنتاج.</p>') +
       '</div><div><div class="card" style="box-shadow:none" id="brand-note"></div><dl class="reading" style="margin-top:14px">' +
       m.reading.map(function (r) { return "<dt>" + esc(r[0]) + "</dt><dd>" + esc(r[1]) + "</dd>"; }).join("") + "</dl></div></div>";
     var svg = $(".map", p), note = $("#brand-note", p);
     function sel(k) {
       $$(".brand", svg).forEach(function (g) { g.classList.toggle("sel", g.getAttribute("data-brand") === k); });
+      $$(".pick", p).forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-brand") === k ? "true" : "false"); });
       note.innerHTML = '<div class="note-head">' + logo(k, 40) + "<b>" + esc(BRANDS[k].name) + '</b></div><p style="margin-top:8px">' + esc(m.notes[k]) + "</p>";
     }
     $$(".brand", svg).forEach(function (g) {
@@ -905,6 +1227,7 @@ details.fx[open] .chev { transform: rotate(180deg); }
       g.addEventListener("click", function () { sel(k); });
       g.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sel(k); } });
     });
+    $$(".pick", p).forEach(function (b) { b.addEventListener("click", function () { sel(b.getAttribute("data-brand")); }); });
     sel("golden");
     var t = $("#target-toggle-" + m.k, p);
     if (t) t.addEventListener("change", function () { svg.classList.toggle("show-target", t.checked); });
@@ -926,7 +1249,7 @@ details.fx[open] .chev { transform: rotate(180deg); }
     // the mask ring sweeps clockwise from the top when the card scrolls into view
     svg.innerHTML = '<defs><mask id="dmask" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><circle class="sweep" cx="100" cy="100" r="63" fill="none" stroke="#fff" stroke-width="34" pathLength="100" transform="rotate(-90 100 100)"/></mask></defs>' +
       '<g mask="url(#dmask)">' + html + "</g>" +
-      '<text id="donut-pct" x="100" y="104" text-anchor="middle" font-size="30" font-weight="700"></text><text id="donut-name" x="100" y="126" text-anchor="middle" font-size="12" style="fill:var(--muted)"></text>';
+      '<text id="donut-pct" x="100" y="104" text-anchor="middle" font-size="30" font-weight="700"></text><text id="donut-name" x="100" y="127" text-anchor="middle" font-size="13.5" style="fill:var(--muted)"></text>';
     function show(i) {
       var a = ARCH[i];
       $$("path", svg).forEach(function (p, j) { p.classList.toggle("dim", j !== i); });
@@ -1010,7 +1333,7 @@ details.fx[open] .chev { transform: rotate(180deg); }
     var cols = $("#cols");
     if (chartDrawn && anim) cols.classList.add("pre");   // new bars start flat, then grow
     cols.innerHTML = list.map(function (a, j) {
-      return '<button type="button" class="col" style="--v:' + a[1] + ";--i:" + j + '" data-name="' + esc(a[0]) + '" aria-pressed="false" aria-label="' + esc(a[0]) + ": " + a[1] + ' من 100"><span class="lbl">' + esc(a[0]) + '</span><span class="trk"><span class="fl"></span></span><span class="val">' + a[1] + "</span></button>";
+      return '<button type="button" class="col" style="--v:' + a[1] + ";--i:" + j + '" data-name="' + esc(a[0]) + '" aria-pressed="false" aria-label="' + esc(a[0]) + ": " + a[1] + ' من 100"><span class="lbl">' + esc(a[0]) + '</span><span class="trk"><span class="fl"></span></span><span class="val t-' + tone(a[1]) + '">' + a[1] + "</span></button>";
     }).join("");
     $("#xlabels").innerHTML = list.map(function (a) { return "<span>" + esc(SHORT[a[0]] || a[0]) + "</span>"; }).join("");
     $$(".col", cols).forEach(function (b) { b.addEventListener("click", function () { pickArea(b.getAttribute("data-name")); }); });
@@ -1048,6 +1371,98 @@ details.fx[open] .chev { transform: rotate(180deg); }
     p.innerHTML = '<span class="chip gold">' + esc(ph.when) + '</span><h3 style="font-size:1.25rem;margin-top:8px">' + esc(ph.h) + "</h3><ul>" + ph.items.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + '</ul><p style="margin-top:14px;background:var(--good-soft);border-radius:var(--r-md);padding:12px 14px"><b style="color:var(--good)">ماذا ستلاحظون:</b> ' + esc(ph.r) + "</p>";
   });
 
+  /* ---------------- concept: Walmart-structured homepage ---------------- */
+  var CX = /*__CX__*/;
+  $$("[data-cx]").forEach(function (im) { im.src = CX[im.getAttribute("data-cx")]; });
+  var fmt = function (n) { return n.toLocaleString("en-US", { maximumFractionDigits: 2 }); };
+  // gaming PCs as listed on the site's PC Gaming page on 22 Oct 2026: price shown and saving shown
+  var CX_ITEMS = [
+    { img: "p10", gpu: "RTX 3050 6GB", spec: "Core i5-14400F · 16GB · 1TB SSD", now: 4699, save: 1900 },
+    { img: "p11", gpu: "RTX 5050 8GB", spec: "Core i5-14400F · 16GB · 1TB SSD", now: 5249, save: 850 },
+    { img: "p12", gpu: "RTX 3050 6GB", spec: "Ryzen 5 7600X · 16GB · 1TB SSD", now: 5299, save: 1700 },
+    { img: "p13", gpu: "RTX 5060 8GB", spec: "Core i5-14400F · 16GB · 1TB SSD", now: 5599, save: 2350, rate: "5.0" },
+    { img: "p30", gpu: "RTX 5060 Ti 16GB", spec: "Ryzen 7 7800X3D · 16GB · 1TB SSD", now: 8599, save: 950 },
+    { img: "p31", gpu: "RTX 5060 Ti 16GB", spec: "Core i7-14700F · 32GB · 1TB SSD", now: 9299, save: 1700 },
+    { img: "p32", gpu: "RTX 5070 12GB", spec: "Core i7-14700F · 32GB · 1TB SSD", now: 9399, save: 1200, rate: "4.5" },
+    { img: "p33", gpu: "RX 9070 XT 16GB", spec: "Core i7-14700K · 32GB · 1TB SSD", now: 9899, save: 2100 }
+  ];
+  var CX_CATS = [["كل العروض", "i-tag", 1], ["للدراسة", "i-book"], ["للألعاب", "i-game"], ["للعمل", "i-brief"], ["للتصميم", "i-brush"], ["الطابعات", "i-printer"], ["الإكسسوارات", "i-head"]];
+  var CHANGES = [
+    { t: "وعد التوصيل", was: "«24 ساعة» في صفحة المنتج، و«3 إلى 7 أيام عمل» في صفحة الشروط", now: "تاريخ واحد في رأس كل صفحة: «يصلك الخميس، اطلب قبل 4 عصراً»", fix: "الملاحظة 1", u: "bad" },
+    { t: "التواصل", was: "خمس منصات وهاتف وبريد أسفل الصفحة، ولا واتساب", now: "واتساب في رأس كل صفحة", fix: "الملاحظة 8", u: "warn" },
+    { t: "التصفح", was: "«جميع الأقسام» بأسماء أنواع المنتجات", now: "«حسب الاستخدام»: دراسة، ألعاب، عمل، تصميم", fix: "خطة المرحلة الثانية", u: "gold" },
+    { t: "السعر", was: "سعر أحمر، وسعر قديم مشطوب، ونسبة خصم، ومبلغ توفير: أربع إشارات للخصم نفسه", now: "«الآن 4,699» واضح بالأخضر، والقديم مشطوب، و«وفّر 1,900» شارة واحدة", fix: "الملاحظة 3", u: "warn" },
+    { t: "زر الشراء", was: "خمسة أشكال للزر نفسه في خمس صفحات", now: "زر واحد «أضف للسلة» بلون واحد، يتحول إلى عدّاد", fix: "الملاحظة 7", u: "warn" },
+    { t: "التقييمات", was: "أغلب المنتجات بلا تقييم من الزبائن", now: "التقييم على البطاقة حين يوجد، و«لا تقييمات بعد» حين لا يوجد، ورسالة واتساب بعد التوصيل تطلبه", fix: "الملاحظة 5", u: "warn" },
+    { t: "الإرجاع والثقة", was: "إرجاع 7 أيام وللعيوب فقط، ومكتوب في صفحة الشروط", now: "شريط ثقة في كل صفحة: إرجاع 14 يوماً بعد تعديل السياسة، وضمان 24 شهراً، ووسائل الدفع", fix: "الملاحظة 2", u: "bad" }
+  ];
+  $("#cx-cats").innerHTML = CX_CATS.map(function (c) {
+    return '<span class="cx-cat' + (c[2] ? " solid" : "") + '"><span class="c"><svg><use href="#' + c[1] + '"/></svg></span>' + esc(c[0]) + "</span>";
+  }).join("");
+  $("#cx-track").innerHTML = CX_ITEMS.map(function (p, i) {
+    var best = p.save === Math.max.apply(null, CX_ITEMS.map(function (x) { return x.save; }));
+    return '<article class="cx-card">' +
+      '<div class="img"><img src="' + CX[p.img] + '" alt="جهاز ألعاب ' + p.gpu + '" width="200" height="200" loading="lazy"><span class="cx-tag">وفّر ' + fmt(p.save) + " ر.س</span>" + (best ? '<span class="cx-tag best">أكبر توفير</span>' : "") +
+      '<button type="button" class="cx-heart" aria-pressed="false" aria-label="أضف جهاز ' + p.gpu + ' إلى المفضلة"><svg><use href="#i-heart"/></svg></button></div>' +
+      '<p class="price"' + (i === 0 ? ' data-pin="4"' : "") + '><span class="now">الآن <b>' + fmt(p.now) + "</b> ر.س</span><s>" + fmt(p.now + p.save) + "</s></p>" +
+      '<p class="inst">أو 4 دفعات × ' + fmt(p.now / 4) + " ر.س</p>" +
+      '<h5>جهاز ألعاب <bdi dir="ltr">' + p.gpu + "</bdi></h5>" +
+      '<p class="spec"><bdi dir="ltr">' + p.spec + "</bdi></p>" +
+      (p.rate ? '<p class="rate"' + (p.rate === "5.0" ? ' data-pin="6"' : "") + '><span class="st">★</span> ' + p.rate + " من 5</p>" : '<p class="rate none">لا تقييمات بعد</p>') +
+      '<p class="ship"><svg><use href="#i-truck"/></svg>يصلك <b>الخميس</b></p>' +
+      '<div class="cx-buywrap"' + (i === 0 ? ' data-pin="5"' : "") + '><div class="cx-buy" data-buy="' + i + '"></div></div></article>';
+  }).join("");
+  var cart = {};
+  function renderBuy(i, focusSel) {
+    var box = $('[data-buy="' + i + '"]'), q = cart[i] || 0;
+    box.innerHTML = q
+      ? '<div class="step"><button type="button" data-d="-1" aria-label="أنقص الكمية">−</button><b aria-live="polite">' + q + '</b><button type="button" data-d="1" aria-label="زد الكمية">+</button></div>'
+      : '<button type="button" class="add" data-d="1"><svg aria-hidden="true"><use href="#i-plus"/></svg>أضف للسلة</button>';
+    if (focusSel) { var f = $(focusSel, box) || $("button", box); if (f) f.focus(); }
+  }
+  CX_ITEMS.forEach(function (p, i) { renderBuy(i); });
+  $("#cx-track").addEventListener("click", function (e) {
+    var h = e.target.closest(".cx-heart");
+    if (h) { h.setAttribute("aria-pressed", h.getAttribute("aria-pressed") === "true" ? "false" : "true"); return; }
+    var b = e.target.closest("[data-d]");
+    if (!b) return;
+    var i = +b.closest("[data-buy]").getAttribute("data-buy"), d = +b.getAttribute("data-d"), was = cart[i] || 0;
+    cart[i] = Math.max(0, was + d);
+    renderBuy(i, cart[i] ? (was ? '[data-d="' + d + '"]' : '[data-d="1"]') : ".add");
+    var n = 0, t = 0;
+    Object.keys(cart).forEach(function (k) { n += cart[k]; t += cart[k] * CX_ITEMS[k].now; });
+    var badge = $("#cx-count");
+    badge.textContent = n; $("#cx-total").textContent = fmt(t) + " ر.س";
+    badge.classList.remove("bump"); void badge.offsetWidth; badge.classList.add("bump");
+  });
+  var track = $("#cx-track");
+  // RTL: "next" reveals cards further to the left, so it scrolls by a negative amount
+  $("#cx-next").addEventListener("click", function () { track.scrollBy({ left: -track.clientWidth * 0.8 }); });
+  $("#cx-prev").addEventListener("click", function () { track.scrollBy({ left: track.clientWidth * 0.8 }); });
+  var cxRoot = $("#cmp-after");
+  $$("[data-pin]", cxRoot).forEach(function (el) {
+    var n = el.getAttribute("data-pin");
+    el.insertAdjacentHTML("afterbegin", '<span class="pin" aria-hidden="true" style="--pi:' + n + '">' + n + "</span>");
+  });
+  $("#pins-toggle").addEventListener("change", function (e) { cxRoot.classList.toggle("no-pins", !e.target.checked); });
+  tabs("cmp", ["قبل: الموقع اليوم", "بعد: التصور الجديد"], function (i) {
+    $("#cmp-before").hidden = i !== 0;
+    cxRoot.hidden = i !== 1;
+    $("#pins-wrap").hidden = i !== 1;
+  }, 1);
+  $("#changes").innerHTML = CHANGES.map(function (c, i) {
+    return '<div class="chg-row"><span class="no">' + (i + 1) + '</span><span class="was"><span class="topic">' + esc(c.t) + '</span><span class="m-lab">الموقع اليوم</span>' + esc(c.was) + '</span><span><span class="m-lab">في التصور</span>' + esc(c.now) + '</span><span class="solves"><span class="chip ' + c.u + '">' + esc(c.fix) + '</span><button type="button" class="show-btn" data-show-pin="' + (i + 1) + '"><svg aria-hidden="true"><use href="#i-pin"/></svg>أرني</button></span></div>';
+  }).join("");
+  $$("[data-show-pin]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var tab = $$('[data-tabs="cmp"] .tab')[1];
+      if (tab.getAttribute("aria-selected") !== "true") tab.click();
+      var el = $('[data-pin="' + b.getAttribute("data-show-pin") + '"]', cxRoot);
+      el.scrollIntoView({ block: "center", inline: "nearest", behavior: reduce ? "auto" : "smooth" });
+      el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");
+    });
+  });
+
   /* ---------------- motion: reveal on scroll + counting numbers ---------------- */
   function countUp(el) {
     if (el._counted) return;
@@ -1073,7 +1488,7 @@ details.fx[open] .chev { transform: rotate(180deg); }
         setTimeout(function () { el.classList.add("done"); }, 1500);
       });
     }, { rootMargin: "0px 0px -6% 0px", threshold: 0.12 });
-    $$(".page-head, .promise-band, .kpi, .door, .bridge, .sec-head, .card, .insight, details.acc, .value, .emo").forEach(function (el) {
+    $$(".page-head, .promise-band, .kpi, .door, .teaser, .bridge, .sec-head, .card, .insight, details.acc, .value, .emo").forEach(function (el) {
       el.classList.add("reveal");
       var d = 0, p = el.previousElementSibling;
       while (p && d < 5) { if (p.classList.contains("reveal")) d++; p = p.previousElementSibling; }
@@ -1083,7 +1498,7 @@ details.fx[open] .chev { transform: rotate(180deg); }
   }
 
   /* ---------------- views + section nav ---------------- */
-  var VIEWS = ["home", "brand", "website"];
+  var VIEWS = ["home", "brand", "website", "concept"];
   function showView(v, keepScroll) {
     if (VIEWS.indexOf(v) < 0) v = "home";
     VIEWS.forEach(function (x) { document.getElementById("view-" + x).hidden = x !== v; });
