@@ -5,46 +5,63 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.98 0 0);
-  --sidebar-foreground: oklch(0.445 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.95 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Golden Showroom: ورق عاجي، كحلي المتجر، ذهبي للزخرفة فقط */
+  --paper: #f6f3ec;
+  --surface: #ffffff;
+  --sunken: #f1ede3;
+  --line: #e7e0d1;
+  --line-strong: #d9cfba;
+  --ink: #121a2e;
+  --ink-muted: #5b5f6b;
+  --navy: #0b1533;
+  --navy-2: #13204a;
+  --on-navy: #f6f3ec;
+  --on-navy-muted: #b9bfcf;
+  --on-navy-gold: #e7c46e;
   --gold: #b8892b;
-  --gold-soft: #fbf3e0;
+  --gold-ink: #86621a;
+  --gold-soft: #f9f0dc;
   --good: #047857;
   --good-soft: #ecfdf5;
   --warn: #b45309;
   --warn-soft: #fffbeb;
   --bad: #be123c;
   --bad-soft: #fff1f2;
+  --shadow-card: 0 1px 2px rgb(18 26 46 / 0.05), 0 6px 16px -8px rgb(18 26 46 / 0.1);
+  --shadow-raised: 0 2px 4px rgb(60 44 12 / 0.06), 0 14px 32px -14px rgb(60 44 12 / 0.2), 0 36px 64px -36px rgb(11 21 51 / 0.25);
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--navy);
+  --primary-foreground: var(--on-navy);
+  --secondary: var(--sunken);
+  --secondary-foreground: var(--ink);
+  --muted: var(--sunken);
+  --muted-foreground: var(--ink-muted);
+  --accent: var(--gold-soft);
+  --accent-foreground: var(--ink);
+  --destructive: var(--bad);
+  --border: var(--line);
+  --input: var(--line-strong);
+  --ring: var(--gold);
+  --chart-1: var(--gold);
+  --chart-2: var(--navy);
+  --chart-3: var(--good);
+  --chart-4: var(--warn);
+  --chart-5: var(--bad);
+  --radius: 1rem;
+  --sidebar: var(--sunken);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--navy);
+  --sidebar-primary-foreground: var(--on-navy);
+  --sidebar-accent: var(--surface);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--gold);
 }
 
 .dark {
@@ -142,6 +159,10 @@
   }
   body {
     line-height: 1.8;
+    font-feature-settings: "calt" 1, "kern" 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
   }
   :focus-visible {
     outline: 3px solid var(--gold);
@@ -196,4 +217,93 @@
 
 .dark .custom-scrollbar {
   scrollbar-color: oklch(0.85 0 0 / 0.3) transparent;
+}
+
+/* ———— Golden Showroom: عناصر مخصّصة للتقرير ———— */
+@layer components {
+  /* خط ذهبي مزدوج ينتهي بمعيّن */
+  .gold-rule {
+    position: relative;
+    display: block;
+    width: 4.5rem;
+    height: 7px;
+    border-top: 2px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+  }
+  .gold-rule > span {
+    position: absolute;
+    inset-inline-end: -10px;
+    top: -2px;
+    width: 7px;
+    height: 7px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+  .gold-rule--on-navy {
+    border-color: var(--on-navy-gold);
+  }
+  .gold-rule--on-navy > span {
+    background: var(--on-navy-gold);
+  }
+
+  /* خطوط مائلة مثل خطوط شعار المتجر، تتلاشى من الزاوية */
+  .cover-lines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-55deg, rgb(231 196 110 / 0.14) 0 1px, transparent 1px 13px);
+    -webkit-mask-image: radial-gradient(120% 90% at 0% 0%, #000 0%, transparent 60%);
+    mask-image: radial-gradient(120% 90% at 0% 0%, #000 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* ختم 18 عاماً */
+  .cover-seal {
+    position: absolute;
+    inset-inline-end: 1.75rem;
+    top: 1.75rem;
+    display: none;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 9999px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--on-navy-gold);
+    border: 2px solid var(--on-navy-gold);
+    box-shadow: inset 0 0 0 5px var(--navy), inset 0 0 0 6px rgb(231 196 110 / 0.6);
+    line-height: 1.1;
+  }
+  @media (min-width: 640px) {
+    .cover-seal {
+      display: flex;
+    }
+  }
+
+  /* بطاقة الملاحظة: الدليل بجانب الشرح على الشاشات الكبيرة */
+  .problem-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-areas: "sees" "proof" "why" "fix";
+  }
+  @media (min-width: 1024px) {
+    .problem-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-rows: auto auto 1fr;
+      column-gap: 2.5rem;
+      grid-template-areas: "sees proof" "why proof" "fix proof";
+    }
+  }
+
+  .fold > summary:hover {
+    background: var(--paper);
+  }
+  .fold[open] > summary {
+    background: var(--paper);
+  }
+
+  .nav-btn[data-active] .nav-num {
+    background: var(--navy-2);
+    color: var(--on-navy-gold);
+    --tw-ring-color: transparent;
+  }
 }

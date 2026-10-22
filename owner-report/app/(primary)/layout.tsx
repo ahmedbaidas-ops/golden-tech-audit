@@ -8,10 +8,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <SidebarProvider className="bg-sidebar">
+    <SidebarProvider className="bg-(--paper)">
       <DashboardSidebar side="right" />
-      <div className="h-svh w-full overflow-hidden lg:p-2">
-        <div className="flex h-full w-full flex-col justify-start overflow-hidden bg-background lg:rounded-md lg:border">
+      <div className="h-svh w-full overflow-hidden">
+        <div className="flex h-full w-full flex-col justify-start overflow-hidden bg-(--paper)">
           <DashboardHeader />
           {children}
         </div>

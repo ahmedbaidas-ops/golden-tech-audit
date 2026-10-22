@@ -1,13 +1,32 @@
-
 html, body { font-family: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, system-ui, sans-serif; }
-body { font-size: 1rem; margin: 0; background: #ffffff; color: oklch(0.145 0 0); }
+body { font-size: 1rem; margin: 0; background: #f6f3ec; color: #121a2e; }
 [data-slot="sidebar-trigger"] { display: none !important; }
-.gt-menu-btn { display: none; }
+.gt-menu-btn, .gt-close-btn { display: none; }
 .gt-scrim { display: none; }
+
+.gt-menu-btn, .gt-close-btn, .gt-top {
+  align-items: center; gap: .5rem; min-height: 2.75rem; padding: 0 1rem;
+  border: 1px solid #d9cfba; border-radius: .75rem; background: #fff; color: #121a2e;
+  font: inherit; font-size: 1rem; font-weight: 600; cursor: pointer;
+}
+.gt-top {
+  position: fixed; inset-inline-start: auto; left: 1.25rem; bottom: 1.25rem; z-index: 40;
+  display: inline-flex; min-height: 3.25rem; padding: 0 1.25rem; border-radius: 9999px;
+  background: #0b1533; color: #f6f3ec; border-color: #0b1533;
+  box-shadow: 0 10px 24px -10px rgb(11 21 51 / .5);
+}
+.gt-top[hidden] { display: none; }
+
 @media (max-width: 767px) {
-  .gt-menu-btn { display: inline-flex; align-items: center; gap: .5rem; height: 2.5rem; padding: 0 .9rem; border: 1px solid oklch(0.922 0 0); border-radius: .6rem; background: #fff; font: inherit; font-size: 1rem; cursor: pointer; }
+  .gt-menu-btn { display: inline-flex; flex-shrink: 0; }
   html.nav-open [data-slot="sidebar"] { display: block !important; }
   html.nav-open [data-slot="sidebar-gap"] { display: none !important; }
   html.nav-open [data-slot="sidebar-container"] { display: flex !important; z-index: 60; box-shadow: -8px 0 24px rgba(0,0,0,.18); }
-  html.nav-open .gt-scrim { display: block; position: fixed; inset: 0; z-index: 55; background: rgba(0,0,0,.35); }
+  html.nav-open .gt-close-btn { display: inline-flex; margin: 1rem 1rem 0; align-self: flex-start; }
+  html.nav-open .gt-scrim { display: block; position: fixed; inset: 0; z-index: 55; background: rgba(11,21,51,.45); }
+  .gt-top { left: .75rem; bottom: .75rem; width: 3.25rem; padding: 0; justify-content: center; font-size: 1.25rem; }
+  .gt-top-label { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; }
 }

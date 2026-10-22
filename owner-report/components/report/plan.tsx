@@ -1,56 +1,77 @@
-import { plan, method, methodNote } from "@/constants/audit"
-import { Section } from "./section"
+import {
+  ChartUpIcon,
+  Clock01Icon,
+  PaintBrush01Icon,
+  Rocket01Icon,
+  Target02Icon,
+  TextCheckIcon,
+  Tick02Icon,
+} from "@hugeicons/core-free-icons"
+import { cn } from "@/lib/utils"
+import { closing, plan, report } from "@/constants/audit"
+import { Card, GoldRule, Icon, IconTile, Section } from "./section"
+
+const phaseIcon = [TextCheckIcon, PaintBrush01Icon, Rocket01Icon]
 
 export function Plan() {
   return (
     <Section
       id="plan"
-      title="خطة العمل المقترحة"
+      n={4}
+      icon={Target02Icon}
+      title="خطة العمل"
       intro="نبدأ بتصحيح ما يقرؤه الزبون قبل أي تصميم جديد، لأنه الأسرع أثراً."
     >
-      <ol className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-        {plan.map((p) => (
-          <li key={p.phase} className="flex flex-col rounded-lg border bg-card">
-            <div className="border-b px-5 py-4">
-              <p className="text-base font-semibold text-(--gold)">
-                {p.phase} · {p.when}
-              </p>
-              <h3 className="text-xl font-bold">{p.title}</h3>
-            </div>
-            <ul className="flex-1 space-y-2 px-5 py-4">
-              {p.items.map((it) => (
-                <li key={it} className="flex gap-2 text-lg">
-                  <span className="mt-3 size-2 shrink-0 rounded-full bg-(--gold)" />
-                  {it}
-                </li>
-              ))}
-            </ul>
-            <div className="m-4 mt-0 rounded-md bg-(--good-soft) p-3">
-              <p className="text-base font-semibold text-(--good)">ماذا ستلاحظون</p>
-              <p className="text-lg">{p.result}</p>
-            </div>
+      <ol className="grid gap-5 lg:grid-cols-3">
+        {plan.map((p, i) => (
+          <li key={p.key} className="flex">
+            <Card className={cn("relative flex w-full flex-col p-5 sm:p-6", i === 0 && "ring-2 ring-(--gold)")}>
+              {i === 0 && (
+                <span className="absolute -top-3.5 start-5 rounded-full bg-(--gold) px-3 py-0.5 text-[0.95rem] font-bold text-(--navy)">
+                  ابدؤوا هنا
+                </span>
+              )}
+              <div className="flex items-center gap-3">
+                <IconTile icon={phaseIcon[i]} tone="navy" />
+                <div>
+                  <p className="text-base font-semibold text-(--gold-ink)">{p.phase}</p>
+                  <p className="inline-flex items-center gap-1.5 text-base text-(--ink-muted) [&_svg]:size-4.5">
+                    <Icon icon={Clock01Icon} />
+                    {p.when}
+                  </p>
+                </div>
+              </div>
+              <h3 className="mt-4 text-[1.3rem] leading-snug font-bold">{p.title}</h3>
+              <ul className="mt-3 flex-1 space-y-2">
+                {p.items.map((it) => (
+                  <li key={it} className="flex gap-2 text-lg [&_svg]:mt-1.5 [&_svg]:size-5">
+                    <Icon icon={Tick02Icon} className="text-(--gold-ink)" />
+                    <span>{it}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-5 flex gap-3 rounded-xl bg-(--good-soft) p-4 [&_svg]:size-6">
+                <Icon icon={ChartUpIcon} className="text-(--good)" />
+                <div>
+                  <p className="text-base font-bold text-(--good)">ماذا ستلاحظون</p>
+                  <p className="text-lg">{p.result}</p>
+                </div>
+              </div>
+            </Card>
           </li>
         ))}
       </ol>
-    </Section>
-  )
-}
 
-export function Method() {
-  return (
-    <Section id="method" title="كيف أعددنا هذا التقرير">
-      <div className="rounded-lg border bg-card p-5">
-        <ul className="space-y-2">
-          {method.map((m) => (
-            <li key={m} className="flex gap-2 text-lg">
-              <span className="mt-3 size-2 shrink-0 rounded-full bg-foreground/50" />
-              {m}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-4 rounded-md bg-muted p-3 text-base text-muted-foreground">
-          {methodNote}
-        </p>
+      <div className="relative mt-10 overflow-hidden rounded-[1.5rem] bg-(--navy) px-6 py-8 text-(--on-navy) sm:px-12">
+        <div aria-hidden="true" className="cover-lines" />
+        <div className="relative max-w-[40rem]">
+          <h3 className="text-[1.5rem] font-bold text-(--on-navy-gold)">{closing.title}</h3>
+          <GoldRule className="gold-rule--on-navy mt-3" />
+          <p className="mt-4 text-lg">{closing.text}</p>
+          <p className="mt-4 text-base text-(--on-navy-muted)">
+            إعداد <bdi className="font-semibold text-(--on-navy)">{report.preparedBy}</bdi> · {report.date}
+          </p>
+        </div>
       </div>
     </Section>
   )

@@ -11,31 +11,25 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar"
 import { HugeiconsIcon } from "@hugeicons/react"
 import {
-  DashboardSquare01Icon,
+  DashboardSpeed02Icon,
   ThumbsUpIcon,
   Alert02Icon,
-  Note01Icon,
-  Route01Icon,
-  UserGroupIcon,
-  Calendar03Icon,
-  InformationCircleIcon,
+  Target02Icon,
+  FileSearchIcon,
 } from "@hugeicons/core-free-icons"
 import { report } from "@/constants/audit"
 
+// يجب أن تطابق الأسماء عناوين الأقسام في الصفحة، ويقرأها report.js بنفس الترتيب
 export const sections = [
-  { id: "summary", name: "الملخص", icon: DashboardSquare01Icon },
-  { id: "strengths", name: "ما يعمل جيداً", icon: ThumbsUpIcon },
-  { id: "problems", name: "أهم 8 ملاحظات", icon: Alert02Icon },
-  { id: "notes", name: "ملاحظات سريعة", icon: Note01Icon },
-  { id: "journey", name: "رحلة الزبون", icon: Route01Icon },
-  { id: "competitors", name: "مقارنة بالمنافسين", icon: UserGroupIcon },
-  { id: "plan", name: "خطة العمل", icon: Calendar03Icon },
-  { id: "method", name: "كيف أعددنا التقرير", icon: InformationCircleIcon },
+  { id: "summary", name: "الخلاصة", icon: DashboardSpeed02Icon },
+  { id: "strengths", name: "نقاط القوة", icon: ThumbsUpIcon },
+  { id: "problems", name: "أهم 8 أمور للإصلاح", icon: Alert02Icon },
+  { id: "plan", name: "خطة العمل", icon: Target02Icon },
+  { id: "details", name: "التفاصيل والمصادر", icon: FileSearchIcon },
 ]
 
 export function DashboardSidebar({
@@ -43,25 +37,6 @@ export function DashboardSidebar({
 }: React.ComponentProps<typeof Sidebar>) {
   const [active, setActive] = React.useState("summary")
   const { isMobile, setOpenMobile } = useSidebar()
-
-  React.useEffect(() => {
-    const els = sections
-      .map((s) => document.getElementById(s.id))
-      .filter(Boolean) as HTMLElement[]
-    const root = document.getElementById("report-scroll")
-    if (!els.length || !root) return
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
-        if (visible[0]) setActive(visible[0].target.id)
-      },
-      { root, rootMargin: "0px 0px -60% 0px", threshold: 0 }
-    )
-    els.forEach((el) => io.observe(el))
-    return () => io.disconnect()
-  }, [])
 
   const go = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" })
@@ -71,34 +46,32 @@ export function DashboardSidebar({
 
   return (
     <Sidebar collapsible="offcanvas" {...props}>
-      <SidebarHeader className="px-3 pt-4 pb-2">
-        <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-3">
-            <div className="grid size-10 shrink-0 place-items-center rounded-md bg-(--gold) text-lg font-bold text-white">
-              ذ
-            </div>
-            <div className="flex flex-col leading-tight">
-              <span className="text-base font-semibold text-neutral-900">
-                {report.store}
-              </span>
-              <span className="text-sm text-muted-foreground">تقرير تجربة الزبون</span>
-            </div>
+      <SidebarHeader className="px-4 pt-5 pb-3">
+        <div className="flex items-center gap-3">
+          <div className="grid size-12 shrink-0 place-items-center rounded-xl bg-(--navy) text-xl font-bold text-(--on-navy-gold)">
+            ذ
           </div>
-          {!isMobile && <SidebarTrigger className="cursor-pointer" />}
+          <div className="flex min-w-0 flex-col leading-tight">
+            <span className="text-lg font-bold text-(--ink)">{report.store}</span>
+            <span className="text-[0.95rem] text-(--ink-muted)">تقرير تجربة الزبون</span>
+          </div>
         </div>
       </SidebarHeader>
       <SidebarContent className="px-3 py-3">
         <SidebarGroup className="p-0">
           <SidebarGroupContent>
-            <SidebarMenu className="flex flex-col gap-1">
-              {sections.map((item) => (
+            <SidebarMenu className="flex flex-col gap-1.5">
+              {sections.map((item, i) => (
                 <SidebarMenuItem key={item.id}>
                   <SidebarMenuButton
                     isActive={active === item.id}
                     onClick={() => go(item.id)}
-                    className="min-h-12 cursor-pointer gap-3 text-start text-base data-active:font-semibold"
+                    className="nav-btn min-h-13 cursor-pointer gap-3 rounded-xl px-3 text-start text-[1.02rem] text-(--ink) hover:bg-(--surface) data-active:bg-(--navy) data-active:font-semibold data-active:text-(--on-navy) [&>span:last-child]:whitespace-normal"
                   >
-                    <HugeiconsIcon icon={item.icon} className="size-5!" />
+                    <span className="nav-num grid size-7 shrink-0 place-items-center rounded-full bg-(--surface) text-[0.85rem] font-bold text-(--gold-ink) tabular-nums ring-1 ring-(--line)">
+                      {i + 1}
+                    </span>
+                    <HugeiconsIcon icon={item.icon} strokeWidth={1.8} aria-hidden="true" className="size-5!" />
                     <span>{item.name}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -107,14 +80,12 @@ export function DashboardSidebar({
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="px-3 pb-4">
-        <div className="rounded-md border bg-background p-3 text-sm leading-relaxed text-muted-foreground">
-          أُعدّ بواسطة
-          <span className="block font-semibold text-foreground" dir="ltr">
-            {report.preparedBy}
-          </span>
+      <SidebarFooter className="px-5 pb-5">
+        <p className="text-[0.95rem] leading-relaxed text-(--ink-muted)">
+          إعداد <bdi className="font-semibold text-(--ink)">{report.preparedBy}</bdi>
+          <br />
           {report.date}
-        </div>
+        </p>
       </SidebarFooter>
     </Sidebar>
   )

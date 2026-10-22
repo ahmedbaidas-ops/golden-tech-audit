@@ -1,26 +1,21 @@
-import { Summary } from "@/components/report/summary"
+import { Cover } from "@/components/report/cover"
 import { Strengths } from "@/components/report/strengths"
 import { Problems } from "@/components/report/problems"
-import { QuickNotes } from "@/components/report/quickNotes"
-import { Journey } from "@/components/report/journey"
-import { Competitors } from "@/components/report/competitors"
-import { Plan, Method } from "@/components/report/plan"
+import { Plan } from "@/components/report/plan"
+import { Details } from "@/components/report/details"
 
 export default function Page() {
   return (
     <main
       id="report-scroll"
-      className="custom-scrollbar relative w-full flex-1 overflow-auto bg-background"
+      className="custom-scrollbar relative w-full flex-1 overflow-auto bg-(--paper)"
     >
-      <div className="mx-auto max-w-6xl space-y-12 p-4 pb-16 sm:p-6 sm:pb-20">
-        <Summary />
+      <div className="mx-auto max-w-[66rem] space-y-16 px-4 pt-5 pb-24 sm:px-6 sm:pt-8 lg:space-y-20">
+        <Cover />
         <Strengths />
         <Problems />
-        <QuickNotes />
-        <Journey />
-        <Competitors />
         <Plan />
-        <Method />
+        <Details />
       </div>
     </main>
   )
