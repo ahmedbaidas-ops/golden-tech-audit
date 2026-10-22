@@ -40,7 +40,7 @@ body { font-size: 1rem; margin: 0; background: #f3f4f7; color: #121a2e; }
   html, body { height: auto !important; overflow: visible !important; background: #fff !important; }
   [data-slot="sidebar"], [data-slot="sidebar-gap"], header, .gt-top, .gt-scrim { display: none !important; }
   [data-slot="sidebar-wrapper"], .h-svh, .h-full, .overflow-hidden, #report-scroll { height: auto !important; overflow: visible !important; }
-  section, li[id^="problem-"], details { break-inside: avoid-page; }
+  section, [id^="problem-"], details { break-inside: avoid-page; }
   .cover, .cover * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 @media (prefers-reduced-motion: reduce) {

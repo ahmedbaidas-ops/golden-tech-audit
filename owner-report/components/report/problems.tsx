@@ -3,6 +3,7 @@ import {
   AlertCircleIcon,
   AlertDiamondIcon,
   AnalyticsDownIcon,
+  ArrowDown01Icon,
   Calendar03Icon,
   Idea01Icon,
   Image01Icon,
@@ -15,6 +16,13 @@ import { problems, type Problem } from "@/constants/audit"
 import { Card, Icon, IconTile, Rich, Section, SourceLink, SourceList } from "./section"
 
 const phaseName = { 1: "الأولى", 2: "الثانية" } as const
+
+// الملاحظات مجمّعة حسب الأهمية، كل مجموعة تحت عنوانها مع العدد
+const groups = (["عاجل", "مهم"] as const).map((urgency) => ({
+  urgency,
+  urgent: urgency === "عاجل",
+  items: problems.filter((p) => p.urgency === urgency),
+}))
 
 function Label({ icon, children }: { icon: Parameters<typeof Icon>[0]["icon"]; children: React.ReactNode }) {
   return (
@@ -121,91 +129,97 @@ export function Problems() {
       title="أهم 8 أمور للإصلاح"
       intro="مرتّبة من الأهم. مع كل واحدة صورتها من موقعكم، ولماذا تهمّكم، والحل."
     >
-      <ol className="space-y-8">
-        {problems.map((p) => {
-          const urgent = p.urgency === "عاجل"
-          return (
-            <li key={p.id} id={`problem-${p.id}`} className="scroll-mt-6">
-              <Card className="overflow-hidden">
-                <header className="px-5 pt-5 sm:px-8 sm:pt-7">
-                  <div className="flex flex-wrap items-center gap-2 text-base">
-                    <span className="rounded-full bg-(--navy) px-3 py-0.5 font-semibold text-(--on-navy)">
-                      {p.id} من 8
-                    </span>
-                    <span
-                      className={cn(
-                        "inline-flex items-center gap-1.5 rounded-full px-3 py-0.5 font-semibold [&_svg]:size-4.5",
-                        urgent ? "bg-(--bad-soft) text-(--bad)" : "bg-(--warn-soft) text-(--warn)"
-                      )}
-                    >
-                      <Icon icon={urgent ? AlertDiamondIcon : AlertCircleIcon} />
-                      {p.urgency}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-(--gold-soft) px-3 py-0.5 font-semibold text-(--gold-ink) [&_svg]:size-4.5">
-                      <Icon icon={Calendar03Icon} />
-                      يُصلح في المرحلة {phaseName[p.phase]}
-                    </span>
-                  </div>
-                  <div className="mt-4 flex items-start gap-4">
-                    <IconTile name={p.icon} tone={urgent ? "bad" : "warn"} className="max-sm:size-10 max-sm:[&_svg]:size-5" />
-                    <h3 className="pt-1 text-[1.2rem] leading-snug font-bold sm:pt-1.5 sm:text-[1.45rem] sm:text-balance">
-                      {p.title}
-                    </h3>
-                  </div>
-                </header>
-
-                <div className="problem-grid px-5 py-6 sm:px-8">
-                  <div className="[grid-area:sees]">
-                    <Label icon={ViewIcon}>ما يراه الزبون</Label>
-                    <p className="mt-1 max-w-[40rem] text-lg">
-                      <Rich text={p.sees} />
-                    </p>
-                  </div>
-                  <div className="[grid-area:proof]">
-                    <Evidence p={p} />
-                  </div>
-                  <div className="[grid-area:why]">
-                    <Label icon={AnalyticsDownIcon}>لماذا يهمّكم</Label>
-                    <p className="mt-1 max-w-[40rem] text-lg">{p.why}</p>
-                    {p.whySource && (
-                      <p className="mt-1 text-[0.95rem]">
-                        المصدر: <SourceLink source={p.whySource} />
-                      </p>
-                    )}
-                    {p.opinion && (
-                      <p className="mt-1 text-[0.95rem] text-(--ink-muted)">هذا رأي فريقنا من خبرتنا، وليس رقماً من دراسة.</p>
-                    )}
-                    {p.legal && (
-                      <div className="mt-4 flex gap-3 rounded-xl bg-(--bad-soft) p-4 [&_svg]:size-6">
-                        <Icon icon={LegalDocument01Icon} className="text-(--bad)" />
-                        <p className="text-base">
-                          <b className="text-(--bad)">تنبيه قانوني: </b>
-                          {p.legal}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                  <div className="[grid-area:fix]">
-                    <div className="flex flex-col gap-3 rounded-xl bg-(--good-soft) p-4 sm:flex-row sm:p-5">
-                      <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-white text-(--good) [&_svg]:size-5">
-                        <Icon icon={Idea01Icon} />
+      <div className="space-y-8">
+        {groups.map((g) => (
+          <div key={g.urgency}>
+            <h3
+              className={cn(
+                "mb-3 flex items-center gap-2 text-[1.2rem] font-bold [&_svg]:size-6",
+                g.urgent ? "text-(--bad)" : "text-(--warn)"
+              )}
+            >
+              <Icon icon={g.urgent ? AlertDiamondIcon : AlertCircleIcon} />
+              {g.urgency} ({g.items.length})
+            </h3>
+            <Card className="divide-y divide-(--line) overflow-hidden">
+              {g.items.map((p) => (
+                <details key={p.id} id={`problem-${p.id}`} className="fold group scroll-mt-6">
+                  <summary className="flex min-h-16 cursor-pointer list-none items-center gap-3 p-3.5 sm:gap-4 sm:p-5 [&::-webkit-details-marker]:hidden">
+                    <IconTile name={p.icon} tone={g.urgent ? "bad" : "warn"} className="max-sm:size-9 max-sm:[&_svg]:size-5" />
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-[1.15rem] leading-snug font-bold sm:text-[1.25rem]">{p.title}</span>
+                      <span className="mt-1.5 flex flex-wrap items-center gap-2 text-[0.95rem]">
+                        <span className="rounded-full bg-(--navy) px-2.5 py-0.5 font-semibold whitespace-nowrap text-(--on-navy)">
+                          {p.id} من 8
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-(--gold-soft) px-2.5 py-0.5 font-semibold whitespace-nowrap text-(--gold-ink) [&_svg]:size-4">
+                          <Icon icon={Calendar03Icon} />
+                          يُصلح في المرحلة {phaseName[p.phase]}
+                        </span>
                       </span>
-                      <div>
-                        <p className="text-base font-bold text-(--good)">الحل</p>
-                        <p className="text-lg">{p.fix}</p>
+                    </span>
+                    <span className="hidden text-base font-semibold text-(--gold-ink) sm:inline">
+                      <span className="group-open:hidden">افتح</span>
+                      <span className="hidden group-open:inline">أغلق</span>
+                    </span>
+                    <span className="grid size-9 shrink-0 place-items-center rounded-full bg-(--gold-soft) text-(--gold-ink) transition-transform group-open:rotate-180 sm:size-10 [&_svg]:size-5">
+                      <Icon icon={ArrowDown01Icon} />
+                    </span>
+                  </summary>
+
+                  <div className="problem-grid border-t border-(--line) px-5 py-6 sm:px-8">
+                    <div className="[grid-area:sees]">
+                      <Label icon={ViewIcon}>ما يراه الزبون</Label>
+                      <p className="mt-1 max-w-[40rem] text-lg">
+                        <Rich text={p.sees} />
+                      </p>
+                    </div>
+                    <div className="[grid-area:proof]">
+                      <Evidence p={p} />
+                    </div>
+                    <div className="[grid-area:why]">
+                      <Label icon={AnalyticsDownIcon}>لماذا يهمّكم</Label>
+                      <p className="mt-1 max-w-[40rem] text-lg">{p.why}</p>
+                      {p.whySource && (
+                        <p className="mt-1 text-[0.95rem]">
+                          المصدر: <SourceLink source={p.whySource} />
+                        </p>
+                      )}
+                      {p.opinion && (
+                        <p className="mt-1 text-[0.95rem] text-(--ink-muted)">هذا رأي فريقنا من خبرتنا، وليس رقماً من دراسة.</p>
+                      )}
+                      {p.legal && (
+                        <div className="mt-4 flex gap-3 rounded-xl bg-(--bad-soft) p-4 [&_svg]:size-6">
+                          <Icon icon={LegalDocument01Icon} className="text-(--bad)" />
+                          <p className="text-base">
+                            <b className="text-(--bad)">تنبيه قانوني: </b>
+                            {p.legal}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                    <div className="[grid-area:fix]">
+                      <div className="flex flex-col gap-3 rounded-xl bg-(--good-soft) p-4 sm:flex-row sm:p-5">
+                        <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-white text-(--good) [&_svg]:size-5">
+                          <Icon icon={Idea01Icon} />
+                        </span>
+                        <div>
+                          <p className="text-base font-bold text-(--good)">الحل</p>
+                          <p className="text-lg">{p.fix}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <footer className="border-t border-(--line) bg-(--paper) px-5 py-2 sm:px-8">
-                  <SourceList sources={p.sources} />
-                </footer>
-              </Card>
-            </li>
-          )
-        })}
-      </ol>
+                  <footer className="border-t border-(--line) bg-(--paper) px-5 py-2 sm:px-8">
+                    <SourceList sources={p.sources} />
+                  </footer>
+                </details>
+              ))}
+            </Card>
+          </div>
+        ))}
+      </div>
     </Section>
   )
 }
