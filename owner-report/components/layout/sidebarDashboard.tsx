@@ -66,9 +66,9 @@ export function DashboardSidebar({
                   <SidebarMenuButton
                     isActive={active === item.id}
                     onClick={() => go(item.id)}
-                    className="nav-btn min-h-13 cursor-pointer gap-3 rounded-xl px-3 text-start text-[1.02rem] text-(--ink) hover:bg-(--surface) data-active:bg-(--navy) data-active:font-semibold data-active:text-(--on-navy) [&>span:last-child]:whitespace-normal"
+                    className="nav-btn h-auto min-h-13 cursor-pointer gap-3 rounded-xl px-3 py-2 text-start text-[1.02rem] text-(--ink) hover:bg-(--surface) data-active:bg-(--navy) data-active:font-semibold data-active:text-(--on-navy) data-active:hover:bg-(--navy) data-active:hover:text-(--on-navy) [&>span:last-child]:whitespace-normal"
                   >
-                    <span className="nav-num grid size-7 shrink-0 place-items-center rounded-full bg-(--surface) text-[0.85rem] font-bold text-(--gold-ink) tabular-nums ring-1 ring-(--line)">
+                    <span className="nav-num grid size-7 shrink-0 place-items-center rounded-full bg-(--surface) text-[0.9rem] font-bold text-(--gold-ink) tabular-nums ring-1 ring-(--line)">
                       {i + 1}
                     </span>
                     <HugeiconsIcon icon={item.icon} strokeWidth={1.8} aria-hidden="true" className="size-5!" />

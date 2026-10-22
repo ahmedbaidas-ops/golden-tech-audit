@@ -21,8 +21,8 @@ function Gauge({ value }: { value: number }) {
         <path d={arc} pathLength={100} fill="none" stroke="var(--navy)" strokeWidth="18" strokeLinecap="round" strokeDasharray={`${value} 100`} />
         <circle cx={mx} cy={my} r="5" fill="var(--on-navy-gold)" stroke="var(--navy)" strokeWidth="2" />
       </svg>
-      <span className="absolute -bottom-1 right-[4%] text-[0.85rem] text-(--ink-muted)">0</span>
-      <span className="absolute -bottom-1 left-[2%] text-[0.85rem] text-(--ink-muted)">100</span>
+      <span className="absolute -bottom-7 right-[6%] text-[0.9rem] text-(--ink-muted)">0</span>
+      <span className="absolute -bottom-7 left-[4%] text-[0.9rem] text-(--ink-muted)">100</span>
       <div className="absolute inset-x-0 bottom-0 flex flex-col items-center leading-none">
         <span className="text-[3.4rem] font-bold tracking-tight text-(--ink) tabular-nums">{value}</span>
         <span className="mt-1 text-base text-(--ink-muted)">من 100</span>
@@ -44,7 +44,7 @@ export function Cover() {
         <div aria-hidden="true" className="cover-lines" />
         <div aria-hidden="true" className="cover-seal">
           <span className="text-[2rem] leading-none font-bold">{report.years}</span>
-          <span className="text-[0.85rem]">عاماً</span>
+          <span className="text-[0.9rem]">عاماً</span>
         </div>
         <div className="relative max-w-[44rem]">
           <p className="text-base text-(--on-navy-muted)">
@@ -65,7 +65,9 @@ export function Cover() {
       <Card className="relative mx-3 -mt-16 grid gap-6 rounded-[1.5rem] p-5 shadow-(--shadow-raised) sm:mx-8 sm:p-8 lg:grid-cols-[17rem_1fr] lg:gap-10">
         <div className="flex flex-col items-center gap-3">
           <p className="text-lg font-semibold">درجة الموقع</p>
-          <Gauge value={summary.score} />
+          <div className="mb-6 w-full">
+            <Gauge value={summary.score} />
+          </div>
           <p className="rounded-full bg-(--warn-soft) px-4 py-1 text-base font-semibold text-(--warn)">
             {summary.scoreNote}
           </p>

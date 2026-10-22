@@ -12,7 +12,7 @@ import {
 } from "@hugeicons/core-free-icons"
 import { cn } from "@/lib/utils"
 import { problems, type Problem } from "@/constants/audit"
-import { Card, Icon, IconTile, Section, SourceLink } from "./section"
+import { Card, Icon, IconTile, Rich, Section, SourceLink, SourceList } from "./section"
 
 const phaseName = { 1: "الأولى", 2: "الثانية" } as const
 
@@ -40,7 +40,7 @@ function Evidence({ p }: { p: Problem }) {
           <img src={p.proof.src} alt={p.proof.alt} width={p.proof.w} height={p.proof.h} className="block h-auto w-full" />
         </a>
         <figcaption className="mt-2 text-base text-(--ink-muted)">
-          {p.proof.caption}{" "}
+          <Rich text={p.proof.caption} />{" "}
           <a href={p.proof.src} target="_blank" rel="noopener" className="font-semibold whitespace-nowrap text-(--gold-ink) underline underline-offset-4">
             كبّروا الصورة
           </a>
@@ -61,13 +61,13 @@ function Evidence({ p }: { p: Problem }) {
     return (
       <div>
         <Label icon={Image01Icon}>الدليل: سياساتكم وسياسات المنافسين</Label>
-        <ul className="mt-2 grid gap-3 sm:grid-cols-2">
+        <ul className="mt-2 grid gap-3 sm:grid-cols-3">
           {p.compare.map((c) => (
             <li
               key={c.label}
               className={cn(
-                "rounded-xl p-4",
-                c.mine ? "bg-(--gold-soft) ring-2 ring-(--gold)/50 sm:col-span-2" : "bg-(--paper) ring-1 ring-(--line)"
+                "min-w-0 rounded-xl p-4",
+                c.mine ? "bg-(--gold-soft) ring-2 ring-(--gold)/50 sm:col-span-3" : "bg-(--paper) ring-1 ring-(--line)"
               )}
             >
               <p className="flex items-center gap-2 text-base font-semibold [&_svg]:size-5">
@@ -88,14 +88,21 @@ function Evidence({ p }: { p: Problem }) {
     return (
       <div>
         <Label icon={Image01Icon}>الدليل: نفس الزر في خمس صفحات</Label>
-        <ul className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <ul className="mt-2 divide-y divide-(--line) rounded-xl bg-white ring-1 ring-(--line)">
           {p.buttons.map((b) => (
-            <li key={b.src} className="flex flex-col items-center gap-2 rounded-xl bg-white p-3 ring-1 ring-(--line)">
-              <span className="grid h-16 w-full place-items-center">
+            <li key={b.src} className="flex items-center gap-4 px-4 py-3">
+              <span className="min-w-0 flex-1 text-base">{b.where}</span>
+              <span className="grid h-14 w-44 shrink-0 place-items-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={b.src} alt={`زر في ${b.where}`} width={b.w} height={b.h} className="h-auto max-h-16 w-auto max-w-full" />
+                <img
+                  src={b.src}
+                  alt={`زر الشراء في ${b.where}`}
+                  width={b.w}
+                  height={b.h}
+                  className="h-auto max-h-14 w-auto max-w-full"
+                  style={{ minWidth: Math.min(b.w * 1.25, 176) }}
+                />
               </span>
-              <span className="text-center text-[0.95rem] text-(--ink-muted)">{b.where}</span>
             </li>
           ))}
         </ul>
@@ -150,7 +157,9 @@ export function Problems() {
                 <div className="problem-grid px-5 py-6 sm:px-8">
                   <div className="[grid-area:sees]">
                     <Label icon={ViewIcon}>ما يراه الزبون</Label>
-                    <p className="mt-1 max-w-[40rem] text-lg">{p.sees}</p>
+                    <p className="mt-1 max-w-[40rem] text-lg">
+                      <Rich text={p.sees} />
+                    </p>
                   </div>
                   <div className="[grid-area:proof]">
                     <Evidence p={p} />
@@ -163,6 +172,9 @@ export function Problems() {
                         المصدر: <SourceLink source={p.whySource} />
                       </p>
                     )}
+                    {p.opinion && (
+                      <p className="mt-1 text-[0.95rem] text-(--ink-muted)">هذا رأي فريقنا من خبرتنا، وليس رقماً من دراسة.</p>
+                    )}
                     {p.legal && (
                       <div className="mt-4 flex gap-3 rounded-xl bg-(--bad-soft) p-4 [&_svg]:size-6">
                         <Icon icon={LegalDocument01Icon} className="text-(--bad)" />
@@ -174,7 +186,7 @@ export function Problems() {
                     )}
                   </div>
                   <div className="[grid-area:fix]">
-                    <div className="flex gap-3 rounded-xl bg-(--good-soft) p-4 sm:p-5">
+                    <div className="flex flex-col gap-3 rounded-xl bg-(--good-soft) p-4 sm:flex-row sm:p-5">
                       <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-white text-(--good) [&_svg]:size-5">
                         <Icon icon={Idea01Icon} />
                       </span>
@@ -186,14 +198,8 @@ export function Problems() {
                   </div>
                 </div>
 
-                <footer className="border-t border-(--line) bg-(--paper) px-5 py-3 text-[0.95rem] sm:px-8">
-                  <span className="font-semibold text-(--ink-muted)">المصادر: </span>
-                  {p.sources.map((s, i) => (
-                    <span key={s.label}>
-                      {i > 0 && <span className="text-(--ink-muted)"> · </span>}
-                      <SourceLink source={s} />
-                    </span>
-                  ))}
+                <footer className="border-t border-(--line) bg-(--paper) px-5 py-2 sm:px-8">
+                  <SourceList sources={p.sources} />
                 </footer>
               </Card>
             </li>

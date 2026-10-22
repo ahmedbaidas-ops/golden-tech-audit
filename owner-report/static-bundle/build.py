@@ -36,7 +36,9 @@ page = (
     '<link rel="stylesheet" href="assets/report.css">\n'
     '<link rel="stylesheet" href="assets/report-extra.css">\n'
     '<script>document.documentElement.lang="ar";document.documentElement.dir="rtl";</script>\n'
+    '<div dir="rtl" lang="ar">\n'
     f"{body}\n"
+    "</div>\n"
     '<div class="gt-scrim" id="gt-scrim"></div>\n'
     '<script src="assets/report.js"></script>\n'
 )

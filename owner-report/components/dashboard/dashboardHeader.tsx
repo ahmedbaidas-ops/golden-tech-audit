@@ -4,9 +4,9 @@ import { SidebarTrigger, useSidebar } from "../ui/sidebar"
 import { cn } from "@/lib/utils"
 
 const SIZES = [
-  { value: "md", label: "عادي", cls: "text-[0.85rem]" },
-  { value: "lg", label: "كبير", cls: "text-[1rem]" },
-  { value: "xl", label: "أكبر", cls: "text-[1.15rem]" },
+  { value: "md", label: "عادي", cls: "sm:text-[0.9rem]" },
+  { value: "lg", label: "كبير", cls: "sm:text-[1rem]" },
+  { value: "xl", label: "أكبر", cls: "sm:text-[1.15rem]" },
 ] as const
 type Size = (typeof SIZES)[number]["value"]
 
@@ -52,7 +52,7 @@ export function DashboardHeader() {
               aria-label={`حجم الخط: ${s.label}`}
               onClick={() => setSize(s.value)}
               className={cn(
-                "grid h-10 min-w-12 cursor-pointer place-items-center rounded-lg px-2.5 font-semibold text-(--ink-muted) aria-pressed:bg-(--surface) aria-pressed:text-(--gold-ink) aria-pressed:shadow-(--shadow-card) aria-pressed:ring-1 aria-pressed:ring-(--gold)/40",
+                "grid h-11 min-w-12 cursor-pointer place-items-center rounded-lg px-2.5 text-[16px] font-semibold sm:h-10 text-(--ink-muted) aria-pressed:bg-(--surface) aria-pressed:text-(--gold-ink) aria-pressed:shadow-(--shadow-card) aria-pressed:ring-1 aria-pressed:ring-(--gold)/40",
                 s.cls
               )}
             >

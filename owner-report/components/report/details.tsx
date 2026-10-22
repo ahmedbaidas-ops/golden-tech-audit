@@ -23,7 +23,7 @@ import {
   type Mark,
 } from "@/constants/audit"
 import { scoreTone, toneFill, toneText } from "@/lib/tone"
-import { Card, Icon, IconTile, Section, SourceLink } from "./section"
+import { Card, Icon, IconTile, Section, SourceLink, SourceList } from "./section"
 
 function Fold({
   id,
@@ -169,15 +169,7 @@ function Competitors() {
           </li>
         ))}
       </ul>
-      <p className="text-[0.95rem]">
-        <span className="font-semibold text-(--ink-muted)">المصادر: </span>
-        {competitors.sources.map((s, i) => (
-          <span key={s.label}>
-            {i > 0 && <span className="text-(--ink-muted)"> · </span>}
-            <SourceLink source={s} />
-          </span>
-        ))}
-      </p>
+      <SourceList sources={competitors.sources} />
     </div>
   )
 }
@@ -263,7 +255,7 @@ function Method() {
           </li>
         ))}
       </ul>
-      <p className="flex gap-3 rounded-xl bg-(--sunken) p-4 text-base [&_svg]:mt-1 [&_svg]:size-5">
+      <p className="flex max-w-[44rem] gap-3 rounded-xl bg-(--sunken) p-4 text-base [&_svg]:mt-1 [&_svg]:size-5">
         <Icon icon={InformationCircleIcon} className="text-(--ink-muted)" />
         <span>{methodNote}</span>
       </p>
@@ -290,7 +282,7 @@ export function Details() {
         <Fold id="journey" icon={Route01Icon} title="تجربة الشراء خطوة بخطوة" hint="سبع خطوات، مع صورة كل خطوة">
           <Journey />
         </Fold>
-        <Fold id="notes" icon={ZapIcon} title="ملاحظات أصغر" hint="أغلبها يُصلح في يوم أو يومين">
+        <Fold id="notes" icon={ZapIcon} title="ملاحظات أصغر" hint="ثماني ملاحظات، أغلبها يُصلح في يوم أو يومين">
           <Notes />
         </Fold>
         <Fold id="method" icon={InformationCircleIcon} title="كيف أعددنا التقرير" hint="ما فعلناه، وما لم نختبره بعد">

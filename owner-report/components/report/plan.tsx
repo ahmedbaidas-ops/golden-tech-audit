@@ -50,7 +50,7 @@ export function Plan() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-5 flex gap-3 rounded-xl bg-(--good-soft) p-4 [&_svg]:size-6">
+              <div className="mt-5 flex gap-3 rounded-xl bg-(--good-soft) p-4 lg:min-h-[9.5rem] [&_svg]:size-6">
                 <Icon icon={ChartUpIcon} className="text-(--good)" />
                 <div>
                   <p className="text-base font-bold text-(--good)">ماذا ستلاحظون</p>
@@ -64,7 +64,7 @@ export function Plan() {
 
       <div className="relative mt-10 overflow-hidden rounded-[1.5rem] bg-(--navy) px-6 py-8 text-(--on-navy) sm:px-12">
         <div aria-hidden="true" className="cover-lines" />
-        <div className="relative max-w-[40rem]">
+        <div className="relative max-w-[36rem]">
           <h3 className="text-[1.5rem] font-bold text-(--on-navy-gold)">{closing.title}</h3>
           <GoldRule className="gold-rule--on-navy mt-3" />
           <p className="mt-4 text-lg">{closing.text}</p>

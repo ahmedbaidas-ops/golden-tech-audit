@@ -110,6 +110,40 @@ export function Section({
   )
 }
 
+// نص يحتوي أرقاماً بإشارة سالب أو كلمات إنجليزية محاطة بـ U+2066…U+2069
+// يُعرض داخل عنصر من اليسار لليمين حتى لا تنقلب الإشارة
+export function Rich({ text }: { text: string }) {
+  const parts = text.split(/\u2066(.*?)\u2069/)
+  return (
+    <>
+      {parts.map((part, i) =>
+        i % 2 ? (
+          <span key={i} dir="ltr" className="whitespace-nowrap">
+            {part}
+          </span>
+        ) : (
+          part
+        )
+      )}
+    </>
+  )
+}
+
+export function SourceList({ sources }: { sources: Source[] }) {
+  return (
+    <div className="flex flex-wrap items-baseline gap-x-2 text-[0.95rem]">
+      <span className="font-semibold text-(--ink-muted)">المصادر:</span>
+      <ul className="contents">
+        {sources.map((s) => (
+          <li key={s.label} className="me-3">
+            <SourceLink source={s} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 export function Card({
   className,
   children,
@@ -136,7 +170,7 @@ export function SourceLink({ source, className }: { source: Source; className?: 
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "inline-flex items-center gap-1 text-(--gold-ink) underline decoration-(--gold)/50 underline-offset-4 hover:decoration-(--gold-ink)",
+        "inline-flex items-center gap-1 py-1.5 text-(--gold-ink) underline decoration-(--gold)/50 underline-offset-4 hover:decoration-(--gold-ink)",
         className
       )}
     >

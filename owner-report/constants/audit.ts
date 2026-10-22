@@ -61,7 +61,7 @@ export const summary = {
 export const stats: { key: string; title: string; value: string; note: string; tone: Tone }[] = [
   { key: "strengths", title: "نقاط قوة", value: "12", note: "يتقنها موقعكم اليوم", tone: "good" },
   { key: "urgent", title: "ملاحظات عاجلة", value: "2", note: "نبدأ بها أولاً", tone: "bad" },
-  { key: "important", title: "ملاحظات مهمة", value: "16", note: "تُبطئ الزبون أو تُضعف ثقته", tone: "warn" },
+  { key: "important", title: "ملاحظات مهمة", value: "6", note: "تُبطئ الزبون أو تُضعف ثقته", tone: "warn" },
 ]
 
 export const strengths: { key: string; title: string; text: string }[] = [
@@ -76,7 +76,7 @@ export const strengths: { key: string; title: string; text: string }[] = [
   { key: "payments", title: "طرق دفع محلية", text: "مدى، فيزا، ماستركارد، تابي، تمارا، وتقسيط البطاقات." },
   { key: "official", title: "البيانات الرسمية موجودة", text: "السجل التجاري والرقم الضريبي ورمز الريال الجديد." },
   { key: "arabic", title: "موقع عربي كامل", text: "النسخة العربية كاملة ومرتبة من اليمين لليسار." },
-  { key: "reputation", title: "سمعة ممتازة خارج الموقع", text: "تقييم المحل بين 4.5 و4.8 من 5 في مواقع التقييم." },
+  { key: "reputation", title: "سمعة ممتازة خارج الموقع", text: "تقييم المحل 4.5 من 5 في موقعَي Cybo وArabPlaces." },
 ]
 
 export type Proof = { src: string; alt: string; caption: string; w: number; h: number }
@@ -94,6 +94,7 @@ export type Problem = {
   buttons?: { src: string; w: number; h: number; where: string }[]
   why: string
   whySource?: Source
+  opinion?: boolean
   legal?: string
   fix: string
   sources: Source[]
@@ -110,9 +111,9 @@ export const problems: Problem[] = [
     proof: {
       src: "evidence/proof-delivery.webp",
       alt: "صندوق التوصيل في صفحة المنتج: Delivery in Riyadh: 24 hours, other cities: 3-6 business days",
-      caption: "صفحة المنتج (النسخة الإنجليزية): «التوصيل في الرياض 24 ساعة، والمدن الأخرى من 3 إلى 6 أيام عمل».",
-      w: 440,
-      h: 74,
+      caption: "صفحة المنتج (النسخة الإنجليزية): «التوصيل في الرياض 24 ساعة، والمدن الأخرى من 3 إلى 6 أيام عمل». الإطار الذهبي منّا.",
+      w: 844,
+      h: 104,
     },
     quote: {
       text: "داخل الرياض من 3 إلى 7 أيام عمل، وخارج الرياض من 7 إلى 10 أيام عمل.",
@@ -149,13 +150,13 @@ export const problems: Problem[] = [
     urgency: "مهم",
     phase: 1,
     title: "أرقام السلة تُربك الزبون",
-    sees: "سعر الجهاز 4,699 ريالاً، لكن «المجموع الفرعي» 4,086، و«إجمالي التوفير −1,900» يبدو كأنه خصم إضافي.",
+    sees: "سعر الجهاز 4,699 ريالاً، لكن «المجموع الفرعي» 4,086، و«إجمالي التوفير» ⁦−1,900⁩ يبدو كأنه خصم إضافي.",
     proof: {
       src: "evidence/proof-cart.webp",
       alt: "ملخص السلة: Subtotal 4,086، Tax 613، Total Savings -1,900، Order Total 4,699",
-      caption: "صفحة السلة: المجموع الفرعي 4,086 والتوفير −1,900، والإجمالي يبقى 4,699.",
-      w: 950,
-      h: 380,
+      caption: "ملخص السلة: المجموع الفرعي 4,086 والتوفير ⁦−1,900⁩، والإجمالي يبقى 4,699. الإطار الذهبي منّا.",
+      w: 830,
+      h: 394,
     },
     why: "الزبون يرى رقماً أقل من سعر الجهاز، وخصماً لا يَنقص من الإجمالي، فيظن أن في الحساب خطأ. 12 من كل 100 زبون يتركون الشراء عندما لا يفهمون المبلغ النهائي.",
     whySource: S.baymardCart,
@@ -186,24 +187,25 @@ export const problems: Problem[] = [
     icon: "reviews",
     urgency: "مهم",
     phase: 2,
-    title: "لا توجد تقييمات من الزبائن على المنتجات",
-    sees: "في صفحة المنتج: «There are no ratings» أي «لا توجد تقييمات».",
+    title: "أغلب المنتجات بدون تقييمات من الزبائن",
+    sees: "في صفحة الجهاز الذي جرّبناه: «There are no ratings» أي «لا توجد تقييمات». ومن أول أربعة أجهزة في قسم الألعاب، جهاز واحد فقط عليه تقييم.",
     proof: {
       src: "evidence/proof-reviews.webp",
       alt: "قسم التقييمات في صفحة المنتج: There are no ratings",
-      caption: "صفحة جهاز RTX 3050: قسم التقييمات فارغ.",
-      w: 720,
-      h: 235,
+      caption: "صفحة جهاز RTX 3050: قسم التقييمات فارغ. الإطار الذهبي منّا.",
+      w: 640,
+      h: 450,
     },
-    why: "الزبون يصدّق زبوناً مثله أكثر من الإعلان. سمعتكم خارج الموقع ممتازة، لكنها لا تظهر داخله.",
+    why: "الزبائن يبحثون عن تقييمات غيرهم قبل الشراء، حتى السلبية منها. وسمعتكم خارج الموقع ممتازة، لكنها لا تظهر داخله.",
+    whySource: {
+      label: "Nielsen Norman Group: صفحات المنتج",
+      url: "https://www.nngroup.com/articles/ecommerce-product-pages/",
+    },
     fix: "رسالة واتساب بعد التوصيل تطلب تقييم المنتج، وعرض تقييم المحل من جوجل في الموقع.",
     sources: [
       S.shot,
-      {
-        label: "magicpin: 4.8 من 379 تقييماً",
-        url: "https://magicpin.com/saudi-arabia/Riyadh/Al-Shumaisi/Electronics/Golden-Technology/store/228503c",
-      },
-      { label: "Cybo: 4.5 من 173 تقييماً", url: "https://www.cybo.com/SA-biz/golden-technology-التكنولوجيا-الذهبية" },
+      { label: "تقييم المحل في Cybo: 4.5 من 173 تقييماً", url: "https://www.cybo.com/SA-biz/golden-technology-التكنولوجيا-الذهبية" },
+      { label: "تقييم المحل في ArabPlaces: 4.5 من 43 تقييماً", url: "https://sa.arabplaces.com/riyadh/golden-technology-184930" },
     ],
   },
   {
@@ -221,6 +223,7 @@ export const problems: Problem[] = [
       h: 294,
     },
     why: "جهاز بسعر 4,699 ريالاً يحتاج صوراً حقيقية تُقنع الزبون أنه يشتري جهازاً جُمّع عندكم.",
+    opinion: true,
     fix: "تصوير كل جهاز من الأمام والجانب ومن الداخل، مع معرض صور في صفحة المنتج.",
     sources: [S.shot],
   },
@@ -239,6 +242,7 @@ export const problems: Problem[] = [
       { src: "evidence/btn-place-order.webp", w: 170, h: 26, where: "إتمام الطلب" },
     ],
     why: "عندما يتغير شكل الزر من صفحة لأخرى، يبحث الزبون عنه بدل أن يضغطه.",
+    opinion: true,
     fix: "زر شراء واحد بلون واحد في كل الموقع، وزر ثانوي واحد لباقي الأفعال.",
     sources: [S.shot],
   },
@@ -256,7 +260,8 @@ export const problems: Problem[] = [
       w: 730,
       h: 320,
     },
-    why: "الزبون في السعودية يسأل على واتساب قبل أن يشتري جهازاً غالياً. إذا لم يجد من يجيبه، يسأل المنافس.",
+    why: "كثير من الزبائن يفضّلون السؤال على واتساب قبل شراء جهاز غالٍ. إذا لم يجدوا من يجيبهم، قد يسألون المنافس.",
+    opinion: true,
     fix: "زر واتساب ثابت في كل الصفحات، ورسائل تلقائية بحالة الطلب.",
     sources: [S.shot],
   },
@@ -372,7 +377,7 @@ export const competitors = {
       key: "reviews",
       label: "تقييمات الزبائن",
       cells: [
-        { mark: "no", note: "" },
+        { mark: "partial", note: "قليلة جداً" },
         { mark: "yes", note: "" },
         { mark: "yes", note: "" },
         { mark: "yes", note: "" },
@@ -419,10 +424,10 @@ export const journey: Step[] = [
   { n: 1, icon: "google", title: "الدخول من إعلان جوجل", good: "البحث والعروض واضحة، وصفقة اليوم قوية.", problem: "الإعلان يفتح الصفحة الرئيسية وليس المنتج المطلوب.", tone: "warn", shot: { src: "evidence/step-1-home.webp", w: 900, h: 519 } },
   { n: 2, icon: "search", title: "البحث عن كرت شاشة", good: "نتائج فورية بالصور والأسعار.", problem: "قائمة «عمليات البحث الأخيرة» تعرض ما كتبه زبائن آخرون.", tone: "warn", shot: { src: "evidence/step-2-recent.webp", w: 1040, h: 258 } },
   { n: 3, icon: "list", title: "تصفّح أجهزة الألعاب", good: "أداة اختيار، وفلاتر، وترتيب بالسعر.", problem: "صور الأجهزة متشابهة، والأسماء طويلة جداً.", tone: "warn", shot: { src: "evidence/step-3-list.webp", w: 900, h: 923 } },
-  { n: 4, icon: "product", title: "صفحة المنتج", good: "السعر واضح، والضمان 24 شهراً، وجدول المواصفات مفصّل.", problem: "وعد التوصيل يخالف الشروط، ولا توجد تقييمات.", tone: "bad", shot: { src: "evidence/step-4-product.webp", w: 900, h: 519 } },
+  { n: 4, icon: "product", title: "صفحة المنتج", good: "السعر واضح، والضمان 24 شهراً، وجدول المواصفات مفصّل.", problem: "وعد التوصيل يخالف الشروط، ولا توجد تقييمات على هذا الجهاز.", tone: "bad", shot: { src: "evidence/step-4-product.webp", w: 900, h: 519 } },
   { n: 5, icon: "cart", title: "السلة", good: "الشحن المجاني واضح.", problem: "أرقام المجموع تُربك.", tone: "bad", shot: { src: "evidence/step-5-cart.webp", w: 900, h: 432 } },
   { n: 6, icon: "location", title: "بيانات التوصيل والدفع", good: "شراء بدون حساب، وخريطة للموقع، واستلام من المعرض، وطرق دفع محلية.", problem: "خطوة رمز الجوال غير واضحة، وزر «Place Order» أزرق بلون مختلف.", tone: "bad", shot: { src: "evidence/step-6-checkout.webp", w: 900, h: 956 } },
-  { n: 7, icon: "login", title: "تسجيل الدخول", good: "الصفحة بسيطة.", problem: "رابط «Create an account» باهت ويصعب رؤيته.", tone: "warn", shot: { src: "evidence/step-8-login.webp", w: 480, h: 360 } },
+  { n: 7, icon: "login", title: "تسجيل الدخول", good: "الصفحة بسيطة.", problem: "رابط «Create an account» باهت ويصعب رؤيته.", tone: "warn", shot: { src: "evidence/step-8-login.webp", w: 480, h: 360 } },
 ]
 
 export const quickNotes: {
@@ -458,7 +463,7 @@ export const quickNotes: {
   },
   {
     icon: "text",
-    text: "أخطاء في أسفل الموقع: «Usefull links» و«Warrnty» و«© 2025».",
+    text: "أخطاء في أسفل الموقع: كُتبت «Usefull links» و«Warrnty»، وسنة حقوق النشر ما زالت 2025.",
     image: { src: "evidence/proof-contact.webp", alt: "أسفل الموقع", w: 730, h: 320 },
   },
   {
@@ -479,6 +484,7 @@ export const method = [
   "قارنّا الموقع مع إكسترا وجرير وأمازون ونون من صفحاتهم الرسمية.",
   "الأرقام عن سلوك الزبائن من معهد بايمارد (Baymard)، وهو معهد متخصص في تجربة التسوق الإلكتروني.",
   "قسنا 110 نقطة، ولكل نقطة وزن حسب تأثيرها على البيع، ومنها خرجت الدرجة 48.",
+  "هذه الصفحة ملخص لصاحب المتجر. التقرير الكامل لفريق العمل فيه 42 ملاحظة: 2 عاجلة و16 مهمة و24 بسيطة.",
 ]
 
 export const methodNote =

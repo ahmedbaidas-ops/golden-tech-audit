@@ -48,6 +48,9 @@
     if (el.tagName === "DETAILS") el.open = true; else if (d) d.open = true;
     lock = Date.now() + 1200;
     el.scrollIntoView({ behavior: behavior, block: "start" });
+    // نقل التركيز للقسم حتى يكمل قارئ الشاشة ولوحة المفاتيح من هناك
+    if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "-1");
+    try { el.focus({ preventScroll: true }); } catch (e) {}
     setTimeout(function () {
       if (!root) return;
       var off = el.getBoundingClientRect().top - root.getBoundingClientRect().top;
@@ -97,7 +100,8 @@
   topBtn.className = "gt-top";
   topBtn.hidden = true;
   topBtn.setAttribute("aria-label", "العودة لأعلى الصفحة");
-  topBtn.innerHTML = '<span aria-hidden="true">↑</span><span class="gt-top-label">للأعلى</span>';
+  topBtn.title = "للأعلى";
+  topBtn.innerHTML = '<span aria-hidden="true">↑</span>';
   topBtn.addEventListener("click", function () {
     if (root) root.scrollTo({ top: 0, behavior: behavior });
     lock = Date.now() + 1200;
@@ -150,6 +154,24 @@
     close.addEventListener("click", function () { closeNav(true); });
     panel.insertBefore(close, panel.firstChild);
   }
+  // إبقاء التركيز داخل القائمة وهي مفتوحة
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Tab" || !html.classList.contains("nav-open") || !panel) return;
+    var f = Array.prototype.slice.call(panel.querySelectorAll("button, a[href]"));
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  // عند الطباعة تُفتح كل الأقسام المطوية
+  var opened = [];
+  window.addEventListener("beforeprint", function () {
+    opened = Array.prototype.filter.call(document.querySelectorAll("details"), function (d) { return !d.open; });
+    opened.forEach(function (d) { d.open = true; });
+  });
+  window.addEventListener("afterprint", function () { opened.forEach(function (d) { d.open = false; }); });
+
   var scrim = document.getElementById("gt-scrim");
   if (scrim) scrim.addEventListener("click", function () { closeNav(true); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeNav(true); });
