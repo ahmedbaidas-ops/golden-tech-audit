@@ -46,8 +46,9 @@ function Evidence({ p }: { p: Problem }) {
           </a>
         </figcaption>
         {p.quote && (
-          <blockquote className="mt-4 rounded-xl border-s-4 border-(--warn) bg-(--warn-soft) p-4">
-            <p className="text-lg font-medium">«{p.quote.text}»</p>
+          <blockquote className="mt-4 rounded-xl bg-(--warn-soft) p-4">
+            <p className="text-base font-semibold text-(--warn)">وفي صفحة أخرى من موقعكم:</p>
+            <p className="mt-1 text-lg font-medium">«{p.quote.text}»</p>
             <p className="mt-1 text-base">
               <SourceLink source={p.quote.source} />
             </p>
@@ -119,7 +120,6 @@ export function Problems() {
           return (
             <li key={p.id} id={`problem-${p.id}`} className="scroll-mt-6">
               <Card className="overflow-hidden">
-                <div className={cn("h-1.5", urgent ? "bg-(--bad)" : "bg-(--warn)")} />
                 <header className="px-5 pt-5 sm:px-8 sm:pt-7">
                   <div className="flex flex-wrap items-center gap-2 text-base">
                     <span className="rounded-full bg-(--navy) px-3 py-0.5 font-semibold text-(--on-navy)">

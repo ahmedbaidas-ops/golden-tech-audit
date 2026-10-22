@@ -5,12 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Golden Showroom: ورق عاجي، كحلي المتجر، ذهبي للزخرفة فقط */
-  --paper: #f6f3ec;
+  /* Golden Showroom: ألوان المتجر نفسه، كحلي وأبيض، والذهبي للزخرفة فقط */
+  --paper: #f3f4f7;
   --surface: #ffffff;
-  --sunken: #f1ede3;
-  --line: #e7e0d1;
-  --line-strong: #d9cfba;
+  --sunken: #e9ebf1;
+  --line: #dfe2ea;
+  --line-strong: #c9cfdc;
   --ink: #121a2e;
   --ink-muted: #5b5f6b;
   --navy: #0b1533;

@@ -32,7 +32,6 @@ for f in ("report.js", "report-extra.css"):
 
 page = (
     '<meta charset="utf-8">\n'
-    '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
     "<title>تقرير التكنولوجيا الذهبية</title>\n"
     '<link rel="stylesheet" href="assets/report.css">\n'
     '<link rel="stylesheet" href="assets/report-extra.css">\n'
