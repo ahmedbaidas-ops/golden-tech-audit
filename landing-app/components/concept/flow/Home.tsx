@@ -207,9 +207,16 @@ function Card({ p, f, first }: { p: Product; f: Flow; first: boolean }) {
       </div>
       <h4>
         {open ? (
-          <button type="button" onClick={open}>
+          // a link, not a button: buttons render as inline blocks, which breaks the two-line clamp
+          <a
+            href="#product"
+            onClick={(e) => {
+              e.preventDefault()
+              open()
+            }}
+          >
             {p.title}
-          </button>
+          </a>
         ) : (
           p.title
         )}

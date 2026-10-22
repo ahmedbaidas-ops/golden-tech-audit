@@ -138,7 +138,8 @@
 .wm-track { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(176px, 1fr); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 12px 4px 8px; scroll-behavior: smooth; }
 .wm-track::-webkit-scrollbar { display: none; }
 @media (min-width: 1180px) { .wm-track { grid-auto-columns: calc((100% - 5 * 16px) / 6); } }
-.wm-card { scroll-snap-align: start; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+/* every card fills its slide, so the add buttons all sit on the same line at the bottom */
+.wm-card { scroll-snap-align: start; display: flex; flex-direction: column; gap: 4px; min-width: 0; height: 100%; }
 .wm-card .media { position: relative; }
 .wm-card .img { display: block; width: 100%; padding: 0; border: 0; background: #fff; aspect-ratio: 1; overflow: hidden; cursor: pointer; border-radius: 4px; }
 .wm-card .img img { width: 100%; height: 100%; object-fit: contain; display: block; }
@@ -152,14 +153,14 @@
 .wm-price .now { color: var(--green); font-weight: 700; font-size: .84rem; }
 .wm-price .now b { font-family: var(--font-display); font-size: 1.25rem; }
 .wm-price s { color: var(--mut); font-size: .8rem; }
-.wm-card h4 { margin: 0; font-family: var(--font-body); font-size: .86rem; font-weight: 400; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.wm-card h4 button { display: inline; border: 0; background: none; padding: 0; text-align: start; cursor: pointer; }
-.wm-card h4 button:hover { text-decoration: underline; }
+.wm-card h4 { margin: 0; font-family: var(--font-body); font-size: .86rem; font-weight: 400; line-height: 1.5; min-height: 3em; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-wrap: wrap; }
+.wm-card h4 a { color: inherit; text-decoration: none; }
+.wm-card h4 a:hover { text-decoration: underline; }
 .wm-rate { font-size: .78rem; color: var(--mut); }
 .wm-rate b { color: var(--ink); }
 .wm-ship { font-size: .78rem; color: var(--mut); }
 .wm-ship b { color: var(--ink); }
-.wm-addwrap { align-self: flex-start; margin-top: 8px; display: inline-flex; }
+.wm-addwrap { align-self: flex-start; margin-top: auto; padding-top: 8px; display: inline-flex; }
 .wm-add { display: inline-flex; align-items: center; gap: 4px; min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--ink); background: #fff; font-weight: 700; font-size: .84rem; cursor: pointer; transition: background .2s; }
 .wm-add:hover { background: var(--soft); }
 .wm-add svg { width: 16px; height: 16px; }
