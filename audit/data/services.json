@@ -1,0 +1,137 @@
+[
+ {
+  "service": "Validation sprint",
+  "scope": "Phone and Safari capture, moderated tests with 5–8 Saudi shoppers, analytics and heatmap setup",
+  "fixes": "All 'Verify live' items",
+  "phase": "Quick wins",
+  "start_week": 0,
+  "weeks": 2,
+  "outcome": "Confirmed scores and baseline metrics"
+ },
+ {
+  "service": "Policy & trust rewrite",
+  "scope": "One delivery, returns, refund and warranty policy in Arabic and English; entity name; SBC certificate link",
+  "fixes": "F16, F24, F25, F26, F30",
+  "phase": "Quick wins",
+  "start_week": 0,
+  "weeks": 3,
+  "outcome": "Fewer 'extra costs' and 'returns policy' abandons"
+ },
+ {
+  "service": "Checkout optimisation",
+  "scope": "Cart summary that adds up, clear SMS-code step, Short Address field, named BNPL options, COD and Apple Pay check, one instalment message",
+  "fixes": "F27, F31, F32, F34, F35",
+  "phase": "Quick wins",
+  "start_week": 1,
+  "weeks": 4,
+  "outcome": "Checkout completion rate"
+ },
+ {
+  "service": "SEO & content hygiene",
+  "scope": "Remove test pages, noindex search, fix hreflang and canonicals, rewrite titles",
+  "fixes": "F02, F07, F12",
+  "phase": "Quick wins",
+  "start_week": 1,
+  "weeks": 3,
+  "outcome": "Clean index; EN/AR served correctly"
+ },
+ {
+  "service": "Campaign landing pages",
+  "scope": "Intent-matched landing pages for each Google Ads campaign",
+  "fixes": "F01",
+  "phase": "Quick wins",
+  "start_week": 1,
+  "weeks": 3,
+  "outcome": "Lower cost per order on paid search"
+ },
+ {
+  "service": "Bilingual UX writing",
+  "scope": "Proofread banners, footer, widgets and legal copy; FAQ fix; Arabic as source",
+  "fixes": "F04, F06, F20, F29, F33, F42",
+  "phase": "Quick wins",
+  "start_week": 2,
+  "weeks": 4,
+  "outcome": "Native-quality copy in both languages"
+ },
+ {
+  "service": "Catalogue & price QA",
+  "scope": "Price-parity checks, title schema, spec validation, retire old SKUs",
+  "fixes": "F13, F21, F22, F23",
+  "phase": "Core",
+  "start_week": 4,
+  "weeks": 4,
+  "outcome": "Zero price or spec mismatches"
+ },
+ {
+  "service": "Design system & UI kit",
+  "scope": "Tokenised, RTL-first library: one button, card, price, badge, form and delivery block",
+  "fixes": "F39, F40, F41",
+  "phase": "Core",
+  "start_week": 4,
+  "weeks": 6,
+  "outcome": "One consistent UI; faster releases"
+ },
+ {
+  "service": "Product page redesign",
+  "scope": "Real photos and gallery, delivery date and cost, focused buy box, review module, bundles",
+  "fixes": "F14, F17, F18, F19",
+  "phase": "Core",
+  "start_week": 6,
+  "weeks": 6,
+  "outcome": "Add-to-cart rate and order value"
+ },
+ {
+  "service": "Navigation & IA redesign",
+  "scope": "Card sort and tree test; shop-by-need menu; fixed category grid; one offers hub",
+  "fixes": "F03, F05, F08, F09",
+  "phase": "Core",
+  "start_week": 5,
+  "weeks": 5,
+  "outcome": "Findability (tree-test success)"
+ },
+ {
+  "service": "Category & search UX",
+  "scope": "Applied-filter chips, combined monitor specs, private recent searches, typo and Arabic synonyms",
+  "fixes": "F11",
+  "phase": "Core",
+  "start_week": 6,
+  "weeks": 4,
+  "outcome": "Search-to-order rate"
+ },
+ {
+  "service": "Retention & CRM",
+  "scope": "WhatsApp Business, guest order tracking, review requests, loyalty refresh",
+  "fixes": "F18, F36, F37, F38",
+  "phase": "Growth",
+  "start_week": 10,
+  "weeks": 6,
+  "outcome": "Repeat purchase and review volume"
+ },
+ {
+  "service": "Service design",
+  "scope": "Store-run warranty desk and online returns portal",
+  "fixes": "F28, F25",
+  "phase": "Growth",
+  "start_week": 10,
+  "weeks": 6,
+  "outcome": "Fewer support calls; higher trust"
+ },
+ {
+  "service": "B2B quote portal",
+  "scope": "Business hub: quotes, bulk pricing, VAT invoices, PO",
+  "fixes": "F10",
+  "phase": "Growth",
+  "start_week": 12,
+  "weeks": 6,
+  "outcome": "Qualified B2B leads"
+ },
+ {
+  "service": "PC builder",
+  "scope": "Guided gaming-PC builder with compatibility check and instalment pricing",
+  "fixes": "F15",
+  "phase": "Growth",
+  "start_week": 14,
+  "weeks": 8,
+  "outcome": "Differentiation vs eXtra, Jarir, Amazon, noon"
+ }
+]

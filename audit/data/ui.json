@@ -1,0 +1,137 @@
+[
+ {
+  "component": "Primary button",
+  "observed": "Gold 'Add to Cart' and 'Checkout'; black category-card and 'Sign In' buttons; navy 'Buy Now'; dark slate 'Send Otp'; bright blue 'Place Order'",
+  "issue": "Five styles for primary actions; Buy Now outweighs Add to Cart; 'Send Otp' reads as disabled",
+  "standard": "One primary token (fill, text, 48px height, 8px radius, hover/pressed/disabled), one secondary outline style",
+  "status": "Seen live",
+  "priority": 3,
+  "priority_label": "High"
+ },
+ {
+  "component": "Colour roles",
+  "observed": "Navy structure; gold on departments button, nav, tabs, search, warranty bar, filter header, newsletter and buttons; red prices and chips; green savings",
+  "issue": "Gold carries both decoration and action, so nothing stands out; red means both 'price' and 'alert'",
+  "standard": "Gold for primary actions only; navy and neutral greys for structure; red for errors; green for savings",
+  "status": "Seen live",
+  "priority": 3,
+  "priority_label": "High"
+ },
+ {
+  "component": "Link and label contrast",
+  "observed": "Gold 'Create an account' link on white; small grey titles on cards",
+  "issue": "Faint text likely below 4.5:1",
+  "standard": "Dark text for links with an underline; measure every gold and grey text pair",
+  "status": "Needs measurement",
+  "priority": 2,
+  "priority_label": "Medium"
+ },
+ {
+  "component": "Price block",
+  "observed": "'SAR 4,699 SAR 6,599 -29% / Tax included Save SAR 1900'; '4699.00' in the cart",
+  "issue": "Four signals for one saving; chip far from the price; two number formats",
+  "standard": "Price, struck was-price, one saving chip, 'VAT included' caption, one format with the Riyal symbol",
+  "status": "Seen live",
+  "priority": 2,
+  "priority_label": "Medium"
+ },
+ {
+  "component": "Product card",
+  "observed": "Homepage: image, 2-line title, price, full-width gold button. Category: image, title, four spec lines, rating, black button",
+  "issue": "Two card designs; long truncated titles; identical images",
+  "standard": "One card: brand + model, spec lines, rating, monthly price, one button style, real photo",
+  "status": "Seen live",
+  "priority": 3,
+  "priority_label": "High"
+ },
+ {
+  "component": "Instalment widget",
+  "observed": "Product page: instalments box, Tamara box and Tabby box with identical text ('1174.75or'); checkout: two identical labels",
+  "issue": "Repetition and typos; providers indistinguishable at checkout",
+  "standard": "One line ('4 × 1,174.75 SAR, 0% with Tabby or Tamara') with a details sheet; name providers at checkout",
+  "status": "Seen live",
+  "priority": 3,
+  "priority_label": "High"
+ },
+ {
+  "component": "Search overlay",
+  "observed": "Instant results with images, prices, chips, category suggestion, recent searches, 'view all (100+)'",
+  "issue": "Recent searches look global",
+  "standard": "Keep the layout; show only the shopper's own history plus curated popular terms",
+  "status": "Seen live",
+  "priority": 2,
+  "priority_label": "Medium"
+ },
+ {
+  "component": "Filters and finder",
+  "observed": "Finder (Processor, Memory, Storage, Graphic Card) plus nine collapsed filter accordions; 'Sort By: Price: low to high'",
+  "issue": "Applied-filter chips not seen; monitor specs split into pages",
+  "standard": "Applied-filter chips, counts, a price slider, tooltips for terms like refresh rate",
+  "status": "Seen live",
+  "priority": 1,
+  "priority_label": "Low"
+ },
+ {
+  "component": "Delivery message",
+  "observed": "Red-accent box: 'Delivery in Riyadh: 24 hours, other cities: 3-6 business days.'",
+  "issue": "Conflicts with the Terms; a range, not a date; no cost",
+  "standard": "Delivery block: date, cut-off time, city picker, cost, pickup option",
+  "status": "Seen live",
+  "priority": 3,
+  "priority_label": "High"
+ },
+ {
+  "component": "Checkout form",
+  "observed": "Email, map picker, name, City, District, Street, Mobile + 'Send Otp', Building No, Postal code, 'Is company?'",
+  "issue": "Premature red error; no Short Address field; ambiguous OTP state",
+  "standard": "Short Address with lookup; inline validation after input; OTP explained and verified at Place Order",
+  "status": "Seen live",
+  "priority": 3,
+  "priority_label": "High"
+ },
+ {
+  "component": "Cart summary",
+  "observed": "Subtotal 4,086, Shipping 0, Tax 613, 'Total Savings -1,900', Order Total 4,699; free-shipping bar",
+  "issue": "Ex-VAT subtotal next to VAT-inclusive prices; savings shown as a line item",
+  "standard": "VAT-inclusive lines that add up; 'You save 1,900 SAR' as a separate note",
+  "status": "Seen live",
+  "priority": 3,
+  "priority_label": "High"
+ },
+ {
+  "component": "Section headers and carousels",
+  "observed": "Navy bar with gold title tab and brand or spec sub-tabs per carousel; six carousels on the homepage",
+  "issue": "Products hidden behind arrows; repeated pattern",
+  "standard": "Fewer rails; static category grid; 'shop by need' tiles",
+  "status": "Seen live",
+  "priority": 2,
+  "priority_label": "Medium"
+ },
+ {
+  "component": "Banners",
+  "observed": "Black-gold anniversary, AOC anime, Intel/NVIDIA, Apple white, HP; English-only copy on the Arabic page",
+  "issue": "Mixed styles; typo 'pergormance'",
+  "standard": "Banner template with fixed type, safe zones and Arabic versions",
+  "status": "Seen live",
+  "priority": 2,
+  "priority_label": "Medium"
+ },
+ {
+  "component": "Right-to-left layout",
+  "observed": "Arabic header, menu, carousels and cards mirror correctly; Latin model names inline",
+  "issue": "Brand names mix Latin and Arabic spellings",
+  "standard": "Keep; add a glossary; isolate model numbers left-to-right",
+  "status": "Seen live",
+  "priority": 1,
+  "priority_label": "Low"
+ },
+ {
+  "component": "Tap targets and focus",
+  "observed": "Not visible in desktop screenshots",
+  "issue": "Unknown on phone",
+  "standard": "Targets at least 7 × 7 mm; visible focus ring on every control",
+  "status": "Needs phone screenshots",
+  "priority": 2,
+  "priority_label": "Medium"
+ }
+]

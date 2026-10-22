@@ -1,0 +1,102 @@
+[
+ {
+  "order": 1,
+  "stage": "Discover",
+  "touchpoint": "Google Ads, Instagram (14K), X, Tasheel 5% offer",
+  "persona": "All",
+  "sentiment": 0,
+  "now": "Ads open the homepage; the shopper's search intent is lost",
+  "fix": "Campaign landing pages that match the ad",
+  "findings": "F01"
+ },
+ {
+  "order": 2,
+  "stage": "Land",
+  "touchpoint": "Homepage",
+  "persona": "All",
+  "sentiment": 0,
+  "now": "Clear search and a strong deal, but moving category tiles, a banner typo and test pages in Google",
+  "fix": "Fixed category grid, proofreading, remove test pages",
+  "findings": "F03, F04, F02"
+ },
+ {
+  "order": 3,
+  "stage": "Find",
+  "touchpoint": "Menu and search",
+  "persona": "Reem, Abdullah",
+  "sentiment": 0,
+  "now": "Instant search is good; the menu is brand-first; no business path; others' searches visible",
+  "fix": "Shop-by-need menu, business hub, private recent searches",
+  "findings": "F08, F10, F11"
+ },
+ {
+  "order": 4,
+  "stage": "Browse",
+  "touchpoint": "Category listing",
+  "persona": "Faisal, Sara",
+  "sentiment": 1,
+  "now": "Finder, filters, price sort and spec lines work well; identical images",
+  "fix": "Real photos and shorter titles",
+  "findings": "F13, F14"
+ },
+ {
+  "order": 5,
+  "stage": "Evaluate",
+  "touchpoint": "Product page",
+  "persona": "All",
+  "sentiment": 0,
+  "now": "Good specs and warranty; no reviews, no delivery date or cost, crowded buy box",
+  "fix": "Review engine, delivery block, focused buy box",
+  "findings": "F16, F17, F18, F19"
+ },
+ {
+  "order": 6,
+  "stage": "Decide",
+  "touchpoint": "Price check vs Jarir, eXtra, Amazon",
+  "persona": "Sara, Faisal",
+  "sentiment": -2,
+  "now": "Policies contradict the product page; 7-day defects-only returns; instalment terms vary",
+  "fix": "One policy set, one instalment message, 14-day returns",
+  "findings": "F24, F25, F27"
+ },
+ {
+  "order": 7,
+  "stage": "Checkout",
+  "touchpoint": "Cart, details and payment",
+  "persona": "All",
+  "sentiment": -1,
+  "now": "Guest checkout and pickup exist, but the cart sum confuses and the SMS-code step stalls",
+  "fix": "Clear cart summary, clear SMS step, Short Address field",
+  "findings": "F31, F32, F34, F35"
+ },
+ {
+  "order": 8,
+  "stage": "Wait",
+  "touchpoint": "Delivery",
+  "persona": "All",
+  "sentiment": -1,
+  "now": "No guest tracking; cancellation by phone only, 59 SAR after dispatch",
+  "fix": "Order status page and WhatsApp updates",
+  "findings": "F37"
+ },
+ {
+  "order": 9,
+  "stage": "Own & support",
+  "touchpoint": "Warranty and repairs",
+  "persona": "Faisal, Abdullah",
+  "sentiment": -1,
+  "now": "Store warranty on own builds; brand agent for the rest; 79 SAR courier fee",
+  "fix": "Store-run warranty desk",
+  "findings": "F28, F29"
+ },
+ {
+  "order": 10,
+  "stage": "Return & rebuy",
+  "touchpoint": "Returns, loyalty, accessories",
+  "persona": "Reem, Sara",
+  "sentiment": -1,
+  "now": "Accessories can't be returned; loyalty is 1% with no stated expiry; no review requests",
+  "fix": "Returns portal, accessory bundles, review requests",
+  "findings": "F25, F38, F18"
+ }
+]
