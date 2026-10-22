@@ -31,3 +31,7 @@ pnpm build        # static site in owner-report/out/
 ```
 
 Report text lives in `owner-report/constants/audit.ts`; evidence images in `owner-report/public/evidence/`.
+
+## Landing page
+
+`landing/index.html` is the interactive hub with two audits: the brand audit (from the Pixilated FigJam board) and the website audit. Live: https://claude.ai/artifact/WL6b1V5NNtWqKPJ4mXTSuC (private until shared).

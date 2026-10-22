@@ -1,0 +1,1088 @@
+<title>تدقيق التكنولوجيا الذهبية</title>
+<script>document.documentElement.lang="ar";document.documentElement.dir="rtl";</script>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Readex+Pro:wght@500;600;700&display=swap">
+<style>
+/* Layout: two doors. A navy showroom hero opens onto two audits; each audit is its own view with a sticky chip bar. */
+:root {
+  --bg: #f3f4f7;
+  --surface: #ffffff;
+  --sunken: #e9ebf1;
+  --line: #dfe2ea;
+  --ink: #121a2e;
+  --muted: #5b5f6b;
+  --navy: #0b1533;
+  --navy-2: #16224a;
+  --on-navy: #f6f3ec;
+  --on-navy-muted: #b9bfcf;
+  --gold: #b8892b;
+  --gold-ink: #86621a;
+  --gold-hi: #e7c46e;
+  --gold-soft: #fbf5e6;
+  --good: #047857; --good-soft: #ecfdf5;
+  --warn: #b45309; --warn-soft: #fffbeb;
+  --bad: #be123c;  --bad-soft: #fff1f2;
+  --c-golden: #b8892b; --c-jarir: #d0202a; --c-extra: #1f5fbf; --c-amazon: #232f3e; --c-noon: #c9a400;
+  --shadow: 0 1px 2px rgb(18 26 46 / .05), 0 8px 22px -12px rgb(18 26 46 / .18);
+  --font-display: "Readex Pro", "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  --font-body: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  --r-lg: 22px; --r-md: 16px; --r-sm: 12px;
+  --sel: #0b1533; --on-sel: #f6f3ec; --sel-accent: #e7c46e;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a1124; --surface: #111a33; --sunken: #18233f; --line: #26324f;
+    --ink: #eef0f6; --muted: #a9b0c3;
+    --navy: #050b1d; --navy-2: #121c3c; --on-navy: #f6f3ec; --on-navy-muted: #b9bfcf;
+    --gold: #d9b45a; --gold-ink: #e7c46e; --gold-hi: #e7c46e; --gold-soft: rgb(231 196 110 / .12);
+    --good: #34d399; --good-soft: rgb(52 211 153 / .12);
+    --warn: #fbbf24; --warn-soft: rgb(251 191 36 / .12);
+    --bad: #fb7185; --bad-soft: rgb(251 113 133 / .12);
+    --c-golden: #e7c46e; --c-jarir: #f87171; --c-extra: #60a5fa; --c-amazon: #cbd5e1; --c-noon: #facc15;
+    --shadow: 0 1px 2px rgb(0 0 0 / .3), 0 10px 24px -12px rgb(0 0 0 / .6);
+    --sel: #e7c46e; --on-sel: #0b1533; --sel-accent: #0b1533;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0a1124; --surface: #111a33; --sunken: #18233f; --line: #26324f;
+  --ink: #eef0f6; --muted: #a9b0c3;
+  --navy: #050b1d; --navy-2: #121c3c; --on-navy: #f6f3ec; --on-navy-muted: #b9bfcf;
+  --gold: #d9b45a; --gold-ink: #e7c46e; --gold-hi: #e7c46e; --gold-soft: rgb(231 196 110 / .12);
+  --good: #34d399; --good-soft: rgb(52 211 153 / .12);
+  --warn: #fbbf24; --warn-soft: rgb(251 191 36 / .12);
+  --bad: #fb7185; --bad-soft: rgb(251 113 133 / .12);
+  --c-golden: #e7c46e; --c-jarir: #f87171; --c-extra: #60a5fa; --c-amazon: #cbd5e1; --c-noon: #facc15;
+  --shadow: 0 1px 2px rgb(0 0 0 / .3), 0 10px 24px -12px rgb(0 0 0 / .6);
+  --sel: #e7c46e; --on-sel: #0b1533; --sel-accent: #0b1533;
+    color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { direction: rtl; }
+.map, .gauge, .donut { direction: ltr; }
+html { font-size: 17px; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); line-height: 1.75; font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.3; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: var(--gold-ink); }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 8px; }
+.muted { color: var(--muted); }
+.num { font-variant-numeric: tabular-nums; }
+bdi { unicode-bidi: isolate; }
+
+/* ---------- top bar ---------- */
+.topbar { background: var(--navy); color: var(--on-navy); }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
+.brandmark { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+.brandmark .tile { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; background: var(--gold-hi); color: var(--navy); font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; }
+.brandmark b { font-family: var(--font-display); font-weight: 600; }
+.brandmark small { display: block; color: var(--on-navy-muted); font-size: .8rem; line-height: 1.2; }
+@media (max-width: 520px) { .brandmark small { display: none; } .brandmark b { font-size: .95rem; } .switch a { padding: 8px 11px; font-size: .86rem; } }
+.switch { display: flex; gap: 6px; background: rgb(255 255 255 / .06); padding: 4px; border-radius: 999px; }
+.switch a { color: var(--on-navy-muted); text-decoration: none; padding: 8px 14px; border-radius: 999px; font-weight: 600; font-size: .92rem; white-space: nowrap; min-height: 40px; display: inline-flex; align-items: center; }
+.switch a[aria-current="page"] { background: var(--gold-hi); color: var(--navy); }
+.switch a:hover:not([aria-current="page"]) { color: var(--on-navy); }
+
+/* ---------- hero (landing) ---------- */
+.hero { background: var(--navy); color: var(--on-navy); position: relative; overflow: hidden; }
+.hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(-55deg, rgb(231 196 110 / .10) 0 1px, transparent 1px 14px);
+  -webkit-mask-image: radial-gradient(90% 80% at 0% 0%, #000, transparent 65%);
+  mask-image: radial-gradient(90% 80% at 0% 0%, #000, transparent 65%);
+}
+.hero .wrap { position: relative; padding-block: 44px 120px; }
+.eyebrow { color: var(--on-navy-muted); font-size: .95rem; }
+.hero h1 { font-size: clamp(2rem, 5.2vw, 3.3rem); color: var(--gold-hi); margin-top: 8px; font-weight: 700; }
+.hero .lead { max-width: 40rem; font-size: 1.15rem; margin-top: 14px; color: var(--on-navy); }
+.rule { display: block; width: 76px; height: 7px; border-top: 2px solid var(--gold-hi); border-bottom: 1px solid var(--gold-hi); position: relative; margin-top: 18px; }
+.rule::after { content: ""; position: absolute; inset-inline-end: -10px; top: -2px; width: 7px; height: 7px; background: var(--gold-hi); transform: rotate(45deg); }
+.rule.on-light { border-color: var(--gold); }
+.rule.on-light::after { background: var(--gold); }
+
+.doors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: -86px; position: relative; }
+@media (max-width: 760px) { .doors { grid-template-columns: 1fr; } }
+.door {
+  display: flex; flex-direction: column; gap: 14px; text-decoration: none; color: var(--ink);
+  background: var(--surface); border-radius: var(--r-lg); padding: 26px; box-shadow: var(--shadow);
+  border: 1px solid var(--line); transition: transform .2s ease, border-color .2s ease;
+}
+.door:hover { transform: translateY(-3px); border-color: var(--gold); }
+.door .kicker { display: flex; align-items: center; gap: 10px; color: var(--gold-ink); font-weight: 600; }
+.door .kicker svg { width: 26px; height: 26px; }
+.door h2 { font-size: 1.6rem; }
+.door p { color: var(--muted); }
+.door .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: auto; }
+.fact { background: var(--sunken); border-radius: var(--r-sm); padding: 10px 12px; min-width: 0; }
+@media (max-width: 520px) { .fact span { font-size: .78rem; } .fact b { font-size: 1.2rem; } }
+.fact b { display: block; font-family: var(--font-display); font-size: 1.35rem; line-height: 1.1; }
+.fact span { font-size: .85rem; color: var(--muted); }
+.door .go { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--gold-ink); }
+.door .go::after { content: "←"; transition: transform .2s; }
+.door:hover .go::after { transform: translateX(-4px); }
+
+.bridge { margin-top: 28px; display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; background: var(--gold-soft); border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent); border-radius: var(--r-md); padding: 18px 20px; }
+.bridge .q { font-family: var(--font-display); font-size: 2.4rem; color: var(--gold); line-height: 1; }
+.bridge p b { color: var(--ink); }
+.landing-foot { padding-block: 34px 56px; color: var(--muted); font-size: .92rem; }
+
+/* ---------- views ---------- */
+.view-head { background: var(--navy); color: var(--on-navy); }
+.view-head .wrap { padding-block: 30px 34px; }
+.view-head h1 { color: var(--gold-hi); font-size: clamp(1.7rem, 4vw, 2.4rem); margin-top: 6px; }
+.view-head .lead { margin-top: 10px; max-width: 44rem; color: var(--on-navy); font-size: 1.05rem; }
+.promise { margin-top: 18px; display: inline-flex; flex-direction: column; gap: 2px; border-inline-start: 3px solid var(--gold-hi); padding-inline-start: 14px; }
+.promise b { font-family: var(--font-display); font-size: 1.2rem; color: var(--on-navy); }
+.promise span { color: var(--on-navy-muted); font-size: .92rem; direction: ltr; text-align: right; }
+
+.chips { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 94%, transparent); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+.chips .wrap { display: flex; gap: 8px; overflow-x: auto; padding-block: 10px; scrollbar-width: none; }
+.chips .wrap::-webkit-scrollbar { display: none; }
+.chips a { flex: 0 0 auto; text-decoration: none; color: var(--muted); font-weight: 600; font-size: .92rem; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); min-height: 40px; display: inline-flex; align-items: center; gap: 6px; }
+.chips a .n { color: var(--gold-ink); font-variant-numeric: tabular-nums; }
+.chips a.on { background: var(--sel); color: var(--on-sel); border-color: var(--sel); }
+.chips a.on .n { color: var(--sel-accent); }
+
+.sec { padding-block: 46px 10px; scroll-margin-top: 70px; }
+.sec-head { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 20px; }
+.sec-head .ico { flex: 0 0 auto; width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: var(--gold-soft); color: var(--gold-ink); border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent); }
+.sec-head .ico svg { width: 24px; height: 24px; }
+.sec-head small { color: var(--gold-ink); font-weight: 600; font-size: .88rem; }
+.sec-head h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); }
+.sec-head p { color: var(--muted); margin-top: 6px; max-width: 46rem; }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px; box-shadow: var(--shadow); min-width: 0; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 860px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+.stack { display: grid; gap: 16px; }
+.label { font-weight: 700; color: var(--gold-ink); font-size: .92rem; }
+.note { color: var(--muted); font-size: .92rem; }
+.hypo { display: inline-flex; align-items: center; gap: 6px; font-size: .82rem; font-weight: 600; color: var(--warn); background: var(--warn-soft); border-radius: 999px; padding: 2px 10px; }
+
+/* segmented tabs */
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.tab { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 8px 16px; min-height: 44px; cursor: pointer; font-weight: 600; color: var(--muted); display: inline-flex; align-items: center; gap: 8px; }
+.tab[aria-selected="true"] { background: var(--sel); border-color: var(--sel); color: var(--on-sel); }
+.tab .dot { width: 10px; height: 10px; border-radius: 50%; }
+.panel { margin-top: 16px; }
+
+/* insight */
+.insight { background: var(--navy); color: var(--on-navy); border-radius: var(--r-lg); padding: 24px; }
+.insight .label { color: var(--gold-hi); }
+.insight p { margin-top: 8px; font-size: 1.08rem; }
+.insight p + p { color: var(--on-navy-muted); font-size: 1rem; }
+
+/* tables */
+.tbl { width: 100%; border-collapse: collapse; }
+.tbl th, .tbl td { text-align: start; padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.tbl th { color: var(--muted); font-weight: 600; font-size: .9rem; }
+.tbl td:first-child { font-weight: 700; white-space: nowrap; }
+.tbl tr:last-child td { border-bottom: 0; }
+
+/* swot */
+.swot { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 640px) { .swot { grid-template-columns: 1fr; } }
+.quad { border-radius: var(--r-md); padding: 16px; min-width: 0; }
+.quad h4 { font-size: 1rem; display: flex; align-items: center; gap: 8px; }
+.quad h4 span { font-family: var(--font-body); font-weight: 500; color: var(--muted); font-size: .85rem; }
+.quad ul { margin: 8px 0 0; padding-inline-start: 18px; }
+.quad li + li { margin-top: 6px; }
+.q-s { background: var(--good-soft); } .q-s h4 { color: var(--good); }
+.q-w { background: var(--warn-soft); } .q-w h4 { color: var(--warn); }
+.q-o { background: var(--gold-soft); } .q-o h4 { color: var(--gold-ink); }
+.q-t { background: var(--bad-soft); } .q-t h4 { color: var(--bad); }
+.comp-meta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
+.pill { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 3px 12px; font-size: .85rem; font-weight: 600; background: var(--sunken); color: var(--ink); }
+
+/* maps */
+.map-wrap { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+@media (max-width: 860px) { .map-wrap { grid-template-columns: 1fr; } }
+.map { width: 100%; height: auto; display: block; }
+.map .axis { stroke: var(--ink); stroke-width: 1.6; }
+.map .axis-label { fill: var(--muted); font-size: 13.5px; font-family: var(--font-body); }
+.map .axis-title { fill: var(--ink); font-size: 14px; font-weight: 700; font-family: var(--font-display); }
+.map .target { fill: var(--gold-soft); stroke: var(--gold); stroke-dasharray: 5 5; stroke-width: 1.4; opacity: 0; transition: opacity .3s; }
+.map.show-target .target { opacity: 1; }
+.map .move { stroke: var(--gold); stroke-width: 2; fill: none; marker-end: url(#arrow); opacity: 0; transition: opacity .3s; }
+.map.show-target .move { opacity: 1; }
+.map .brand { cursor: pointer; outline: none; }
+.map .brand:focus-visible circle { stroke: var(--gold); stroke-width: 4; }
+.map .brand circle { stroke: var(--surface); stroke-width: 2.5; transition: r .15s; }
+.map .brand text { font-size: 14px; font-weight: 700; fill: var(--ink); font-family: var(--font-body); paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; }
+.map .brand:hover circle, .map .brand.sel circle { r: 13; }
+.map .brand.sel text { fill: var(--gold-ink); }
+.map .seg rect { fill: var(--sunken); stroke: var(--line); }
+.map .seg text { font-size: 11.5px; fill: var(--muted); font-family: var(--font-body); }
+.map .ring { fill: none; stroke: var(--gold); stroke-width: 2; }
+.toggle { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 600; min-height: 44px; }
+.toggle input { width: 20px; height: 20px; accent-color: var(--gold); }
+.reading dt { font-weight: 700; color: var(--gold-ink); margin-top: 12px; }
+.reading dt:first-child { margin-top: 0; }
+.reading dd { margin: 4px 0 0; }
+.today-target { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center; margin-bottom: 14px; }
+.today-target div { background: var(--sunken); border-radius: var(--r-sm); padding: 10px 12px; font-size: .92rem; min-width: 0; }
+.today-target div:last-child { background: var(--gold-soft); }
+.today-target small { display: block; color: var(--muted); font-size: .8rem; }
+.today-target .arrow { color: var(--gold); font-size: 1.3rem; }
+
+/* accordions */
+details.acc { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); }
+details.acc + details.acc { margin-top: 10px; }
+details.acc > summary { list-style: none; cursor: pointer; padding: 16px 18px; display: flex; align-items: center; gap: 12px; font-weight: 700; min-height: 56px; }
+details.acc > summary::-webkit-details-marker { display: none; }
+details.acc > summary .idx { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--navy); color: var(--gold-hi); font-family: var(--font-display); flex: 0 0 auto; }
+details.acc > summary .chev { margin-inline-start: auto; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--gold-soft); color: var(--gold-ink); transition: transform .2s; flex: 0 0 auto; }
+details.acc[open] > summary .chev { transform: rotate(180deg); }
+details.acc > .body { padding: 0 18px 18px; display: grid; gap: 10px; }
+details.acc > .body .label { margin-top: 4px; }
+
+/* archetype */
+.arch { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 22px; align-items: center; }
+@media (max-width: 640px) { .arch { grid-template-columns: 1fr; justify-items: center; } }
+.donut path { cursor: pointer; transition: opacity .2s; }
+.donut path.dim { opacity: .35; }
+.donut text { font-family: var(--font-display); fill: var(--ink); }
+.arch-detail h3 { font-size: 1.3rem; }
+.arch-detail ul { margin: 8px 0 0; padding-inline-start: 18px; }
+
+/* sliders */
+.slider { display: grid; gap: 6px; padding-block: 14px; border-bottom: 1px solid var(--line); }
+.slider:last-child { border-bottom: 0; }
+.slider .ends { display: flex; justify-content: space-between; font-weight: 700; gap: 10px; }
+.slider .ends span:last-child { color: var(--muted); font-weight: 500; }
+.track { position: relative; height: 10px; border-radius: 999px; background: var(--sunken); }
+.track i { position: absolute; inset-block: 0; inset-inline-start: 0; border-radius: 999px; background: var(--gold); }
+.track b { position: absolute; top: 50%; width: 22px; height: 22px; border-radius: 50%; background: var(--navy); border: 3px solid var(--gold-hi); transform: translate(50%, -50%); }
+
+/* values */
+.values { display: grid; gap: 10px; }
+.value { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); cursor: pointer; text-align: start; width: 100%; }
+.value .rank { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); background: var(--sunken); color: var(--gold-ink); font-weight: 700; }
+.value[aria-pressed="true"] { border-color: var(--gold); background: var(--gold-soft); }
+.value[aria-pressed="true"] .rank { background: var(--sel); color: var(--on-sel); }
+.value small { display: block; color: var(--muted); font-size: .85rem; direction: ltr; text-align: right; }
+.value .role { color: var(--muted); font-size: .92rem; text-align: end; }
+@media (max-width: 640px) { .value { grid-template-columns: auto 1fr; } .value .role { grid-column: 2; text-align: start; } }
+
+.word-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.word { border-radius: 999px; padding: 6px 14px; font-weight: 600; background: var(--sunken); }
+.word.good { background: var(--good-soft); color: var(--good); }
+.word.nice { background: var(--gold-soft); color: var(--gold-ink); }
+.word.never { background: var(--bad-soft); color: var(--bad); text-decoration: line-through; text-decoration-thickness: 1.5px; }
+
+.emotions { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 860px) { .emotions { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.emo { border: 1px solid var(--line); background: var(--surface); border-radius: var(--r-md); padding: 14px; cursor: pointer; text-align: start; min-height: 96px; display: grid; gap: 4px; align-content: start; }
+.emo b { font-family: var(--font-display); font-size: 1.05rem; }
+.emo small { color: var(--muted); direction: ltr; text-align: right; }
+.emo[aria-pressed="true"] { border-color: var(--gold); background: var(--gold-soft); }
+.outcome { text-align: center; padding: 30px 20px; }
+.outcome small { color: var(--on-navy-muted); }
+.outcome p { font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2.2rem); color: var(--gold-hi); margin-top: 6px; }
+
+/* website */
+.score-card { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 24px; align-items: center; }
+@media (max-width: 760px) { .score-card { grid-template-columns: 1fr; } }
+.gauge { width: 100%; max-width: 240px; margin: 0 auto; display: block; }
+.gauge text { font-family: var(--font-display); fill: var(--ink); }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 520px) { .stats { grid-template-columns: 1fr; } }
+.stat { background: var(--sunken); border-radius: var(--r-md); padding: 14px; }
+.stat b { font-family: var(--font-display); font-size: 1.9rem; line-height: 1; display: block; }
+.stat.good b { color: var(--good); } .stat.bad b { color: var(--bad); } .stat.warn b { color: var(--warn); }
+.bars { display: grid; gap: 10px; }
+.bar-row { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr) 3rem; gap: 12px; align-items: center; }
+@media (max-width: 560px) { .bar-row { grid-template-columns: minmax(0, 1fr) 3rem; } .bar-row .track { grid-column: 1 / -1; } }
+.bar-row .track i { transition: width .5s ease; }
+.bar-row .v { font-weight: 700; text-align: end; font-variant-numeric: tabular-nums; }
+.t-good i { background: var(--good); } .t-warn i { background: var(--warn); } .t-bad i { background: var(--bad); }
+.v.t-good { color: var(--good); } .v.t-warn { color: var(--warn); } .v.t-bad { color: var(--bad); }
+.urg { font-size: .8rem; font-weight: 700; border-radius: 999px; padding: 2px 10px; }
+.urg.bad { background: var(--bad-soft); color: var(--bad); } .urg.warn { background: var(--warn-soft); color: var(--warn); }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 999px; font-weight: 700; text-decoration: none; }
+.btn.primary { background: var(--gold-hi); color: #0b1533; }
+.btn.ghost { border: 1px solid color-mix(in srgb, var(--on-navy) 35%, transparent); color: var(--on-navy); }
+.btn.dark { background: var(--navy); color: var(--on-navy); }
+.btn.line { border: 1px solid var(--line); color: var(--ink); background: var(--surface); }
+.phase-panel ul { margin: 10px 0 0; padding-inline-start: 18px; }
+.foot { padding-block: 40px 60px; color: var(--muted); font-size: .9rem; }
+</style>
+
+<!-- icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></symbol>
+    <symbol id="i-web" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 18v3"/></symbol>
+    <symbol id="i-store" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l1.5-5h13L20 9M4 9h16v11H4zM9 20v-6h6v6"/></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 5a3 3 0 010 6M18 14c2 .7 3 2.8 3 6"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M5 7l-3 7h6zM19 7l-3 7h6zM8 21h8"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/><circle cx="16.5" cy="7.5" r="2"/><circle cx="7.5" cy="15" r="1.6"/></symbol>
+    <symbol id="i-mask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v6a8 8 0 01-16 0z"/><path d="M8.5 10h.01M15.5 10h.01M9 14.5c1.7 1.3 4.3 1.3 6 0"/></symbol>
+    <symbol id="i-gem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l3 6-9 12L3 9z"/><path d="M3 9h18M9 3l3 18 3-18"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></symbol>
+    <symbol id="i-pillar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21h16M5 18h14M6 18V8M10 18V8M14 18V8M18 18V8M3 8l9-5 9 5z"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a8 8 0 1116 0"/><path d="M12 17l4-5"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".6"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0012 3z"/></symbol>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brandmark" href="#top" data-go="home">
+      <span class="tile">ذ</span>
+      <span><b>التكنولوجيا الذهبية</b><small>إعداد <bdi>Pixilated Studio</bdi></small></span>
+    </a>
+    <nav class="switch" aria-label="المراجعات">
+      <a href="#brand" data-go="brand">العلامة التجارية</a>
+      <a href="#website" data-go="website">الموقع</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== LANDING ===================== -->
+<main id="view-home" data-view="home">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">مراجعتان لمتجر واحد · الرياض</p>
+      <h1>تدقيق التكنولوجيا الذهبية</h1>
+      <span class="rule"></span>
+      <p class="lead">من هي الذهبية، ولمن تبيع، وأين تقف أمام جرير وإكسترا وأمازون ونون. ثم كيف يعيش الزبون هذا كله على الموقع، من إعلان جوجل حتى الدفع.</p>
+    </div>
+  </section>
+  <div class="wrap">
+    <div class="doors">
+      <a class="door" href="#brand" data-go="brand">
+        <span class="kicker"><svg aria-hidden="true"><use href="#i-brand"/></svg>المراجعة الأولى</span>
+        <h2>مراجعة العلامة التجارية</h2>
+        <p>الشركة ونموذج عملها، والجمهور، والمنافسون، وخرائط التموضع، والشخصية والقيم والمشاعر، وركائز المحتوى.</p>
+        <div class="facts">
+          <div class="fact"><b class="num">4</b><span>منافسين بتحليل SWOT</span></div>
+          <div class="fact"><b class="num">3</b><span>خرائط تموضع</span></div>
+          <div class="fact"><b class="num">5</b><span>ركائز محتوى</span></div>
+        </div>
+        <span class="go">افتح المراجعة</span>
+      </a>
+      <a class="door" href="#website" data-go="website">
+        <span class="kicker"><svg aria-hidden="true"><use href="#i-web"/></svg>المراجعة الثانية</span>
+        <h2>مراجعة الموقع الإلكتروني</h2>
+        <p>جرّبنا الشراء من <bdi>goldentech.com.sa</bdi> كأننا زبون يريد جهاز ألعاب، من إعلان جوجل حتى الدفع، وصوّرنا كل خطوة.</p>
+        <div class="facts">
+          <div class="fact"><b class="num">48<small style="font-size:.8rem;color:var(--muted)"> من 100</small></b><span>درجة الموقع</span></div>
+          <div class="fact"><b class="num">8</b><span>أمور للإصلاح</span></div>
+          <div class="fact"><b class="num">12</b><span>نقطة قوة</span></div>
+        </div>
+        <span class="go">افتح المراجعة</span>
+      </a>
+    </div>
+    <div class="bridge">
+      <span class="q" aria-hidden="true">”</span>
+      <p>العلامة تعد الزبون بـ<b>«خلّي كل قرار تقني قرارًا واثقًا»</b>. والموقع اليوم يعطي وعدين مختلفين عن التوصيل، وأرقاماً في السلة تربك الزبون. المراجعتان تقرآن معاً: الأولى تقول ماذا نَعِد، والثانية تُظهر أين يُكسر الوعد.</p>
+    </div>
+    <p class="landing-foot">إعداد <bdi>Pixilated Studio</bdi>. مراجعة الموقع بتاريخ 22 أكتوبر 2026. خرائط التموضع وتحليل المنافسين فرضيات عمل تحتاج تأكيداً من بيانات العملاء.</p>
+  </div>
+</main>
+
+<!-- ===================== BRAND AUDIT ===================== -->
+<main id="view-brand" data-view="brand" hidden>
+  <section class="view-head">
+    <div class="wrap">
+      <p class="eyebrow">المراجعة الأولى</p>
+      <h1>مراجعة العلامة التجارية</h1>
+      <p class="lead">ليست الذهبية علامة تصنع الأجهزة، بل متجر يربط الناس بالتقنية. لذلك قيمتها في سبب اختيار الزبون الشراء منها هي، لا في مواصفات الجهاز وحده.</p>
+      <div class="promise"><b>نجعل التقنية أسهل في الفهم والاختيار وأكثر جدارة بالثقة.</b><span>We make technology easier to understand, choose, and trust.</span></div>
+    </div>
+  </section>
+  <nav class="chips" aria-label="أقسام مراجعة العلامة">
+    <div class="wrap">
+      <a href="#b-company" data-chip><span class="n">1</span>الشركة</a>
+      <a href="#b-audience" data-chip><span class="n">2</span>الجمهور</a>
+      <a href="#b-competitors" data-chip><span class="n">3</span>المنافسون</a>
+      <a href="#b-position" data-chip><span class="n">4</span>التموضع</a>
+      <a href="#b-gaps" data-chip><span class="n">5</span>الفجوات والاتجاهات</a>
+      <a href="#b-personality" data-chip><span class="n">6</span>الشخصية</a>
+      <a href="#b-values" data-chip><span class="n">7</span>القيم والمشاعر</a>
+      <a href="#b-pillars" data-chip><span class="n">8</span>ركائز المحتوى</a>
+    </div>
+  </nav>
+  <div class="wrap">
+
+    <section class="sec" id="b-company">
+      <div class="sec-head"><span class="ico"><svg><use href="#i-store"/></svg></span><div><small>1 من 8</small><h2>من هي الذهبية</h2><p>تأسست في الرياض عام 2009، وتعمل بقسمين: البيع بالتجزئة (المعارض في الرياض والموقع الإلكتروني) والبيع بالجملة على المستوى المحلي.</p></div></div>
+      <div class="grid-2">
+        <div class="insight">
+          <span class="label">أهم نقطة لفهم الشركة</span>
+          <p>هي ليست علامة تجارية تصنع اللابتوبات بنفسها، بل تعمل في تجارة وتوزيع منتجات علامات تقنية عالمية، وتربط بين المنتجات والمشترين عبر قنوات البيع.</p>
+          <p>قيمة الشركة لا تأتي من مواصفات الجهاز وحدها، بل أيضاً من سبب اختيار العميل الشراء منها بدلاً من متجر آخر يبيع الجهاز نفسه.</p>
+        </div>
+        <div class="card">
+          <span class="label">نموذج العمل: اختاروا قناة</span>
+          <div class="tabs" role="tablist" data-tabs="channels" style="margin-top:10px"></div>
+          <div class="panel" data-panel="channels"></div>
+          <p class="note" style="margin-top:14px">وجود البيع بالتجزئة والجملة مدعوم بملف الشركة؛ أما حجم الإيرادات ونسبة كل مسار في المبيعات فلا تتوافر عنها بيانات موثقة.</p>
+        </div>
+      </div>
+      <div class="grid-3" style="margin-top:18px" id="products"></div>
+      <div class="card" style="margin-top:18px">
+        <span class="label">استنتاج استراتيجي</span>
+        <p style="margin-top:6px">تعدد قنوات البيع فرصة للشركة، لكنه يفرض تحدياً في توحيد تجربة العميل؛ فالمشتري الفردي يحتاج إلى سهولة الاختيار والسعر والضمان، بينما تحتاج الشركة التي تشتري بالجملة إلى التوريد الموثوق والتوافق مع احتياجاتها وخدمة ما بعد البيع.</p>
+      </div>
+    </section>
+
+    <section class="sec" id="b-audience">
+      <div class="sec-head"><span class="ico"><svg><use href="#i-people"/></svg></span><div><small>2 من 8</small><h2>من هم العملاء المستهدفون</h2><p>ليس كل من يشتري لابتوباً جمهوراً واحداً. أربع شرائح، لكل واحدة ما يهمها وفرصة مختلفة للذهبية.</p></div></div>
+      <div class="card">
+        <div class="tabs" role="tablist" data-tabs="segments"></div>
+        <div class="panel grid-2" data-panel="segments"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="b-competitors">
+      <div class="sec-head"><span class="ico"><svg><use href="#i-scale"/></svg></span><div><small>3 من 8</small><h2>المنافسون وتحليل SWOT</h2><p>اختاروا متجراً لترَوا نقاط قوته وضعفه والفرص والتهديدات أمامه.</p></div></div>
+      <div class="card">
+        <div class="tabs" role="tablist" data-tabs="swot"></div>
+        <div class="panel" data-panel="swot"></div>
+      </div>
+      <div class="insight" style="margin-top:18px">
+        <span class="label">التحدي الاستراتيجي</span>
+        <p>لماذا أشتري هذا الجهاز من الذهبية تحديداً، وليس من جرير أو أمازون أو متجر آخر؟</p>
+        <p>الإجابة قد تكون السعر، أو التخصص التقني، أو التوفر، أو التوصية المناسبة، أو الضمان والخدمة. لكن لا يمكن اعتماد أي منها كميزة تنافسية مؤكدة قبل مقارنتها فعلياً مع المنافسين.</p>
+      </div>
+    </section>
+
+    <section class="sec" id="b-position">
+      <div class="sec-head"><span class="ico"><svg><use href="#i-map"/></svg></span><div><small>4 من 8</small><h2>خرائط التموضع</h2><p>ثلاث خرائط تضع الذهبية بين منافسيها. اضغطوا على أي متجر لقراءة موقعه، وفعّلوا «أظهر الهدف» لترَوا إلى أين نقترح أن تتحرك.</p></div></div>
+      <div class="card">
+        <div class="tabs" role="tablist" data-tabs="maps"></div>
+        <div class="panel" data-panel="maps"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="b-gaps">
+      <div class="sec-head"><span class="ico"><svg><use href="#i-flag"/></svg></span><div><small>5 من 8</small><h2>الفجوات والاتجاهات</h2><p>تقييم أولي للهوية، ثم أربع فرضيات نختبرها بدل افتراض وجود مشكلات، ثم ثلاثة اتجاهات تموضع تستحق الاختبار.</p></div></div>
+      <div class="grid-2">
+        <div class="card">
+          <span class="label">التقييم الأولي للهوية والتموضع</span>
+          <table class="tbl" style="margin-top:6px"><thead><tr><th>البعد</th><th>الملاحظة الأولية</th></tr></thead><tbody id="assess"></tbody></table>
+        </div>
+        <div>
+          <span class="label">أربع فرضيات نختبرها</span>
+          <div id="hypos" style="margin-top:10px"></div>
+        </div>
+      </div>
+      <div style="margin-top:22px">
+        <span class="label">ثلاثة اتجاهات تموضع تستحق الاختبار</span>
+        <p class="note" style="margin-top:4px">لا ننصح بالبدء بشعار جديد أو تغيير الألوان قبل حسم السؤال الأهم: ما القيمة التي تريد الذهبية أن تشتهر بها؟</p>
+        <div class="grid-3" id="directions" style="margin-top:12px"></div>
+        <p class="note" style="margin-top:10px">هذه اتجاهات مقترحة وليست تموضعاً نهائياً. يُختار الاتجاه بناءً على احتياجات العملاء، وأداء الشركة، وقدراتها الفعلية، والفجوات الموجودة لدى المنافسين.</p>
+      </div>
+    </section>
+
+    <section class="sec" id="b-personality">
+      <div class="sec-head"><span class="ico"><svg><use href="#i-mask"/></svg></span><div><small>6 من 8</small><h2>شخصية العلامة</h2><p>نموذج الشخصية الأساسي والثانوي، ونبرة الصوت، وما يجب أن تكون عليه العلامة وما لا يجب.</p></div></div>
+      <div class="grid-2">
+        <div class="card">
+          <span class="label">النموذج الشخصي (Archetype): اضغطوا على الجزء</span>
+          <div class="arch" style="margin-top:12px">
+            <svg class="donut" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="الحكيم 70 بالمئة، القريب من الناس 30 بالمئة" id="donut"></svg>
+            <div class="arch-detail" id="arch-detail"></div>
+          </div>
+        </div>
+        <div class="card">
+          <span class="label">نبرة الصوت</span>
+          <div id="sliders"></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:18px">
+        <div class="tabs" role="tablist" data-tabs="traits"></div>
+        <div class="panel" data-panel="traits"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="b-values">
+      <div class="sec-head"><span class="ico"><svg><use href="#i-gem"/></svg></span><div><small>7 من 8</small><h2>القيم والمشاعر</h2><p>القيم تشرح كيف يجب أن تعمل الذهبية، والمشاعر تشرح ما يجب أن يشعر به الزبون عند التعامل معها.</p></div></div>
+      <div class="grid-2">
+        <div>
+          <span class="label">القيم مرتبة حسب الأولوية</span>
+          <div class="values" id="values" style="margin-top:10px"></div>
+        </div>
+        <div class="card">
+          <span class="label">قيم لا ننصح بتبنيها</span>
+          <div id="not-values" class="stack" style="margin-top:10px"></div>
+        </div>
+      </div>
+      <div style="margin-top:26px">
+        <span class="label">المشاعر التي يجب أن تصل للجمهور: اضغطوا على شعور</span>
+        <div class="emotions" id="emotions" style="margin-top:10px"></div>
+        <div class="card" id="emo-detail" style="margin-top:12px"></div>
+      </div>
+      <div class="grid-2" style="margin-top:18px">
+        <div class="card">
+          <span class="label">مشاعر لا نريد أن يربطها الجمهور بالذهبية</span>
+          <div id="avoid" class="stack" style="margin-top:10px"></div>
+        </div>
+        <div class="insight outcome">
+          <small>الأثر العاطفي للعلامة · Brand Emotional Outcome</small>
+          <p>خلّي كل قرار تقني قرارًا واثقًا.</p>
+          <p style="font-family:var(--font-body);font-size:.92rem;color:var(--on-navy-muted);margin-top:12px">هذه هي الاستجابة العاطفية التي نريد بناءها، وليست ادعاءً بأن الجمهور يشعر بها اليوم. حتى تصبح حقيقة، يجب أن تظهر في المحتوى، وخدمة العملاء، ووضوح المعلومات، وتجربة الشراء الفعلية.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="b-pillars">
+      <div class="sec-head"><span class="ico"><svg><use href="#i-pillar"/></svg></span><div><small>8 من 8</small><h2>ركائز المحتوى</h2><p>خمس ركائز، لكل واحدة فكرة ورسالة ومواضيع وهدف عاطفي. الأولى هي الركيزة الأساسية.</p></div></div>
+      <div id="pillars"></div>
+      <div class="cta-row">
+        <a class="btn dark" href="#website" data-go="website">انتقلوا إلى مراجعة الموقع ←</a>
+      </div>
+    </section>
+    <p class="foot">المصدر: لوحة مراجعة العلامة من <bdi>Pixilated Studio</bdi>. مواقع الذهبية وجرير وإكسترا مبنية على مراجعة صفحاتهم، وأمازون ونون من معرفة السوق العامة؛ كلها فرضيات عمل تحتاج تأكيداً.</p>
+  </div>
+</main>
+
+<!-- ===================== WEBSITE AUDIT ===================== -->
+<main id="view-website" data-view="website" hidden>
+  <section class="view-head">
+    <div class="wrap">
+      <p class="eyebrow">المراجعة الثانية · 22 أكتوبر 2026</p>
+      <h1>مراجعة الموقع الإلكتروني</h1>
+      <p class="lead">موقعكم قوي في عرض المنتجات وفي البحث. أكثر ما يُقلق الزبون أمران: وعود التوصيل والإرجاع تختلف من صفحة لأخرى، وخطوة الدفع غير واضحة.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://claude.ai/artifact/QKChBZqPJg53PdwVUbLFmg" target="_blank" rel="noopener">التقرير الكامل بالصور والمصادر</a>
+        <a class="btn ghost" href="https://claude.ai/artifact/Qou2KRNnrgkXdYrGbMPXqg" target="_blank" rel="noopener">لوحة الفريق التفصيلية</a>
+      </div>
+    </div>
+  </section>
+  <nav class="chips" aria-label="أقسام مراجعة الموقع">
+    <div class="wrap">
+      <a href="#w-score" data-chip><span class="n">1</span>الدرجة</a>
+      <a href="#w-areas" data-chip><span class="n">2</span>أجزاء الموقع</a>
+      <a href="#w-fixes" data-chip><span class="n">3</span>أهم 8 أمور</a>
+      <a href="#w-plan" data-chip><span class="n">4</span>خطة العمل</a>
+    </div>
+  </nav>
+  <div class="wrap">
+    <section class="sec" id="w-score">
+      <div class="sec-head"><span class="ico"><svg><use href="#i-gauge"/></svg></span><div><small>1 من 4</small><h2>درجة الموقع</h2><p>قسنا 110 نقطة، لكل نقطة وزن حسب تأثيرها على البيع.</p></div></div>
+      <div class="card score-card">
+        <svg class="gauge" viewBox="0 0 200 128" role="img" aria-label="درجة الموقع 48 من 100" id="gauge"></svg>
+        <div>
+          <div class="stats">
+            <div class="stat good"><b class="num">12</b><span>نقطة قوة يتقنها الموقع</span></div>
+            <div class="stat bad"><b class="num">2</b><span>ملاحظات عاجلة</span></div>
+            <div class="stat warn"><b class="num">6</b><span>ملاحظات مهمة</span></div>
+          </div>
+          <p class="note" style="margin-top:12px">أساس جيد نبني عليه. الأحمر أقل من 40، والبرتقالي من 40 إلى 69، والأخضر 70 فأكثر.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="w-areas">
+      <div class="sec-head"><span class="ico"><svg><use href="#i-list"/></svg></span><div><small>2 من 4</small><h2>درجة كل جزء من الموقع</h2><p>عشرة أجزاء، كل رقم من 100.</p></div></div>
+      <div class="card">
+        <div class="tabs" role="tablist" data-tabs="sort"></div>
+        <div class="bars panel" id="bars"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="w-fixes">
+      <div class="sec-head"><span class="ico"><svg><use href="#i-flag"/></svg></span><div><small>3 من 4</small><h2>أهم 8 أمور للإصلاح</h2><p>مرتّبة من الأهم. اضغطوا على أي سطر لترَوا ما يراه الزبون والحل. الصور والمصادر في التقرير الكامل.</p></div></div>
+      <div id="fixes"></div>
+    </section>
+
+    <section class="sec" id="w-plan">
+      <div class="sec-head"><span class="ico"><svg><use href="#i-target"/></svg></span><div><small>4 من 4</small><h2>خطة العمل</h2><p>نبدأ بتصحيح ما يقرؤه الزبون قبل أي تصميم جديد، لأنه الأسرع أثراً.</p></div></div>
+      <div class="card">
+        <div class="tabs" role="tablist" data-tabs="phases"></div>
+        <div class="panel phase-panel" data-panel="phases"></div>
+      </div>
+      <div class="cta-row">
+        <a class="btn dark" href="https://claude.ai/artifact/QKChBZqPJg53PdwVUbLFmg" target="_blank" rel="noopener">اقرأ التقرير الكامل</a>
+        <a class="btn line" href="#brand" data-go="brand">→ مراجعة العلامة التجارية</a>
+      </div>
+    </section>
+    <p class="foot">إعداد <bdi>Pixilated Studio</bdi>. الأرقام عن سلوك الزبائن من معهد بايمارد (Baymard). لم نختبر الموقع على الجوال بعد، ولا الدفع عبر Apple Pay في متصفح Safari.</p>
+  </div>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+
+  /* ---------------- data: brand audit (from the Pixilated brand board) ---------------- */
+  var CHANNELS = [
+    { k: "B2C", t: "بيع المنتجات للأفراد، مثل الطلاب والموظفين واللاعبين." },
+    { k: "B2B", t: "توريد الأجهزة والمنتجات للشركات والمؤسسات." },
+    { k: "الجملة", t: "تزويد تجار أو جهات أخرى بالمنتجات." },
+    { k: "التجارة الإلكترونية", t: "الوصول إلى العملاء وعرض المنتجات وإتمام عمليات الشراء عبر الموقع." }
+  ];
+  var PRODUCTS = [
+    { h: "أجهزة اللابتوب والكمبيوتر", t: "أجهزة للاستخدام اليومي والدراسة والأعمال، إلى جانب خيارات للألعاب والاستخدامات التي تحتاج إلى أداء أعلى." },
+    { h: "أجهزة الألعاب والأداء العالي", t: "تستهدف مستخدمين يهتمون بكرت الشاشة والمعالج والذاكرة والأداء، وليس السعر وحده." },
+    { h: "الطابعات والملحقات والأجهزة المكتبية", t: "فئات مرتبطة باستخدام الكمبيوتر في المنزل والعمل، ويمكن أن تفتح فرصاً لزيادة قيمة الطلب من خلال شراء منتجات متكاملة." }
+  ];
+  var SEGMENTS = [
+    { k: "الطلاب والأفراد", care: "السعر المناسب، الأداء الكافي للاستخدام، سهولة المقارنة، والضمان.", opp: "تسهيل اختيار الجهاز حسب الميزانية والاستخدام بدلاً من ترك العميل أمام قائمة طويلة من المواصفات." },
+    { k: "اللاعبون وصناع المحتوى والمصممون", care: "أداء المعالج وكرت الشاشة والتبريد والشاشة والسعر مقابل الأداء.", opp: "مقارنات تقنية واضحة وتوصيات بحسب الألعاب والبرامج التي يستخدمها العميل." },
+    { k: "الموظفون وأصحاب الأعمال الصغيرة", care: "الاعتمادية، عمر الجهاز، سهولة الاستخدام، والضمان.", opp: "تجميع خيارات مناسبة للعمل المكتبي والتنقل والاجتماعات ضمن فئات واضحة." },
+    { k: "الشركات والمؤسسات", care: "كميات التوريد، توافق الأجهزة، الأسعار المؤسسية، توفر المنتجات، وخدمة ما بعد البيع.", opp: "تقديم حلول توريد متكاملة وعلاقات طويلة الأمد بدلاً من المنافسة على سعر القطعة فقط." }
+  ];
+  var BRANDS = {
+    golden: { name: "التكنولوجيا الذهبية", color: "var(--c-golden)" },
+    jarir: { name: "جرير", color: "var(--c-jarir)" },
+    extra: { name: "إكسترا", color: "var(--c-extra)" },
+    amazon: { name: "أمازون", color: "var(--c-amazon)" },
+    noon: { name: "نون", color: "var(--c-noon)" }
+  };
+  var SWOT = {
+    golden: { type: "متجرنا", site: "goldentech.com.sa", about: "",
+      s: ["تنوع المنتجات: وجود خيارات متعددة من اللابتوبات والفئات التقنية يتيح خدمة احتياجات مختلفة.", "إمكانية المقارنة التقنية: عرض المواصفات والأسعار يساعد العملاء الذين يعرفون احتياجاتهم على تقييم المنتجات.", "قناة بيع رقمية: الموقع يوفر قناة للبيع والوصول إلى العملاء دون الاعتماد حصرياً على المتاجر التقليدية.", "خدمة أكثر من شريحة: طبيعة تجارة الأجهزة تتيح استهداف الأفراد والشركات، مع ضرورة التحقق من حجم كل قطاع فعلياً."],
+      w: ["احتمال ضعف التمايز: إذا كان عرض العلامة يعتمد أساساً على المنتجات والأسعار، فقد يصعب تمييزها عن المتاجر التي تبيع الأجهزة نفسها.", "تعقيد اختيار المنتج: كثرة الخيارات والمواصفات قد تزيد الجهد المطلوب من العميل غير المتخصص.", "عدم وضوح ميزة تنافسية مثبتة: نحتاج إلى أدلة تثبت ما الذي يجعل تجربة الذهبية مختلفة عن المنافسين.", "تقييم خدمات ما بعد البيع: لا تتوفر بيانات كافية للحكم على مستوى الضمان والإرجاع والدعم مقارنة بالمنافسين."],
+      o: ["البيع الاستشاري: تجربة تساعد العميل على اختيار الجهاز حسب الاستخدام والميزانية بدلاً من الاكتفاء بعرض المواصفات.", "التخصص في فئات واضحة: مثل أجهزة الأعمال أو الألعاب أو التصميم، إذا أثبتت بيانات الطلب جدوى ذلك.", "تطوير قطاع الشركات B2B: اختبار فرص توريد الأجهزة والملحقات وحلول التقنية للمؤسسات.", "بناء محتوى تقني: مقارنات ومراجعات وأدلة شراء تساعد في جذب العملاء وبناء الثقة.", "تحسين تجربة ما قبل الشراء وبعده: عبر أدوات المقارنة وتوضيح الضمان وخيارات التواصل والخدمة."],
+      t: ["المنافسة السعرية: يستطيع العملاء مقارنة المنتج نفسه بين عدة متاجر بسهولة.", "قوة المنافسين في التجربة والخدمات: لدى إكسترا مثلاً خيارات معلنة مثل الاستلام من المتجر ومطابقة الأسعار بشروط محددة.", "المنافسة من الأسواق الإلكترونية: منصات مثل أمازون ونون توسع خيارات المقارنة بين العروض والبائعين.", "تغير المنتجات بسرعة: تحديث الأجيال والمواصفات قد يزيد الحاجة إلى إدارة مخزون وتسعير فعالة.", "تراجع هامش الربح المحتمل: إذا تحولت المنافسة إلى تخفيض السعر باستمرار؛ لكن لا توجد بيانات تثبت حدوث ذلك حالياً."] },
+    jarir: { type: "منافس مباشر", site: "jarir.com", about: "متجر تجزئة كبير يبيع اللابتوبات والأجهزة والملحقات عبر الفروع والمتجر الإلكتروني. يصلح للمقارنة من حيث تنوع المنتجات، عرض المواصفات، العروض والثقة بالمتجر.",
+      s: ["حضور تجزئة واسع، وتنوع المنتجات، وإمكانية المقارنة والشراء عبر الموقع."],
+      w: ["اتساع النشاط عبر فئات كثيرة قد يجعل الرسالة أقل تخصصاً في مجال اللابتوبات مقارنة بمتجر متخصص؛ وهذا يحتاج إلى اختبار إدراك العملاء، وليس حقيقة مثبتة."],
+      o: ["تعميق التوصيات التقنية، وتطوير تجربة اختيار الأجهزة بحسب الاستخدام، وتوسيع الخدمات الرقمية المرتبطة بالشراء."],
+      t: ["منافسة المتاجر المتخصصة والأسواق الإلكترونية على السعر والتوفر وسهولة مقارنة الأجهزة."] },
+    extra: { type: "منافس مباشر", site: "extra.com", about: "يبيع الإلكترونيات والأجهزة الاستهلاكية، ويشكل مرجعاً لمقارنة الأسعار والعروض والخدمات المرتبطة بالشراء.",
+      s: ["تنوع الفئات، وخدمات الشراء والاستلام، وسياسات معلنة لدعم تجربة العميل."],
+      w: ["تعدد الفئات قد يجعل تجربة العلامة أقل تخصصاً في بعض احتياجات المستخدمين التقنيين؛ ويجب التحقق من ذلك باختبار الاستخدام ومراجعات العملاء."],
+      o: ["تعزيز التخصيص الرقمي وتطوير أدوات تساعد العملاء على اختيار الأجهزة الأنسب لهم."],
+      t: ["ضغط المنافسة السعرية، وتغير أسعار الأجهزة، وتوقعات العملاء المتزايدة بشأن سرعة التسليم والخدمات."] },
+    amazon: { type: "منافس عبر منصة (غير مباشر)", site: "amazon.sa", about: "منافس في البيع الإلكتروني، ويستحق المقارنة من حيث سهولة البحث، مقارنة العروض، خيارات البائعين وتجربة الشراء الرقمية.",
+      s: ["سهولة البحث والمقارنة، وتعدد العروض والبائعين وخيارات المنتجات."],
+      w: ["اختلاف البائعين وشروط البيع بين العروض قد يزيد الحاجة إلى التحقق من مصدر المنتج والضمان وشروط الإرجاع."],
+      o: ["تحسين التوصيات والتخصيص وتسهيل اكتشاف المنتجات ذات الصلة باحتياجات العملاء."],
+      t: ["المنافسة بين البائعين، وتوقعات العملاء المرتفعة بشأن الأسعار والتوصيل وسهولة الإرجاع."] },
+    noon: { type: "منافس عبر منصة (غير مباشر)", site: "noon.com/saudi-en", about: "سوق إلكتروني يتيح مقارنة منتجات وعروض متعددة، ما يجعله مهماً لفهم المنافسة على السعر والظهور وسهولة الوصول للمنتج.",
+      s: ["نموذج السوق الإلكتروني، وتعدد المنتجات والعروض، وسهولة التسوق الرقمي."],
+      w: ["تفاوت تجربة المنتج والخدمة بحسب البائع والعرض قد يجعل التحقق من تفاصيل الشراء أمراً مهماً."],
+      o: ["زيادة التخصيص وتحسين اكتشاف المنتجات وتسهيل تجربة التسوق عبر الأجهزة المختلفة."],
+      t: ["المنافسة من المتاجر المتخصصة التي قد تقدم معرفة تقنية أكثر عمقاً وخدمة مباشرة أكثر ملاءمة لبعض العملاء."] }
+  };
+  /* map coordinates: x from -1 (left label) to 1 (right label), y from -1 (bottom label) to 1 (top label), as drawn on the board */
+  var MAPS = [
+    { k: "social", tab: "التواصل الاجتماعي",
+      x: ["أسلوب مألوف", "Typical", "أسلوب مميز", "Unique"], xt: "الأسلوب البصري · Visual Style",
+      y: ["للترويج", "To Promote", "للتفاعل", "To Engage"], yt: "سبب التواصل · Reason to communicate",
+      pos: { golden: [0.30, -0.37], jarir: [0.51, 0.42], extra: [-0.74, 0.55], amazon: [-0.22, -0.23], noon: [0.65, -0.23] },
+      today: "اليوم: محتوى تجاري يعرض المنتجات والعروض", target: "الهدف: مساعدة العميل على اتخاذ قرار تقني أفضل",
+      zone: null,
+      notes: {
+        golden: "تموضع أقرب إلى المحتوى التجاري والعملي. التواصل يُقرأ موجّهاً لعرض المنتجات والعروض أكثر من شخصية تحريرية مميزة. هذا منطقي لمتجر تقني، لكن عرض المنتجات وحده لا يصنع تمايزاً قوياً، لأن المنافسين قادرون على نشر المنتجات والعروض نفسها.",
+        jarir: "محتوى تجاري مدعوم بالمعلومات، يجمع بين العروض والأدلة الشرائية ومحتوى يساعد العميل على اكتشاف الخيارات. تحديد درجة التفاعل الفعلية يحتاج إلى تحليل منشوراتها ومعدلات الاستجابة.",
+        extra: "توازن بين الترويج والتميّز البصري، مع اعتماد واضح على التواصل المرتبط بالمنتجات والعروض. المنافسة مع الذهبية قد تتشابه على مستوى الرسائل التجارية.",
+        amazon: "تجربة وظيفية أكثر من شخصية اجتماعية مستقلة. تجربة أمازون لا تعتمد على السوشال ميديا وحدها، بل على منظومة البحث والتوصيات والتقييمات.",
+        noon: "تميّز بصري أوضح نسبياً بفضل اللون الأصفر والهوية المميزة، مع بقاء الهدف التجاري. التميّز البصري لا يعني تلقائياً أن المحتوى أكثر تفاعلية."
+      },
+      reading: [["الاستنتاج", "المساحة التي يمكن للذهبية استكشافها ليست أن تصبح الأكثر إبهاراً بصرياً، بل أن تنتقل من مجرد عرض المنتجات إلى مساعدة العميل على اتخاذ قرار تقني أفضل: مقارنات عملية، وتوصيات حسب الاستخدام والميزانية، وشروحات واضحة للفروقات بين الأجهزة."]] },
+    { k: "audience", tab: "الجمهور المستهدف",
+      x: ["رسائل عامة", "Generic", "رسائل شخصية", "Personal"], xt: "الرسائل · Messaging",
+      y: ["للمعلومة", "Information", "للإلهام", "Inspiration"], yt: "سلوك التصفح · Browse behaviour",
+      pos: { golden: [-0.64, -0.57], jarir: [-0.09, 0.22], extra: [-0.37, -0.06], amazon: [0.60, -0.36], noon: [0.33, 0.58] },
+      segs: [["العمل عن بُعد", 0.56, 0.19], ["شركات التقنية", 0.70, -0.06], ["قطاع التعليم", -0.02, -0.74], ["مراكز الاتصال", 0.58, -0.86]],
+      today: "اليوم: عام ومعلوماتي (مواصفات وخصومات)", target: "الهدف: شخصي، اختيار موجّه حسب القطاع",
+      zone: [0.15, -0.95, 0.95, -0.15], move: [-0.64, -0.57, 0.5, -0.55],
+      notes: {
+        golden: "اليوم في ربع (عام + معلوماتي). الواجهة تعتمد على المواصفات والخصومات (صفقة اليوم ونسب التخفيض)، والتخصيص الوحيد الظاهر هو نموذج «Get a Quote».",
+        jarir: "قريبة من المنتصف، تميل قليلاً نحو الإلهام.",
+        extra: "تعتمد على أدلة الشراء والمقارنات وخدمات (تجهيز، ضمان، صيانة).",
+        amazon: "تملك التوصيات المخصصة.",
+        noon: "أقرب إلى الإلهام والرسائل الشخصية."
+      },
+      reading: [["الفجوة", "لا يوجد منافس يخاطب قطاعات الشركات الأربعة (التعليم، مراكز الاتصال، العمل عن بُعد، شركات التقنية) برسائل مخصصة."], ["التوصية", "التحرك نحو (شخصي + معلوماتي): صفحات حلول لكل قطاع، وباقات جاهزة بسعر مؤسسي، ومقارنات مبسطة بحسب الاستخدام."], ["ملاحظة", "مواقع الذهبية وجرير وإكسترا مبنية على مراجعة الصفحات الرئيسية، وأمازون ونون من معرفة السوق العامة؛ الجميع فرضيات عمل تحتاج تأكيداً."]] },
+    { k: "surf", tab: "سبب فتح الموقع",
+      x: ["مرح وألعاب", "Gamified", "جدّي", "Serious"], xt: "الطابع البصري · Visual",
+      y: ["للعب", "To Play", "للعمل", "To Work"], yt: "سبب الفتح · Reason to open",
+      pos: { golden: [0.55, 0.45], jarir: [0.19, 0.19], extra: [0.14, -0.23], amazon: [0.75, 0.05], noon: [-0.25, -0.30] },
+      today: "اليوم: جدّي وموجّه للعمل مع كتالوج ألعاب", target: "الهدف: «خبير الأداء» الجدّي للعمل واللعب معاً",
+      zone: [0.15, -0.95, 0.95, -0.1], move: [0.55, 0.45, 0.55, -0.45],
+      notes: {
+        golden: "تخدم العمل (لابتوبات أعمال، سيرفرات، طابعات، طلب عرض سعر) ولديها قوة واضحة في الألعاب (PC Gaming وشاشات بتردد 240Hz فما فوق)، لكن التجربة جدية وتجارية؛ عناصر اللعب محدودة (برنامج نقاط الولاء فقط).",
+        jarir: "قريبة من المنتصف مع ميل للجدية والعمل.",
+        extra: "قريبة من المنتصف مع ميل بسيط للعب.",
+        amazon: "جدّية ووظيفية. موقعها من معرفة السوق العامة.",
+        noon: "أقرب إلى المرح واللعب. موقعها من معرفة السوق العامة."
+      },
+      reading: [["الفجوة", "ربع (جدّي + لعب) فارغ: خبرة أداء موثوقة مثل تجميعات حسب اللعبة، وتوصيات حسب الميزانية، ومقارنات FPS."], ["التوصية", "تموضع «خبير الأداء» يجمع الجدية والعمق التقني ويخدم العمل واللعب معاً."], ["ملاحظة", "هذه الخريطة أقل دقة من غيرها، وتحتاج تعريفاً محدداً لمحور «سبب الفتح»."]] }
+  ];
+  var ASSESS = [["تنوع المنتجات", "واضح ومتنوع"], ["التوجه البيعي", "حضور واضح للأسعار والتخفيضات"], ["التخصص التقني", "يظهر في تفاصيل المواصفات وتقسيمات المنتجات"], ["التميز عن المنافسين", "يحتاج إلى إثبات ومقارنة"], ["وعد العلامة التجارية", "يحتاج إلى صياغة أكثر تحديداً واختبارها مع العملاء"], ["تجربة الاختيار", "فرصة محتملة لتقليل تعقيد القرار"]];
+  var HYPOS = [
+    { h: "المنافسة على السعر", p: "إذا كان العميل يرى أن الأسعار والعروض هي السبب الرئيسي للشراء، فقد ينتقل بسهولة إلى المتجر الذي يقدم سعراً أقل.", v: "نقارن أسعار 20 إلى 30 موديل لابتوب متطابقاً بين الذهبية وجرير وإكسترا وأمازون ونون، مع مراعاة الضمان والمواصفات والتوفر وتكلفة الشحن." },
+    { h: "عدم وضوح سبب اختيار المتجر", p: "قد يفهم العميل ما المنتجات التي يبيعها المتجر، لكن لا يفهم ما الذي يجعله مختلفاً عن البدائل.", v: "نراجع الرسالة الرئيسية في الصفحة الرئيسية وصفحات المنتجات، ثم نسأل العملاء: ما أول سبب يجعلك تختار الذهبية؟" },
+    { h: "تعقيد قرار الشراء", p: "قد تكون المعلومات التقنية متاحة، لكن العميل يحتاج إلى معرفة أي مواصفات تناسب استخدامه الفعلي.", v: "نختبر قدرة المستخدم على اختيار لابتوب للدراسة أو الألعاب أو التصميم خلال وقت معقول، ونرصد نقاط التردد والأسئلة المتكررة." },
+    { h: "فرصة تطوير قطاع الشركات", p: "قد لا تكون قيمة التوريد للشركات واضحة بالقدر الكافي مقارنة بعرض المنتجات للأفراد.", v: "نراجع رحلة شراء الشركات، وخيارات طلب عروض الأسعار، والتوريد بالجملة، وخدمات ما بعد البيع، ثم نقارنها مع احتياجات العملاء المؤسسيين." }
+  ];
+  var DIRECTIONS = [
+    { h: "أفضل قيمة مقابل السعر", t: "التركيز على المقارنة الواضحة، والعروض الحقيقية، وشرح ما يحصل عليه العميل مقابل المبلغ الذي يدفعه.", c: ["المخاطرة", "الاعتماد الكبير على التخفيضات واستمرار ضغط الأسعار."] },
+    { h: "متجر التقنية الذي يساعدك على الاختيار الصحيح", t: "التركيز على التوصيات بحسب الاستخدام والميزانية، والمقارنات التقنية المبسطة، وتسهيل قرار الشراء.", c: ["المتطلب", "محتوى تقني موثوق وتجربة اختيار جيدة."] },
+    { h: "شريك التقنية للأفراد والشركات", t: "التركيز على تنوع المنتجات مع حلول التوريد وخدمة الشركات والدعم بعد البيع.", c: ["المتطلب", "إثبات القدرات التشغيلية والخدمات المقدمة فعلياً."] }
+  ];
+  var ARCH = [
+    { k: "sage", name: "الحكيم", en: "The Sage", pct: 70, rank: "أساسي", color: "var(--navy)", role: "مساعدة العميل على فهم التقنية واتخاذ القرار الصحيح.", does: ["يشرح الفروقات بين الأجهزة والمواصفات.", "يقدم توصيات مبنية على الاستخدام والميزانية.", "يبني الثقة من خلال المعرفة والوضوح."], why: "العميل التقني قد يحتار بين خيارات كثيرة، والفرصة أمام الذهبية أن تكون مصدراً موثوقاً للإرشاد، وليس مجرد متجر يعرض المنتجات." },
+    { k: "everyman", name: "القريب من الناس", en: "The Everyman", pct: 30, rank: "ثانوي", color: "var(--gold)", role: "جعل التقنية مفهومة ومتاحة للجميع.", does: ["يبسّط المصطلحات التقنية.", "يتحدث بلغة واضحة وغير متعالية.", "يساعد مختلف العملاء على إيجاد ما يناسبهم."], why: "الذهبية تتعامل مع احتياجات مختلفة، من المستخدم العادي إلى الشركات، ولا يكفي أن تكون خبيرة؛ يجب أن تكون خبرتها سهلة الفهم وقريبة من العميل." }
+  ];
+  var SLIDERS = [
+    ["قريبة من الجميع", "Accessible", 75, "حصرية", "Exclusive", "قريبة وسهلة التعامل مع مختلف العملاء، دون أن تبدو حصرية أو بعيدة عنهم."],
+    ["عصرية", "Modern", 80, "تقليدية", "Traditional", "علامة تقنية تبدو معاصرة ومواكبة للتطور، مع الحفاظ على الثقة والاستقرار."],
+    ["مرحة", "Playful", 30, "جدّية", "Serious", "الجدية والاحترافية أهم من المرح، لكن يمكن إضافة حيوية بسيطة في المحتوى."],
+    ["راقية وهادئة", "Refined", 65, "سلطوية", "Authoritative", "تمتلك خبرة وثقة، لكن الأفضل تقديمها بأسلوب منظم وهادئ بدل أن تبدو متسلطة أو صارمة."],
+    ["أنثوية", "Feminine", 45, "ذكورية", "Masculine", "شخصية محايدة نسبياً؛ تقنية وواثقة دون الاعتماد على إشارات ذكورية أو أنثوية نمطية."]
+  ];
+  var TRAITS = [
+    { k: "يجب أن تكون", en: "Must be", cls: "good", words: ["خبيرة تقنياً", "جديرة بالثقة", "واضحة ومفهومة", "تركز على احتياجات العميل", "يمكن الاعتماد عليها"], t: "الذهبية يجب أن تظهر كعلامة تفهم التقنية وتساعد العميل على اتخاذ قرار مناسب، بمعلومات واضحة ووعود يمكن الاعتماد عليها. هذه الصفات أساس الثقة والتميّز المقترح." },
+    { k: "من الجميل أن تكون", en: "Nice to be", cls: "nice", words: ["قريبة من الناس", "عصرية", "مبتكرة", "تفاعلية", "ملهمة"], t: "هذه الصفات تجعل الذهبية أكثر جاذبية وقرباً، وتساعدها على تقديم التقنية بطريقة عصرية وتفاعلية. لكنها لا تعوّض غياب الخبرة أو الوضوح أو الاعتمادية." },
+    { k: "يجب ألا تكون أبداً", en: "Never to be", cls: "never", words: ["معقدة ومربكة", "تقنية لدرجة تنفّر العميل", "تضغط على العميل للشراء", "بلا شخصية أو تميّز", "غير واضحة أو غير ملتزمة", "تحصر قيمتها بالسعر فقط"], t: "صفات وسلوكيات تتعارض مع التموضع المطلوب." }
+  ];
+  var VALUES = [
+    { en: "Technical Expertise", ar: "الخبرة التقنية", role: "تمييز العلامة بالمعرفة والخبرة التقنية" },
+    { en: "Customer Understanding", ar: "فهم العميل", role: "ربط المعرفة باحتياجات العميل" },
+    { en: "Clarity", ar: "الوضوح", role: "تسهيل الفهم والاختيار" },
+    { en: "Reliability", ar: "الاعتمادية", role: "بناء الثقة وتقليل مخاطر الشراء" },
+    { en: "Accessibility", ar: "سهولة الوصول والفهم", role: "جعل التجربة قريبة وسهلة" }
+  ];
+  var NOT_VALUES = [
+    ["الابتكار", "لا نملك حتى الآن دليلاً كافياً على أن الابتكار في المنتجات أو الخدمات هو ما يميز الذهبية عن المنافسين."],
+    ["الجودة", "قيمة مهمة لكنها عامة ويستخدمها معظم المنافسين. الأفضل ترجمتها إلى معايير ملموسة مثل دقة المعلومات والاعتمادية."],
+    ["الأسعار التنافسية", "قد تكون ميزة تجارية، لكن لا يوجد تحليل سعري متكافئ يثبت أنها نقطة تفوق مستدامة."],
+    ["الثقة", "لا نستبعدها، بل نتعامل معها كنتيجة تُبنى عبر الاعتمادية والوضوح بدل أن تبقى كلمة عامة في قائمة القيم."]
+  ];
+  var EMOTIONS = [
+    { en: "Confidence", ar: "الثقة بالقرار", pillar: 1 },
+    { en: "Clarity", ar: "الوضوح والاطمئنان", pillar: 2 },
+    { en: "Reassurance", ar: "راحة البال", pillar: 3 },
+    { en: "Empowerment", ar: "الشعور بالقدرة والسيطرة", pillar: 4 },
+    { en: "Excitement", ar: "الحماس للتقنية", pillar: 5 }
+  ];
+  var AVOID = [["الارتباك", "بسبب كثرة الخيارات أو غموض المعلومات."], ["الضغط", "الشعور بأن الهدف هو البيع بأي طريقة."], ["الرهبة", "أن تكون التقنية أو لغة العلامة معقدة لدرجة تجعل العميل يشعر أنه لا يفهم."], ["الشك", "بسبب معلومات غير واضحة أو وعود لا تتطابق مع التجربة."]];
+  var PILLARS = [
+    { en: "Expert Guidance", ar: "الإرشاد المبني على الخبرة", primary: true, idea: "نستخدم معرفتنا التقنية لمساعدة العميل على فهم الخيارات واتخاذ قرار مناسب، بدل الاكتفاء بعرض المواصفات.", msg: "نساعدك على اختيار التقنية المناسبة لاحتياجاتك.", topics: ["مقارنة الأجهزة والمواصفات.", "شرح الفروقات بين المعالجات والذاكرة والتخزين.", "توصيات مبنية على الاستخدام والميزانية.", "توضيح متى يحتاج العميل مواصفات أعلى ومتى لا يحتاجها."], emo: "Confidence · الثقة بالقرار", link: "شخصية الحكيم والخبرة التقنية." },
+    { en: "Technology Made Simple", ar: "تبسيط التقنية", idea: "نجعل التقنية سهلة الفهم، حتى يتمكن العميل من الاختيار دون أن يحتاج إلى معرفة تقنية متقدمة.", msg: "يجب أن تكون التقنية سهلة الفهم.", topics: ["تبسيط المصطلحات التقنية.", "أدلة شراء للمبتدئين.", "شرح المواصفات من خلال الاستخدامات الواقعية.", "إجابات عن الأسئلة الشائعة قبل الشراء."], emo: "Clarity · الوضوح وتقليل الحيرة", link: "الحكيم والقريب من الناس وقيمة الوضوح." },
+    { en: "Confidence Through Transparency", ar: "الثقة من خلال الوضوح والشفافية", idea: "نساعد العميل على الشراء وهو فاهم ما يحصل عليه، وما الذي يتوقعه من المنتج والتعامل.", msg: "افهم خياراتك، واتخذ قرارك بثقة.", topics: ["توضيح المواصفات والأسعار.", "شرح الضمان وشروط البيع بدقة.", "تقديم معلومات واضحة عن التوفر والخدمات الفعلية.", "الإجابة الصريحة عن الأسئلة التي تؤثر على قرار الشراء."], emo: "Reassurance · راحة البال والاطمئنان", link: "قيمتا الاعتمادية والجدارة بالثقة." },
+    { en: "Solutions That Fit", ar: "حلول تناسب احتياجاتك", idea: "الاختيار الصحيح يبدأ من فهم احتياج العميل، وليس من دفعه نحو منتج معين.", msg: "التقنية المناسبة تبدأ من فهم احتياجاتك.", topics: ["أجهزة مناسبة للدراسة والعمل عن بُعد.", "حلول للأعمال واحتياجات الشركات.", "تجهيزات حسب طبيعة العمل والميزانية.", "سيناريوهات استخدام تساعد العميل على تحديد احتياجه."], emo: "Empowerment · الشعور بالقدرة على الاختيار", link: "قيمتا فهم العميل وسهولة الوصول." },
+    { en: "Technology in Action", ar: "التقنية في الاستخدام الحقيقي", idea: "نُظهر قيمة التقنية من خلال ما تمكّن الناس من إنجازه، وليس من خلال المنتجات ومواصفاتها فقط.", msg: "تقنية تخدم ما يهمك.", topics: ["كيف تدعم الأجهزة الإنتاجية والعمل والإبداع.", "استخدامات عملية للمنتجات.", "إعدادات وأدوات تساعد على الاستفادة من الأجهزة.", "أفكار وحلول تقنية مرتبطة بالحياة اليومية والعمل."], emo: "Excitement · الحماس للإمكانيات", link: "القريب من الناس والجانب العملي من شخصية العلامة." }
+  ];
+
+  /* ---------------- data: website audit (from the owner report) ---------------- */
+  var AREAS = [["صفحات الأقسام والفلاتر", 72], ["البحث في الموقع", 69], ["السلة والدفع", 60], ["الصفحة الرئيسية", 50], ["صفحة المنتج", 47], ["الثقة وخدمة العملاء", 44], ["اللغة والمحتوى", 35], ["القوائم وترتيب الأقسام", 33], ["التصميم والأزرار", 31], ["التوصيل والإرجاع", 29]];
+  var FIXES = [
+    { u: "عاجل", h: "الموقع يعطي وعدين مختلفين عن مدة التوصيل", s: "صفحة المنتج تقول «24 ساعة» داخل الرياض، وصفحة الشروط تقول من 3 إلى 7 أيام عمل.", f: "وعد واحد لكل مدينة، يُكتب كتاريخ: «يصلك يوم الخميس إذا طلبت قبل الساعة 4 عصراً»، ونفس الوعد في كل الصفحات." },
+    { u: "عاجل", h: "سياسة الإرجاع ضيّقة: 7 أيام وللعيوب فقط", s: "الإرجاع فقط إذا كان في الجهاز عيب. الإكسسوارات وطلبات التقسيط لا تُرجع.", f: "إرجاع خلال 14 يوماً للمنتج المغلق، بشروط مكتوبة بوضوح، ورسم واحد معروف، ونموذج إرجاع على الموقع." },
+    { u: "مهم", h: "أرقام السلة تُربك الزبون", s: "سعر الجهاز 4,699 ريالاً، لكن «المجموع الفرعي» 4,086، و«إجمالي التوفير» يظهر كأنه خصم إضافي.", f: "كل المبالغ شاملة الضريبة، و«وفّرت 1,900 ريال» كملاحظة خضراء منفصلة خارج الحساب." },
+    { u: "مهم", h: "رمز الجوال قبل الدفع غير واضح", s: "رسالة حمراء بالإنجليزي وزر داكن مكتوب عليه «Send Otp». لم نعرف هل الزر يعمل أم لا.", f: "رسالة واضحة بالعربي: «سنرسل لك رمزاً من 4 أرقام»، وزر بلون زر الشراء." },
+    { u: "مهم", h: "أغلب المنتجات بدون تقييمات من الزبائن", s: "في صفحة الجهاز الذي جرّبناه: «There are no ratings». ومن أول أربعة أجهزة في قسم الألعاب، جهاز واحد فقط عليه تقييم.", f: "رسالة واتساب بعد التوصيل تطلب تقييم المنتج، وعرض تقييم المحل من جوجل في الموقع." },
+    { u: "مهم", h: "صور أجهزة الألعاب متشابهة", s: "أغلب الأجهزة بنفس صورة الصندوق، ويتغير فقط اسم كرت الشاشة المكتوب عليها.", f: "تصوير كل جهاز من الأمام والجانب ومن الداخل، مع معرض صور في صفحة المنتج." },
+    { u: "مهم", h: "زر الشراء بخمسة أشكال مختلفة", s: "نفس المهمة (اشترِ الآن) لها لون وشكل مختلف في كل صفحة.", f: "زر شراء واحد بلون واحد في كل الموقع، وزر ثانوي واحد لباقي الأفعال." },
+    { u: "مهم", h: "لا يوجد واتساب للتواصل", s: "أسفل كل صفحة خمس منصات وهاتف وبريد، ولا يوجد واتساب في أي صفحة جرّبناها.", f: "زر واتساب ثابت في كل الصفحات، ورسائل تلقائية بحالة الطلب." }
+  ];
+  var PHASES = [
+    { k: "المرحلة الأولى", when: "خلال 6 أسابيع", h: "تصحيح ما يقرؤه الزبون", items: ["وعد واحد للتوصيل والإرجاع في كل الصفحات", "ترتيب أرقام السلة", "توضيح خطوة رمز الجوال", "زر واتساب", "إعلان جوجل يفتح صفحة المنتج نفسه", "تصحيح الأخطاء الإملائية"], r: "زبائن أقل يترددون عند الدفع، ومصروف إعلان أقل مقابل كل طلب." },
+    { k: "المرحلة الثانية", when: "خلال 3 أشهر", h: "تحسين الشراء والشكل", items: ["شكل واحد للأزرار ومربعات المنتجات والأسعار", "صفحة منتج جديدة: صور حقيقية وتقييمات وتاريخ التوصيل", "قوائم حسب حاجة الزبون: دراسة، ألعاب، عمل، تصميم"], r: "زبائن أكثر يضيفون للسلة، وثقة أعلى في الموقع." },
+    { k: "المرحلة الثالثة", when: "خلال 6 أشهر", h: "النمو والتميّز", items: ["أداة تجميع جهاز الألعاب حسب الطلب", "صفحة طلبات الشركات وعروض الأسعار", "رسائل بعد البيع وطلب التقييم"], r: "ميزة لا يقدّمها جرير ولا إكسترا ولا أمازون ولا نون، وزبائن يرجعون." }
+  ];
+
+  /* ---------------- tabs helper ---------------- */
+  function tabs(name, labels, render, start) {
+    var bar = $('[data-tabs="' + name + '"]');
+    var panel = $('[data-panel="' + name + '"]');
+    bar.innerHTML = labels.map(function (l, i) {
+      return '<button class="tab" role="tab" id="tab-' + name + "-" + i + '" aria-selected="false" aria-controls="panel-' + name + '">' + l + "</button>";
+    }).join("");
+    if (panel) { panel.id = "panel-" + name; panel.setAttribute("role", "tabpanel"); }
+    var btns = $$(".tab", bar);
+    function pick(i, focus) {
+      btns.forEach(function (b, j) { b.setAttribute("aria-selected", i === j ? "true" : "false"); b.tabIndex = i === j ? 0 : -1; });
+      if (panel) panel.setAttribute("aria-labelledby", btns[i].id);
+      render(i, panel);
+      if (focus) btns[i].focus();
+    }
+    btns.forEach(function (b, i) {
+      b.addEventListener("click", function () { pick(i); });
+      b.addEventListener("keydown", function (e) {
+        var d = e.key === "ArrowLeft" ? 1 : e.key === "ArrowRight" ? -1 : 0;
+        if (d) { e.preventDefault(); pick((i + d + btns.length) % btns.length, true); }
+      });
+    });
+    pick(start || 0);
+  }
+
+  /* ---------------- brand: company ---------------- */
+  tabs("channels", CHANNELS.map(function (c) { return esc(c.k); }), function (i, p) {
+    p.innerHTML = '<p style="font-size:1.08rem">' + esc(CHANNELS[i].t) + "</p>";
+  });
+  $("#products").innerHTML = PRODUCTS.map(function (p) {
+    return '<div class="card"><h3 style="font-size:1.1rem">' + esc(p.h) + '</h3><p class="muted" style="margin-top:6px">' + esc(p.t) + "</p></div>";
+  }).join("");
+
+  /* ---------------- brand: audience ---------------- */
+  tabs("segments", SEGMENTS.map(function (s) { return esc(s.k); }), function (i, p) {
+    var s = SEGMENTS[i];
+    p.innerHTML = '<div><span class="label">ما الذي يهمهم؟</span><p style="margin-top:6px;font-size:1.05rem">' + esc(s.care) + '</p></div>' +
+      '<div style="background:var(--gold-soft);border-radius:var(--r-md);padding:16px"><span class="label">فرصة الذهبية</span><p style="margin-top:6px;font-size:1.05rem">' + esc(s.opp) + "</p></div>";
+  });
+
+  /* ---------------- brand: competitors + swot ---------------- */
+  var order = ["golden", "jarir", "extra", "amazon", "noon"];
+  tabs("swot", order.map(function (k) { return '<span class="dot" style="background:' + BRANDS[k].color + '"></span>' + esc(BRANDS[k].name); }), function (i, p) {
+    var k = order[i], d = SWOT[k];
+    var q = function (cls, ar, en, list) {
+      return '<div class="quad ' + cls + '"><h4>' + ar + " <span>" + en + "</span></h4><ul>" + list.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>";
+    };
+    p.innerHTML = '<div class="comp-meta"><span class="pill">' + esc(d.type) + '</span><span class="pill" dir="ltr">' + esc(d.site) + "</span></div>" +
+      (d.about ? '<p style="margin-bottom:14px">' + esc(d.about) + "</p>" : "") +
+      '<div class="swot">' + q("q-s", "نقاط القوة", "Strengths", d.s) + q("q-w", "نقاط تحتاج تدقيقاً", "Weaknesses", d.w) + q("q-o", "الفرص", "Opportunities", d.o) + q("q-t", "التهديدات", "Threats", d.t) + "</div>";
+  });
+
+  /* ---------------- brand: positioning maps ---------------- */
+  var SIZE = 420, PAD = 56, C = SIZE / 2, R = (SIZE - PAD * 2) / 2;
+  function px(x) { return C + x * R; }
+  function py(y) { return C - y * R; }
+  function mapSvg(m) {
+    var s = '<svg class="map" viewBox="0 0 ' + SIZE + " " + SIZE + '" role="img" aria-label="خريطة تموضع: ' + esc(m.tab) + '">' +
+      '<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--gold)"/></marker></defs>';
+    if (m.zone) {
+      var z = m.zone;
+      s += '<rect class="target" x="' + px(z[0]) + '" y="' + py(z[3]) + '" width="' + (px(z[2]) - px(z[0])) + '" height="' + (py(z[1]) - py(z[3])) + '" rx="14"/>';
+    }
+    s += '<line class="axis" x1="' + px(-1) + '" y1="' + C + '" x2="' + px(1) + '" y2="' + C + '"/>' +
+      '<line class="axis" x1="' + C + '" y1="' + py(-1) + '" x2="' + C + '" y2="' + py(1) + '"/>' +
+      '<text class="axis-label" x="' + px(-1) + '" y="' + (C - 10) + '" text-anchor="start">' + esc(m.x[0]) + '</text>' +
+      '<text class="axis-label" x="' + px(1) + '" y="' + (C - 10) + '" text-anchor="end">' + esc(m.x[2]) + '</text>' +
+      '<text class="axis-label" x="' + C + '" y="' + (py(1) - 10) + '" text-anchor="middle">' + esc(m.y[2]) + '</text>' +
+      '<text class="axis-label" x="' + C + '" y="' + (py(-1) + 20) + '" text-anchor="middle">' + esc(m.y[0]) + '</text>' +
+      '<text class="axis-title" x="' + C + '" y="22" text-anchor="middle">' + esc(m.yt) + '</text>' +
+      '<text class="axis-title" x="' + C + '" y="' + (SIZE - 8) + '" text-anchor="middle">' + esc(m.xt) + '</text>';
+    if (m.segs) {
+      m.segs.forEach(function (g) {
+        var w = 82, h = 22;
+        s += '<g class="seg"><rect x="' + (px(g[1]) - w / 2) + '" y="' + (py(g[2]) - h / 2) + '" width="' + w + '" height="' + h + '" rx="6"/><text x="' + px(g[1]) + '" y="' + (py(g[2]) + 4) + '" text-anchor="middle">' + esc(g[0]) + "</text></g>";
+      });
+    }
+    if (m.move) {
+      var mv = m.move;
+      s += '<path class="move" d="M' + px(mv[0]) + " " + py(mv[1]) + " Q " + (px((mv[0] + mv[2]) / 2) + 20) + " " + (py((mv[1] + mv[3]) / 2) - 20) + " " + px(mv[2]) + " " + py(mv[3]) + '"/>';
+    }
+    order.slice().reverse().forEach(function (k) {
+      var p = m.pos[k]; if (!p) return;
+      var big = k === "golden";
+      s += '<g class="brand" data-brand="' + k + '" tabindex="0" role="button" aria-label="' + esc(BRANDS[k].name) + '">' +
+        (big ? '<circle class="ring" cx="' + px(p[0]) + '" cy="' + py(p[1]) + '" r="17"/>' : "") +
+        '<circle cx="' + px(p[0]) + '" cy="' + py(p[1]) + '" r="' + (big ? 11 : 9) + '" fill="' + BRANDS[k].color + '"/>' +
+        '<text x="' + px(p[0]) + '" y="' + (py(p[1]) + (big ? 32 : 26)) + '" text-anchor="middle">' + esc(BRANDS[k].name) + "</text></g>";
+    });
+    return s + "</svg>";
+  }
+  tabs("maps", MAPS.map(function (m) { return esc(m.tab); }), function (i, p) {
+    var m = MAPS[i];
+    p.innerHTML = '<div class="today-target"><div><small>اليوم</small>' + esc(m.today.replace(/^اليوم: /, "")) + '</div><span class="arrow" aria-hidden="true">←</span><div><small>الهدف</small>' + esc(m.target.replace(/^الهدف: /, "")) + "</div></div>" +
+      '<div class="map-wrap"><div>' + mapSvg(m) +
+      (m.zone ? '<label class="toggle"><input type="checkbox" id="target-toggle-' + m.k + '"> أظهر الهدف على الخريطة</label>' : '<p class="note">لا تحدد هذه الخريطة منطقة هدف، بل اتجاهاً في الاستنتاج.</p>') +
+      '</div><div><div class="card" style="box-shadow:none" id="brand-note"></div><dl class="reading" style="margin-top:14px">' +
+      m.reading.map(function (r) { return "<dt>" + esc(r[0]) + "</dt><dd>" + esc(r[1]) + "</dd>"; }).join("") + "</dl></div></div>";
+    var svg = $(".map", p), note = $("#brand-note", p);
+    function sel(k) {
+      $$(".brand", svg).forEach(function (g) { g.classList.toggle("sel", g.getAttribute("data-brand") === k); });
+      note.innerHTML = '<span class="label" style="display:flex;align-items:center;gap:8px"><span class="dot" style="width:12px;height:12px;border-radius:50%;background:' + BRANDS[k].color + '"></span>' + esc(BRANDS[k].name) + '</span><p style="margin-top:6px">' + esc(m.notes[k]) + "</p>";
+    }
+    $$(".brand", svg).forEach(function (g) {
+      var k = g.getAttribute("data-brand");
+      g.addEventListener("click", function () { sel(k); });
+      g.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sel(k); } });
+    });
+    sel("golden");
+    var t = $("#target-toggle-" + m.k, p);
+    if (t) t.addEventListener("change", function () { svg.classList.toggle("show-target", t.checked); });
+  });
+
+  /* ---------------- brand: gaps ---------------- */
+  $("#assess").innerHTML = ASSESS.map(function (r) { return "<tr><td>" + esc(r[0]) + "</td><td>" + esc(r[1]) + "</td></tr>"; }).join("");
+  $("#hypos").innerHTML = HYPOS.map(function (h, i) {
+    return '<details class="acc"><summary><span class="idx">' + (i + 1) + "</span><span>" + esc(h.h) + '</span><span class="chev"><svg width="18" height="18"><use href="#i-chev"/></svg></span></summary>' +
+      '<div class="body"><span class="label">المشكلة المحتملة</span><p>' + esc(h.p) + '</p><span class="label">كيف نتحقق؟</span><p>' + esc(h.v) + "</p></div></details>";
+  }).join("");
+  $("#directions").innerHTML = DIRECTIONS.map(function (d, i) {
+    return '<div class="card"><small class="label">الاتجاه ' + (i + 1) + '</small><h3 style="font-size:1.1rem;margin-top:4px">' + esc(d.h) + '</h3><p class="muted" style="margin-top:8px">' + esc(d.t) + '</p><p style="margin-top:10px"><b>' + esc(d.c[0]) + ":</b> " + esc(d.c[1]) + "</p></div>";
+  }).join("");
+
+  /* ---------------- brand: personality ---------------- */
+  (function donut() {
+    var svg = $("#donut"), cx = 100, cy = 100, r = 78, w = 30, a0 = -Math.PI / 2, html = "";
+    var total = 0;
+    ARCH.forEach(function (a, i) {
+      var a1 = a0 + (a.pct / 100) * Math.PI * 2;
+      var large = a.pct > 50 ? 1 : 0;
+      var x0 = cx + r * Math.cos(a0), y0 = cy + r * Math.sin(a0), x1 = cx + r * Math.cos(a1), y1 = cy + r * Math.sin(a1);
+      var ri = r - w;
+      var xi1 = cx + ri * Math.cos(a1), yi1 = cy + ri * Math.sin(a1), xi0 = cx + ri * Math.cos(a0), yi0 = cy + ri * Math.sin(a0);
+      html += '<path data-i="' + i + '" tabindex="0" role="button" aria-label="' + esc(a.name) + " " + a.pct + '%" fill="' + a.color + '" d="M' + x0 + " " + y0 + " A" + r + " " + r + " 0 " + large + " 1 " + x1 + " " + y1 + " L" + xi1 + " " + yi1 + " A" + ri + " " + ri + " 0 " + large + " 0 " + xi0 + " " + yi0 + 'Z"/>';
+      a0 = a1; total += a.pct;
+    });
+    html += '<text id="donut-pct" x="100" y="104" text-anchor="middle" font-size="30" font-weight="700"></text><text id="donut-name" x="100" y="126" text-anchor="middle" font-size="12" style="fill:var(--muted)"></text>';
+    svg.innerHTML = html;
+    function show(i) {
+      var a = ARCH[i];
+      $$("path", svg).forEach(function (p, j) { p.classList.toggle("dim", j !== i); });
+      $("#donut-pct").textContent = a.pct + "%";
+      $("#donut-name").textContent = a.en;
+      $("#arch-detail").innerHTML = '<span class="pill">' + esc(a.rank) + "</span><h3 style=\"margin-top:8px\">" + esc(a.name) + ' <span class="muted" style="font-size:.95rem" dir="ltr">' + esc(a.en) + "</span></h3>" +
+        '<p style="margin-top:6px"><b>الدور:</b> ' + esc(a.role) + "</p><ul>" + a.does.map(function (d) { return "<li>" + esc(d) + "</li>"; }).join("") + '</ul><p class="note" style="margin-top:8px"><b>لماذا يناسب؟</b> ' + esc(a.why) + "</p>";
+    }
+    $$("path", svg).forEach(function (p) {
+      var i = +p.getAttribute("data-i");
+      p.addEventListener("click", function () { show(i); });
+      p.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(i); } });
+    });
+    show(0);
+  })();
+  $("#sliders").innerHTML = SLIDERS.map(function (s) {
+    return '<div class="slider"><div class="ends"><span>' + esc(s[0]) + ' <span class="muted num" style="font-weight:500">' + s[2] + '%</span></span><span>' + esc(s[3]) + '</span></div>' +
+      '<div class="track" role="img" aria-label="' + esc(s[0]) + " " + s[2] + "% مقابل " + esc(s[3]) + '"><i style="width:' + s[2] + '%"></i><b style="inset-inline-start:' + s[2] + '%"></b></div>' +
+      '<p class="note">' + esc(s[5]) + "</p></div>";
+  }).join("");
+  tabs("traits", TRAITS.map(function (t) { return esc(t.k); }), function (i, p) {
+    var t = TRAITS[i];
+    p.innerHTML = '<p class="muted" dir="ltr" style="text-align:right">' + esc(t.en) + '</p><div class="word-list">' + t.words.map(function (w) { return '<span class="word ' + t.cls + '">' + esc(w) + "</span>"; }).join("") + '</div><p style="margin-top:14px">' + esc(t.t) + "</p>";
+  });
+
+  /* ---------------- brand: values & emotions ---------------- */
+  $("#values").innerHTML = VALUES.map(function (v, i) {
+    return '<button class="value" aria-pressed="' + (i === 0) + '"><span class="rank">' + (i + 1) + "</span><span><b>" + esc(v.ar) + "</b><small>" + esc(v.en) + '</small></span><span class="role">' + esc(v.role) + "</span></button>";
+  }).join("");
+  $$(".value").forEach(function (b) {
+    b.addEventListener("click", function () { $$(".value").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); });
+  });
+  $("#not-values").innerHTML = NOT_VALUES.map(function (v) { return '<div><b>' + esc(v[0]) + '</b><p class="note">' + esc(v[1]) + "</p></div>"; }).join("");
+  $("#emotions").innerHTML = EMOTIONS.map(function (e, i) {
+    return '<button class="emo" aria-pressed="' + (i === 0) + '" data-i="' + i + '"><b>' + esc(e.ar) + "</b><small>" + esc(e.en) + "</small></button>";
+  }).join("");
+  function emo(i) {
+    var e = EMOTIONS[i], p = PILLARS[e.pillar - 1];
+    $$(".emo").forEach(function (b, j) { b.setAttribute("aria-pressed", i === j ? "true" : "false"); });
+    $("#emo-detail").innerHTML = '<span class="label">كيف نبني «' + esc(e.ar) + '»؟</span><p style="margin-top:6px">عبر الركيزة ' + e.pillar + ": <b>" + esc(p.ar) + '</b> <span class="muted" dir="ltr">(' + esc(p.en) + ")</span>. " + esc(p.msg) + '</p><a href="#pillar-' + e.pillar + '" data-open-pillar="' + e.pillar + '" style="display:inline-block;margin-top:8px;font-weight:700">افتح الركيزة ' + e.pillar + "</a>";
+  }
+  $$(".emo").forEach(function (b) { b.addEventListener("click", function () { emo(+b.getAttribute("data-i")); }); });
+  emo(0);
+  $("#avoid").innerHTML = AVOID.map(function (a) { return '<div><b style="color:var(--bad)">' + esc(a[0]) + '</b><p class="note">' + esc(a[1]) + "</p></div>"; }).join("");
+
+  /* ---------------- brand: pillars ---------------- */
+  $("#pillars").innerHTML = PILLARS.map(function (p, i) {
+    return '<details class="acc" id="pillar-' + (i + 1) + '"' + (i === 0 ? " open" : "") + '><summary><span class="idx">' + (i + 1) + '</span><span>' + esc(p.ar) + ' <span class="muted" style="font-weight:500" dir="ltr">' + esc(p.en) + "</span>" + (p.primary ? ' <span class="pill" style="margin-inline-start:6px">الركيزة الأساسية</span>' : "") + '</span><span class="chev"><svg width="18" height="18"><use href="#i-chev"/></svg></span></summary>' +
+      '<div class="body"><div class="grid-2"><div><span class="label">الفكرة</span><p>' + esc(p.idea) + '</p></div><div style="background:var(--gold-soft);border-radius:var(--r-md);padding:14px"><span class="label">الرسالة الأساسية</span><p style="font-family:var(--font-display);font-size:1.15rem;margin-top:4px">' + esc(p.msg) + "</p></div></div>" +
+      '<span class="label">مواضيع المحتوى</span><ul style="margin:0;padding-inline-start:18px">' + p.topics.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" +
+      '<p><b>الهدف العاطفي:</b> <span dir="auto">' + esc(p.emo) + '</span></p><p class="note">يرتبط بـ' + esc(p.link) + "</p></div></details>";
+  }).join("");
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("[data-open-pillar]");
+    if (!a) return;
+    e.preventDefault();
+    var d = document.getElementById("pillar-" + a.getAttribute("data-open-pillar"));
+    if (d) { d.open = true; d.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" }); }
+  });
+
+  /* ---------------- website ---------------- */
+  (function gauge() {
+    var v = 48, arc = "M 180 110 A 80 80 0 0 0 20 110", band = "M 194 110 A 94 94 0 0 0 6 110";
+    var a = Math.PI * v / 100, mx = 100 + 80 * Math.cos(a), my = 110 - 80 * Math.sin(a);
+    $("#gauge").innerHTML =
+      '<path d="' + band + '" pathLength="100" fill="none" stroke="var(--bad)" stroke-width="4" stroke-dasharray="39.4 100"/>' +
+      '<path d="' + band + '" pathLength="100" fill="none" stroke="var(--warn)" stroke-width="4" stroke-dasharray="0 40.3 29.1 100"/>' +
+      '<path d="' + band + '" pathLength="100" fill="none" stroke="var(--good)" stroke-width="4" stroke-dasharray="0 70.3 29.7 100"/>' +
+      '<path d="' + arc + '" fill="none" stroke="var(--sunken)" stroke-width="18" stroke-linecap="round"/>' +
+      '<path d="' + arc + '" pathLength="100" fill="none" stroke="var(--gold)" stroke-width="18" stroke-linecap="round" stroke-dasharray="' + v + ' 100"/>' +
+      '<circle cx="' + mx + '" cy="' + my + '" r="5" fill="var(--navy)" stroke="var(--gold-hi)" stroke-width="2"/>' +
+      '<text x="100" y="100" text-anchor="middle" font-size="40" font-weight="700">' + v + '</text>' +
+      '<text x="100" y="122" text-anchor="middle" font-size="12" style="fill:var(--muted)">من 100</text>';
+  })();
+  function tone(v) { return v >= 70 ? "t-good" : v >= 40 ? "t-warn" : "t-bad"; }
+  tabs("sort", ["الأقوى أولاً", "الأضعف أولاً"], function (i) {
+    var list = AREAS.slice().sort(function (a, b) { return i ? a[1] - b[1] : b[1] - a[1]; });
+    $("#bars").innerHTML = list.map(function (a) {
+      return '<div class="bar-row"><span>' + esc(a[0]) + '</span><span class="track ' + tone(a[1]) + '"><i style="width:' + a[1] + '%"></i></span><span class="v ' + tone(a[1]) + '">' + a[1] + "</span></div>";
+    }).join("");
+  });
+  $("#fixes").innerHTML = FIXES.map(function (f, i) {
+    var bad = f.u === "عاجل";
+    return '<details class="acc"><summary><span class="idx">' + (i + 1) + '</span><span style="flex:1;min-width:0">' + esc(f.h) + ' <span class="urg ' + (bad ? "bad" : "warn") + '">' + esc(f.u) + '</span></span><span class="chev"><svg width="18" height="18"><use href="#i-chev"/></svg></span></summary>' +
+      '<div class="body grid-2"><div><span class="label">ما يراه الزبون</span><p>' + esc(f.s) + '</p></div><div style="background:var(--good-soft);border-radius:var(--r-md);padding:14px"><span class="label" style="color:var(--good)">الحل</span><p>' + esc(f.f) + "</p></div></div></details>";
+  }).join("");
+  tabs("phases", PHASES.map(function (p) { return esc(p.k); }), function (i, p) {
+    var ph = PHASES[i];
+    p.innerHTML = '<span class="pill">' + esc(ph.when) + '</span><h3 style="font-size:1.25rem;margin-top:8px">' + esc(ph.h) + "</h3><ul>" + ph.items.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + '</ul><p style="margin-top:12px;background:var(--good-soft);border-radius:var(--r-md);padding:12px 14px"><b style="color:var(--good)">ماذا ستلاحظون:</b> ' + esc(ph.r) + "</p>";
+  });
+
+  /* ---------------- views + chip bar ---------------- */
+  var VIEWS = ["home", "brand", "website"];
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function showView(v, keepScroll) {
+    if (VIEWS.indexOf(v) < 0) v = "home";
+    VIEWS.forEach(function (x) { document.getElementById("view-" + x).hidden = x !== v; });
+    $$(".switch a").forEach(function (a) { if (a.getAttribute("data-go") === v) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+    if (!keepScroll) window.scrollTo({ top: 0, behavior: "auto" });
+    activeChips();
+  }
+  function fromHash() {
+    var h = (location.hash || "").slice(1);
+    if (VIEWS.indexOf(h) >= 0) return showView(h);
+    var el = h && document.getElementById(h);
+    if (el) {
+      var view = el.closest("[data-view]");
+      if (view) { showView(view.getAttribute("data-view"), true); setTimeout(function () { el.scrollIntoView({ block: "start" }); }, 0); return; }
+    }
+    showView("home");
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("[data-go]");
+    if (!a) return;
+    e.preventDefault();
+    var v = a.getAttribute("data-go");
+    try { history.replaceState(null, "", v === "home" ? location.pathname + location.search : "#" + v); } catch (err) {}
+    showView(v);
+  });
+  $$("[data-chip]").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var t = document.getElementById(a.getAttribute("href").slice(1));
+      if (!t) return;
+      e.preventDefault();
+      t.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    });
+  });
+  function activeChips() {
+    var view = $("[data-view]:not([hidden])");
+    if (!view) return;
+    var chips = $$("[data-chip]", view), cur = null;
+    chips.forEach(function (c) {
+      var s = document.getElementById(c.getAttribute("href").slice(1));
+      if (s && s.getBoundingClientRect().top < 140) cur = c;
+    });
+    chips.forEach(function (c) { c.classList.toggle("on", c === cur); });
+    if (cur && cur.scrollIntoView && cur.parentNode.scrollWidth > cur.parentNode.clientWidth) {
+      var bar = cur.parentNode, r = cur.getBoundingClientRect(), br = bar.getBoundingClientRect();
+      if (r.left < br.left || r.right > br.right) bar.scrollLeft += (r.left + r.width / 2) - (br.left + br.width / 2);
+    }
+  }
+  var ticking = false;
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; activeChips(); }); } }, { passive: true });
+  window.addEventListener("hashchange", fromHash);
+  fromHash();
+})();
+</script>
