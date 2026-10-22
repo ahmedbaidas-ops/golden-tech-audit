@@ -6,10 +6,11 @@ import "@fontsource/ibm-plex-sans-arabic/700.css"
 import "@fontsource/readex-pro/500.css"
 import "@fontsource/readex-pro/600.css"
 import "@fontsource/readex-pro/700.css"
-import "./globals.css"
+import "./app.css"
 import { IconSprite } from "@/components/IconSprite"
 import { TopBar } from "@/components/TopBar"
 import { Motion } from "@/components/Motion"
+import { DirectionProvider } from "@/components/shadcn/direction"
 
 export const metadata: Metadata = {
   title: "تدقيق التكنولوجيا الذهبية",
@@ -30,10 +31,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <IconSprite />
-        <div className="frame">
-          <TopBar />
-          {children}
-        </div>
+        <DirectionProvider dir="rtl">
+          <div className="frame">
+            <TopBar />
+            {children}
+          </div>
+        </DirectionProvider>
         <Motion />
       </body>
     </html>

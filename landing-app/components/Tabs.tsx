@@ -1,39 +1,28 @@
 "use client"
 
-import { useRef, useState, type ReactNode } from "react"
+import { useState, type ReactNode } from "react"
+import { Tabs as TabsRoot, TabsContent, TabsList, TabsTrigger } from "@/components/shadcn/tabs"
 
 type TabsProps = { labels: ReactNode[]; value: number; onChange: (i: number) => void; label?: string }
 
-/** Segmented tabs. Left and right arrows move between them, flipped for right-to-left. */
+// shadcn Tabs in the site's pill style: navy selection (gold in dark mode), wraps on narrow screens
+const LIST =
+  "tabs h-auto group-data-[orientation=horizontal]/tabs:h-auto max-w-full justify-start gap-0.5 overflow-x-auto rounded-full bg-muted p-1 align-middle [scrollbar-width:none] max-[520px]:flex-wrap max-[520px]:rounded-[22px]"
+const TRIGGER =
+  "tab h-auto min-h-11 flex-none gap-2 rounded-full border-0 px-4 py-1.5 text-base font-semibold text-muted-foreground hover:text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground group-data-[variant=default]/tabs-list:data-[state=active]:shadow-[0_6px_14px_-8px_rgb(11_21_51/.55)] dark:text-muted-foreground dark:data-[state=active]:border-0 dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground has-[.logo]:ps-1.5"
+
+/** Segmented tabs on shadcn/Radix: arrow keys follow the reading direction, focus is roving. */
 export function Tabs({ labels, value, onChange, label }: TabsProps) {
-  const refs = useRef<(HTMLButtonElement | null)[]>([])
   return (
-    <div className="tabs" role="tablist" aria-label={label}>
-      {labels.map((l, i) => (
-        <button
-          key={i}
-          ref={(el) => {
-            refs.current[i] = el
-          }}
-          type="button"
-          role="tab"
-          className="tab"
-          aria-selected={i === value}
-          tabIndex={i === value ? 0 : -1}
-          onClick={() => onChange(i)}
-          onKeyDown={(e) => {
-            const d = e.key === "ArrowLeft" ? 1 : e.key === "ArrowRight" ? -1 : 0
-            if (!d) return
-            e.preventDefault()
-            const n = (i + d + labels.length) % labels.length
-            onChange(n)
-            refs.current[n]?.focus()
-          }}
-        >
-          {l}
-        </button>
-      ))}
-    </div>
+    <TabsRoot value={String(value)} onValueChange={(v) => onChange(Number(v))} className="contents">
+      <TabsList className={LIST} aria-label={label}>
+        {labels.map((l, i) => (
+          <TabsTrigger key={i} value={String(i)} className={TRIGGER}>
+            {l}
+          </TabsTrigger>
+        ))}
+      </TabsList>
+    </TabsRoot>
   )
 }
 
@@ -53,11 +42,17 @@ export function TabPanel({
 }) {
   const [i, setI] = useState(start)
   return (
-    <>
-      <Tabs labels={labels} value={i} onChange={setI} label={label} />
-      <div key={i} className={className} role="tabpanel">
+    <TabsRoot value={String(i)} onValueChange={(v) => setI(Number(v))} className="contents">
+      <TabsList className={LIST} aria-label={label}>
+        {labels.map((l, j) => (
+          <TabsTrigger key={j} value={String(j)} className={TRIGGER}>
+            {l}
+          </TabsTrigger>
+        ))}
+      </TabsList>
+      <TabsContent key={i} value={String(i)} className={className}>
         {render(i)}
-      </div>
-    </>
+      </TabsContent>
+    </TabsRoot>
   )
 }

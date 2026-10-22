@@ -9,6 +9,7 @@ const NAV = [
   { href: "/brand/", label: "العلامة", more: "التجارية" },
   { href: "/website/", label: "الموقع" },
   { href: "/concept/", label: "الكونسبت" },
+  { href: "/proposal/", label: "العرض", more: "المالي" },
 ]
 
 const clean = (p: string) => p.replace(/\/+$/, "") || "/"

@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { AREAS } from "@/data/audit"
 import { Count, Icon, Kpi, LogoStack, PageHead, cssVars } from "@/components/ui"
+import { flowImg } from "@/lib/asset"
 
 export default function Overview() {
   return (
@@ -132,33 +133,22 @@ export default function Overview() {
 
       <Link className="teaser reveal" href="/concept/">
         <div>
-          <h2>كيف قد تبدو الصفحة الرئيسية؟</h2>
-          <p>الصفحة الرئيسية بترتيب Walmart وألوان الذهبية، بجانب لقطة من الموقع الحالي، مع سبعة تغييرات مرقّمة.</p>
+          <h2>كيف قد تبدو رحلة الشراء؟</h2>
+          <p>أربع شاشات بترتيب Walmart وألوان الذهبية: الرئيسية، وصفحة المنتج، والسلة، والدفع. لكل شاشة قبل وبعد، و18 تغييراً مرقّماً.</p>
           <span className="go-line">
             شاهدوا قبل وبعد
             <Icon name="arrow" />
           </span>
         </div>
         <div className="ba" aria-hidden="true">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <figure>
-            <img src="/concept/before.webp" alt="" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={flowImg("before-home")} alt="" />
             <figcaption>قبل</figcaption>
           </figure>
-          <figure className="mini-after">
-            <div className="m1">
-              <b />
-              <i />
-              <em />
-            </div>
-            <div className="m2" />
-            <div className="m3">
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-            </div>
+          <figure>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={flowImg("after-home")} alt="" />
             <figcaption>بعد</figcaption>
           </figure>
         </div>

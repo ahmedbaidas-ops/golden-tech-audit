@@ -4,6 +4,9 @@ import { useState } from "react"
 import { BRANDS, MAPS, ORDER, type BrandKey, type PositionMap } from "@/data/audit"
 import { TabPanel } from "../Tabs"
 import { Icon, Logo, cssVars } from "../ui"
+import { asset } from "@/lib/asset"
+import { Label } from "@/components/shadcn/label"
+import { Switch } from "@/components/shadcn/switch"
 
 // map coordinates run from -1 to 1 on both axes, as drawn on the brand board
 const SIZE = 420
@@ -44,7 +47,7 @@ function Pin({ k, m, n, sel, onPick }: { k: BrandKey; m: PositionMap; n: number;
             <circle cx={cx} cy={cy} r={r} />
           </clipPath>
           <image
-            href="/logos/noon.webp"
+            href={asset("logos/noon.webp")}
             x={cx - r}
             y={cy - r}
             width={2 * r}
@@ -54,7 +57,7 @@ function Pin({ k, m, n, sel, onPick }: { k: BrandKey; m: PositionMap; n: number;
           />
         </>
       ) : (
-        <image href={`/logos/${k}.webp`} x={cx - r * 0.8} y={cy - r * 0.8} width={r * 1.6} height={r * 1.6} />
+        <image href={asset(`logos/${k}.webp`)} x={cx - r * 0.8} y={cy - r * 0.8} width={r * 1.6} height={r * 1.6} />
       )}
       <circle className="edge" cx={cx} cy={cy} r={r} />
       <text x={cx} y={cy + r + (big ? 24 : 18)} textAnchor="middle">
@@ -148,9 +151,12 @@ function MapPanel({ m }: { m: PositionMap }) {
             ))}
           </div>
           {z ? (
-            <label className="toggle">
-              <input type="checkbox" checked={target} onChange={(e) => setTarget(e.target.checked)} /> أظهر الهدف على الخريطة
-            </label>
+            <div className="flex min-h-11 items-center gap-2.5">
+              <Switch id={`target-${m.tab}`} checked={target} onCheckedChange={setTarget} />
+              <Label htmlFor={`target-${m.tab}`} className="text-base font-semibold">
+                أظهر الهدف على الخريطة
+              </Label>
+            </div>
           ) : (
             <p className="note">لا تحدد هذه الخريطة منطقة هدف، بل اتجاهاً في الاستنتاج.</p>
           )}

@@ -169,10 +169,10 @@ export function Emotions() {
           href={`#pillar-${e.pillar}`}
           style={{ display: "inline-block", marginTop: 8, fontWeight: 700 }}
           onClick={(ev) => {
-            const d = document.getElementById(`pillar-${e.pillar}`) as HTMLDetailsElement | null
+            const d = document.getElementById(`pillar-${e.pillar}`)
             if (!d) return
             ev.preventDefault()
-            d.open = true
+            d.dispatchEvent(new Event("acc-open"))
             d.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" })
           }}
         >

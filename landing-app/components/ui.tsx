@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from "react"
 import { BRANDS, type BrandKey } from "@/data/audit"
+import { asset } from "@/lib/asset"
 
 export const FULL_REPORT = "https://claude.ai/artifact/QKChBZqPJg53PdwVUbLFmg"
 export const TEAM_BOARD = "https://claude.ai/artifact/Qou2KRNnrgkXdYrGbMPXqg"
@@ -19,7 +20,7 @@ export function Logo({ k, size = 40 }: { k: BrandKey; size?: number }) {
   return (
     <span className={k === "noon" ? "logo full" : "logo"} style={cssVars({ "--s": `${size}px` })}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={`/logos/${k}.webp`} alt="" width={size} height={size} decoding="async" />
+      <img src={asset(`logos/${k}.webp`)} alt="" width={size} height={size} decoding="async" />
     </span>
   )
 }
@@ -89,29 +90,4 @@ export function Count({ to }: { to: number }) {
   return <span data-count={to}>{to}</span>
 }
 
-export function Accordion({
-  idx,
-  title,
-  open,
-  id,
-  children,
-}: {
-  idx: number
-  title: ReactNode
-  open?: boolean
-  id?: string
-  children: ReactNode
-}) {
-  return (
-    <details className="acc reveal" id={id} open={open}>
-      <summary>
-        <span className="idx">{idx}</span>
-        <span>{title}</span>
-        <span className="chev">
-          <Icon name="chev" size={18} />
-        </span>
-      </summary>
-      <div className="body">{children}</div>
-    </details>
-  )
-}
+export { Accordion } from "./Accordion"

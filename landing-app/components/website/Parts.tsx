@@ -4,6 +4,7 @@ import { useState } from "react"
 import { FIXES, FIX_PHASE, PHASES } from "@/data/audit"
 import { TabPanel, Tabs } from "../Tabs"
 import { Icon, cssVars } from "../ui"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/shadcn/accordion"
 
 /** Website score as 25 segments over a half circle; 12 lit for 48/100. It fills from the right, as Arabic reads. */
 export function ScoreGauge() {
@@ -92,7 +93,7 @@ export function FixesTable() {
         <span>المرحلة</span>
         <span />
       </div>
-      <div>
+      <Accordion type="multiple">
         {rows.map(({ f, i }) => {
           const urgency = <span className={f.u === "عاجل" ? "chip bad" : "chip warn"}>{f.u}</span>
           const phase = (
@@ -102,8 +103,8 @@ export function FixesTable() {
             </span>
           )
           return (
-            <details className="fx" key={f.h}>
-              <summary className="frow">
+            <AccordionItem value={f.h} className="fx" key={f.h}>
+              <AccordionTrigger className="frow grid items-center gap-3 rounded-[12px] p-3.5 text-base font-normal hover:bg-muted">
                 <span className="no">{i + 1}</span>
                 <span className="c-t">
                   <span className="t">{f.h}</span>
@@ -114,11 +115,8 @@ export function FixesTable() {
                 </span>
                 <span className="c-u">{urgency}</span>
                 <span className="c-p">{phase}</span>
-                <span className="chev" aria-hidden="true">
-                  <Icon name="chev" size={18} />
-                </span>
-              </summary>
-              <div className="fx-body">
+              </AccordionTrigger>
+              <AccordionContent className="fx-body pb-[18px] text-base">
                 <div>
                   <span className="label">ما يراه الزبون</span>
                   <p>{f.s}</p>
@@ -129,11 +127,11 @@ export function FixesTable() {
                   </span>
                   <p>{f.f}</p>
                 </div>
-              </div>
-            </details>
+              </AccordionContent>
+            </AccordionItem>
           )
         })}
-      </div>
+      </Accordion>
       {!rows.length && <p className="empty">لا توجد ملاحظة بهذه الكلمة. جرّبوا كلمة أخرى.</p>}
     </div>
   )

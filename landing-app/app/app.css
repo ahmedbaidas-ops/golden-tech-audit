@@ -1,0 +1,71 @@
+/* Tailwind v4 + shadcn/ui on top of the existing design system. Tailwind's preflight reset is left out so the
+   audit pages keep their look; the hand-written CSS sits in the "legacy" layer, under the utilities, so a class
+   on a shadcn component always wins. Every shadcn colour points at a Golden token, never at a stock palette. */
+@layer theme, base, legacy, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "tw-animate-css";
+@import "./globals.css" layer(legacy);
+@import "./flow.css" layer(legacy);
+
+/* dark: follows the site's own switch, and never reaches inside the store mock, which is always light */
+@custom-variant dark {
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme="light"]) *):not(:where(.wm-tokens, .wm-tokens *)) {
+      @slot;
+    }
+  }
+  &:where([data-theme="dark"] *):not(:where(.wm-tokens, .wm-tokens *)) {
+    @slot;
+  }
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--ink);
+  --color-primary: var(--sel);
+  --color-primary-foreground: var(--on-sel);
+  --color-secondary: var(--sunken);
+  --color-secondary-foreground: var(--ink);
+  --color-muted: var(--sunken);
+  --color-muted-foreground: var(--muted);
+  --color-accent: var(--gold-soft);
+  --color-accent-foreground: var(--gold-ink);
+  --color-destructive: var(--bad);
+  --color-border: var(--line);
+  --color-input: var(--line);
+  --color-ring: var(--gold);
+  --color-navy: var(--navy);
+  --color-gold: var(--gold);
+  --color-gold-hi: var(--gold-hi);
+  --color-good: var(--good);
+  --color-bad: var(--bad);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-2xl: 28px;
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-display);
+}
+
+/* the store mock: Walmart's structure in Golden's colours, light whatever the page theme. Popovers portal out
+   of the mock, so they carry .wm-tokens too. */
+.wm-tokens {
+  --bg: #ffffff; --surface: #ffffff; --sunken: #f2f4f7; --line: #dfe2e8; --ink: #1d1f23; --muted: #5f636b;
+  --navy: #0b1533; --gold: #f0c24f; --gold-soft: #fdf3d8; --gold-ink: #6b4e0b; --good: #2a7a12; --bad: #c8102e;
+  --sel: #f0c24f; --on-sel: #0b1533;
+  color-scheme: light;
+}
+
+/* shadcn elements only (they all carry data-slot): the reset preflight would have given them */
+@layer base {
+  [data-slot], [data-slot]::before, [data-slot]::after { box-sizing: border-box; border: 0 solid var(--color-border); }
+  button[data-slot], input[data-slot] { font: inherit; color: inherit; background: transparent; margin: 0; padding: 0; }
+  ol[data-slot], ul[data-slot] { list-style: none; margin: 0; padding: 0; }
+  [data-slot] :focus-visible, [data-slot]:focus-visible { outline-color: var(--color-ring); }
+}
