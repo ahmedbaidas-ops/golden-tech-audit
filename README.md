@@ -18,6 +18,9 @@ Prepared by: **Pixilated Studio** · October 2026
 - 2 critical issues (delivery promise contradicts the Terms; returns 7 days, defects only), 16 major, 12 strengths to keep.
 - Still to test: phone layout and Apple Pay in Safari.
 
+Shareable link (private until shared): https://claude.ai/artifact/QKChBZqPJg53PdwVUbLFmg
+Detailed team dashboard: https://claude.ai/artifact/Qou2KRNnrgkXdYrGbMPXqg
+
 ## Run the owner report
 
 ```bash

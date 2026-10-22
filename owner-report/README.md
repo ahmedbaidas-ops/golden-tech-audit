@@ -14,4 +14,13 @@ pnpm dev     # http://localhost:3000
 pnpm build   # static export in out/  (ARTIFACT=1 pnpm build → relative asset paths)
 ```
 
+## Shareable static page
+
+```bash
+ARTIFACT=1 pnpm build
+python3 static-bundle/build.py out publish
+```
+
+`publish/` holds a script-free copy of the report (plus `static-bundle/report.js` for the menu, scroll highlight and text-size buttons) that any static host can serve.
+
 Template license (ForgeUI): personal and commercial use, including client work; the source may not be redistributed or shared. Keep this repository private.
