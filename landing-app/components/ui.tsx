@@ -87,7 +87,7 @@ export function Kpi({ label, icon, tone, accent, value, extra, foot }: KpiProps)
 
 /** A number that counts up from zero when its card scrolls into view (see Motion). */
 export function Count({ to }: { to: number }) {
-  return <span data-count={to}>{to}</span>
+  return <span data-count={to}>{to.toLocaleString("en-US")}</span>
 }
 
 export { Accordion } from "./Accordion"

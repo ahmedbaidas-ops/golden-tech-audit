@@ -53,7 +53,7 @@ function PlanCard({ p }: { p: Plan }) {
       <Separator className={dark ? "bg-white/10" : undefined} />
       <CardContent className="grid gap-3 px-7 py-6">
         <span className={cn("text-sm font-bold", dark ? "text-gold-hi" : "text-[var(--gold-ink)]")}>تشمل</span>
-        <ul className="grid gap-3">
+        <ul className="m-0 list-none p-0 grid gap-3">
           {p.includes.map(([ar, en]) => (
             <li key={en} className="flex items-start gap-3">
               <span aria-hidden="true" className={cn("mt-[.7em] size-2 shrink-0 rounded-full", dark ? "bg-gold-hi" : "bg-gold")} />
@@ -67,7 +67,7 @@ function PlanCard({ p }: { p: Plan }) {
           ))}
         </ul>
         <span className={cn("mt-3 text-sm font-bold", dark ? "text-gold-hi" : "text-[var(--gold-ink)]")}>يعالج من هذا التقرير</span>
-        <ul className="grid gap-1.5">
+        <ul className="m-0 list-none p-0 grid gap-1.5">
           {p.covers.map((c) => (
             <li key={c.href}>
               <Link href={c.href} className={cn("font-semibold underline underline-offset-4", dark ? "text-[var(--on-navy)]" : "text-foreground")}>

@@ -12,7 +12,7 @@ function countUp(el: HTMLElement) {
   const step = (t: number) => {
     if (!t0) t0 = t
     const p = Math.min(1, (t - t0) / 900)
-    el.textContent = String(Math.round(to * (1 - Math.pow(1 - p, 3))))
+    el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))).toLocaleString("en-US")
     if (p < 1) requestAnimationFrame(step)
   }
   requestAnimationFrame(step)

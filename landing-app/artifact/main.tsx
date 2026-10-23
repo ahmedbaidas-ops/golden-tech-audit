@@ -9,6 +9,7 @@ import Brand from "@/app/brand/page"
 import Website from "@/app/website/page"
 import Concept from "@/app/concept/page"
 import Proposal from "@/app/proposal/page"
+import Profile from "@/app/profile/page"
 import { usePath } from "./router"
 
 // the same pages as the Next app, routed in memory
@@ -17,6 +18,7 @@ const ROUTES: Record<string, [() => React.ReactNode, string]> = {
   "/brand/": [Brand, "العلامة التجارية"],
   "/website/": [Website, "الموقع"],
   "/concept/": [Concept, "الكونسبت"],
+  "/profile/": [Profile, "من نحن"],
   "/proposal/": [Proposal, "العرض المالي"],
 }
 
